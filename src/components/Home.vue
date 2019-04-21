@@ -1,6 +1,7 @@
 <template lang="pug">
 .hello
-  h1 {{ msg }}
+  h1 {{ h1 }}
+  p {{ p }}
 </template>
 
 <script>
@@ -8,7 +9,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      msg: 'Home page'
+      h1: 'Шрифт заголовков Behrens AntiqaC',
+      p: 'Шрифт основного текста'
     }
   }
 }
