@@ -19,6 +19,4 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .wrapper
-    width 1440px
 </style>
