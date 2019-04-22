@@ -3,18 +3,17 @@
     header
       .wrapper-fluid
         .logotypes
+          // Поменяю на svg позже.
           img(src="../../assets/images/urfuLogo.png")
           img(src="../../assets/images/adminLogo.png")
         nav.header-navigation
           ul
-            li
-              a(href="/") Новости
-            li
-              a(href="/") Информация
-            li
-              a(href="/") Учебные материалы
-            li
-              a(href="/") Доска почета
+            router-link(
+              v-for="(item, index) in menuItems" :key="index"
+              :to="item.to"
+              tag="li"
+            )
+              a {{ item.name }}
     // Content wrapper
     main
       slot(name='content')
@@ -24,6 +23,16 @@
 
 <script>
 export default {
+  data () {
+    return {
+      menuItems: [
+        {to: '/news', name: 'Новости'},
+        {to: '/information', name: 'Информация'},
+        {to: '/materials', name: 'Учебные материалы'},
+        {to: '/hall', name: 'Доска почета'},
+      ]
+    }
+  }
 }
 </script>
 
