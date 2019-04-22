@@ -1,7 +1,8 @@
 <template lang="pug">
-.hello
-  h1 {{ h1 }}
-  p {{ p }}
+  .wrapper
+    header header
+    main main
+    footer footer
 </template>
 
 <script>
@@ -17,6 +18,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-a
-  color red
+  .wrapper
+    width 1440px
 </style>
