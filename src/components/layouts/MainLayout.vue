@@ -82,17 +82,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper-fluid
-  width 1440px
-  margin 0 auto
-  padding 0 150px
-  box-sizing border-box
-  display flex
-  flex-direction row
-  flex-wrap: nowrap
-  justify-content space-between
-  align-content stretch
-  align-items center
 header
   background #2B6CA8
 .header-navigation

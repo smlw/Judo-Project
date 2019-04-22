@@ -1,7 +1,34 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      span content
+      .wrapper-fluid
+        .events
+          h2 События
+          .events_cards
+            .events_cards_one
+              img(src="../assets/images/events_1.png")
+              .events_cards_one_description
+                .events_cards_one_description_gradient
+                  .events_cards_one_description_date
+                    h3 14 апреля 2018
+                  .events_cards_one_description_text
+                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+            .events_cards_one
+              img(src="../assets/images/events_1.png")
+              .events_cards_one_description
+                .events_cards_one_description_gradient
+                  .events_cards_one_description_date
+                    h3 14 апреля 2018
+                  .events_cards_one_description_text
+                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+            .events_cards_one
+              img(src="../assets/images/events_1.png")
+              .events_cards_one_description
+                .events_cards_one_description_gradient
+                  .events_cards_one_description_date
+                    h3 14 апреля 2018
+                  .events_cards_one_description_text
+                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
 </template>
 
 <script>
@@ -19,4 +46,51 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.events
+  width 100%
+  h2
+    margin 0 0 27px 0
+.events_cards
+  display flex
+  flex-direction row
+  flex-wrap nowrap
+  justify-content space-between
+  align-items flex-start
+  align-content stretch
+  &_one
+    width 365px
+    height 256px
+    &_description
+      &:hover
+        .events_cards_one_description_gradient
+          background rgba(0,0,0,0.7)
+          height 100%
+          padding 11px 18px
+          .events_cards_one_description_text
+            height 100%
+      height 256px
+      margin -256px 0 0 0
+      display flex
+      flex-direction column
+      flex-wrap wrap
+      justify-content flex-end
+      align-content flex-start
+      align-items flex-start
+      line-height normal
+      font-family 'Noto Sans', sans-serif
+      color #fff
+      &_date
+        font-size 24px
+        font-weight bold
+      &_text
+        font-size 18px
+        height 50%
+        overflow hidden
+      &_gradient
+        height 60%
+        overflow hidden
+        background rgba(0,0,0,0.7)
+        background linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 96.87%)
+        box-sizing border-box
+        padding 50px 18px 12px
 </style>
