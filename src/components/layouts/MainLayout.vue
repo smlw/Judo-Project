@@ -17,8 +17,45 @@
     // Content wrapper
     main
       slot(name='content')
-    footer
-      span footer
+    footer.footer
+      .wrapper-fluid
+        .footer-content
+          .footer-menu
+            .footer-menu_column
+              h3 Новости
+              span Новости и события
+              span Фотогалерея
+              span Видео
+            .footer-menu_column
+              h3 Информация
+              span Тренерский состав
+              span Ученический состав
+              span Для студентов
+              span Для родителей
+              span Буревестник
+            .footer-menu_column
+              h3 Учебные материалы
+            .footer-menu_column
+              h3 Доска почета
+          .footer-bottom
+            .footer-bottom_partners
+              img(src="../../assets/images/fd.png")
+              img(src="../../assets/images/adminLogo.png")
+              img(src="../../assets/images/bfr.png")
+            .footer-bottom_contacts
+              .footer-bottom_contacts
+                address
+                  span +01234567891
+                  span Июлская 22, г. Екатеринбург
+                .footer-bottom_contacts_soc-links
+                  a
+                    img(src="../../assets/images/vk.png")
+                  a
+                    img(src="../../assets/images/insta.png")
+                  a
+                    img(src="../../assets/images/youtube.png")
+              
+
 </template>
 
 <script>
@@ -26,8 +63,26 @@ export default {
   data () {
     return {
       menuItems: [
-        {to: '/news', name: 'Новости'},
-        {to: '/information', name: 'Информация'},
+        { 
+          to: '/news', 
+          name: 'Новости', 
+          nested: [
+            { to: '/', name: 'Новости и события' },
+            { to: '/', name: 'Фотогалерея' },
+            { to: '/', name: 'Видео' },
+          ]
+        },
+        {
+          to: '/information',
+          name: 'Информация',
+          nested: [
+            { to: '/', name: 'Тренерский состав' },
+            { to: '/', name: 'Ученический состав' },
+            { to: '/', name: 'Для студентов' },
+            { to: '/', name: 'Для родителей' },
+            { to: '/', name: 'Буревестник' },
+          ]
+        },
         {to: '/materials', name: 'Учебные материалы'},
         {to: '/hall', name: 'Доска почета'},
       ]
@@ -81,4 +136,66 @@ header
   align-items: flex-start;
   img
     margin 0 23px 0 0
+.footer
+  padding 29px 0 37px
+  &-menu
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content flex-start
+    align-content stretch
+    align-items flex-start
+    &_column
+      margin 0 100px 0 0
+    span 
+      font-size 14px
+      line-height 23px
+    h3
+      font-size 20px
+      margin 0 0 14px 0
+  &-content
+    width 100%
+  &-bottom
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content space-between
+    align-content space-between
+    align-items flex-end
+    &_contacts
+      // text-align right
+      display flex
+      flex-direction column
+      flex-wrap nowrap
+      justify-content flex-start
+      align-content stretch
+      align-items flex-end
+      text-align right
+      address
+        margin 0 0 47px 0 
+        line-height normal
+      &_soc-links
+        display flex
+        flex-direction row
+        flex-wrap nowrap
+        justify-content flex-start
+        align-content stretch
+        align-items center
+        a
+          margin 0 16px 0 0
+          &:last-child
+            margin 0
+    &_partners
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content flex-start
+      align-content stretch
+      align-items center
+      img 
+        margin 0 35px 0 0
+footer
+  font-family 'Noto Sans', sans-serif
+  background #2B6CA8
+  color #fff
 </style>
