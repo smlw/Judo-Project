@@ -21,24 +21,14 @@
       .wrapper-fluid
         .footer-content
           .footer-menu
-            .footer-menu_column
-              h3 Новости
-              span Новости и события
-              span Фотогалерея
-              span Видео
-            .footer-menu_column
-              h3 Информация
-              span Тренерский состав
-              span Ученический состав
-              span Для студентов
-              span Для родителей
-              span Буревестник
-            .footer-menu_column
-              h3 Учебные материалы
-            .footer-menu_column
-              h3 Доска почета
+            .footer-menu_column(v-for="(item, index) in menuItems" :key="index")
+              router-link.footer-menu_column_title(:to="item.to")
+                span {{ item.name }}
+              router-link.footer-menu_column_sublink(v-for="(item, index) in item.nested" :to="item.to" :key="index")
+                span {{ item.name }}
           .footer-bottom
             .footer-bottom_partners
+              // Поменяю на svg позже
               img(src="../../assets/images/fd.png")
               img(src="../../assets/images/adminLogo.png")
               img(src="../../assets/images/bfr.png")
@@ -147,12 +137,12 @@ header
     align-items flex-start
     &_column
       margin 0 100px 0 0
-    span 
-      font-size 14px
-      line-height 23px
-    h3
-      font-size 20px
-      margin 0 0 14px 0
+      &_sublink
+        font-size 14px
+        line-height 23px
+      &_title
+        font-size 20px
+        margin 0 0 14px 0
   &-content
     width 100%
   &-bottom
