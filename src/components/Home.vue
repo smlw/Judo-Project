@@ -1,11 +1,11 @@
 <template lang="pug">
-  .wrapper
-    header header
-    main main
-    footer footer
+  MainLayout
+    template(v-slot:content)
+      span content
 </template>
 
 <script>
+import MainLayout from '../components/layouts/MainLayout'
 export default {
   name: 'Home',
   data () {
@@ -13,7 +13,8 @@ export default {
       h1: 'Шрифт заголовков Behrens AntiqaC',
       p: 'Шрифт основного текста'
     }
-  }
+  },
+  components: { MainLayout }
 }
 </script>
 
