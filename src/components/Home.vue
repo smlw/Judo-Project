@@ -11,27 +11,35 @@
                 .events_cards_one_description
                   .events_cards_one_description_gradient
                     .events_cards_one_description_date
-                      h3 14 апреля 2018
+                      h3 13апреля 2018
                     .events_cards_one_description_text
                       p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
             a(href="/")
               .events_cards_one
-                img(src="../assets/images/events_1.png")
+                img(src="../assets/images/events_2.png")
                 .events_cards_one_description
                   .events_cards_one_description_gradient
                     .events_cards_one_description_date
                       h3 14 апреля 2018
                     .events_cards_one_description_text
-                      p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+                      p Дзюдо: турнир памяти Н.С. Мусатова
             a(href="/")
               .events_cards_one
-                img(src="../assets/images/events_1.png")
+                img(src="../assets/images/events_3.png")
                 .events_cards_one_description
                   .events_cards_one_description_gradient
                     .events_cards_one_description_date
-                      h3 14 апреля 2018
+                      h3 15 апреля 2018
                     .events_cards_one_description_text
-                      p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+                      p Дзюдо: мастер класс от Колесникова Сергея Викторовича
+
+
+        .about
+          h2 Об отделении дзюдо в ДЮСШ "Буревестник"
+          .about_content
+            p 
+              img(src="../assets/images/events_1.png")
+              span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
 </template>
 
 <script>
@@ -49,10 +57,22 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+h2
+  margin 0 0 25px 0
+.about
+  margin 0 0 95px 0
+  &_content
+    p
+      line-height 35px
+      font-size 20px
+    img
+      width 420px
+      height 258px
+      float left
+      padding 0 24px 15px 0 
 .events
   width 100%
-  h2
-    margin 0 0 27px 0
+  margin 0 0 95px 0
 .events_cards
   display flex
   flex-direction row
