@@ -2,18 +2,19 @@
   .wrapper
     header
       .wrapper-fluid
-        .logotypes
-          // Поменяю на svg позже.
-          img(src="../../assets/images/urfuLogo.png")
-          img(src="../../assets/images/adminLogo.png")
-        nav.header-navigation
-          ul
-            router-link(
-              v-for="(item, index) in menuItems" :key="index"
-              :to="item.to"
-              tag="li"
-            )
-              a {{ item.name }}
+        .header
+          .logotypes
+            // Поменяю на svg позже.
+            img(src="../../assets/images/urfuLogo.png")
+            img(src="../../assets/images/adminLogo.png")
+          nav.header-navigation
+            ul
+              router-link(
+                v-for="(item, index) in menuItems" :key="index"
+                :to="item.to"
+                tag="li"
+              )
+                a {{ item.name }}
     // Content wrapper
     main
       slot(name='content')
@@ -82,6 +83,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.header
+  width 100%
+  box-sizing border-box
+  display flex
+  flex-direction row
+  flex-wrap: nowrap
+  justify-content space-between
+  align-content flex-start
+  align-items center
 header
   background #2B6CA8
 .header-navigation
