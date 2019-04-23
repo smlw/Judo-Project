@@ -53,17 +53,67 @@
               )
                 h3(slot="date") {{ galleryCard[0].date }}
                 p(slot="text") {{ galleryCard[0].text }}
+
+        .coach-staff
+          h2 Тренерский состав
+          swiper(:options='swiperOption')
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            swiper-slide 
+              .coach-staff_portrait
+                img(src="../assets/images/face_coach.png")
+                .coach-staff_portrait_name О. В. Долганов
+            .swiper-button-prev(slot='button-prev')
+            .swiper-button-next(slot='button-next')
+
+
+
 </template>
 
 <script>
 import MainLayout from '../components/layouts/MainLayout'
 import Card from '../components/elements/Card'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 export default {
   name: 'Home',
   data () {
     return {
       h1: 'Шрифт заголовков Behrens AntiqaC',
       p: 'Шрифт основного текста',
+      swiperOption: {
+        slidesPerView: 6,
+        spaceBetween: 30,
+        slidesPerGroup: 6,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
       eventCard: [
         { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
         { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
@@ -76,13 +126,46 @@ export default {
       ],
     }
   },
-  components: { MainLayout, Card }
+  components: { MainLayout, Card, swiper, swiperSlide }
 }
 </script>
 
 <style lang="stylus" scoped>
 h2
   margin 0 0 25px 0
+.coach-staff
+  width 100%
+  .swiper-button-next
+    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAxNSAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMC45OTk5OTkgMUwxNCAxMS41TDEgMjIiIHN0cm9rZT0iI0E0QTRBNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=')
+    box-shadow 0px 0px 15px rgba(0, 0, 0, 0.2)
+    border-radius 50px
+    padding 5px
+    height 50px
+    width 50px
+    box-sizing border-box
+    background-size 13px
+  .swiper-button-prev
+    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAxNSAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTQgMjJMMSAxMS41TDE0IDAuOTk5OTk5IiBzdHJva2U9IiNBNEE0QTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+')
+    box-shadow 0px 0px 15px rgba(0, 0, 0, 0.2)
+    border-radius 50px
+    padding 5px
+    height 50px
+    width 50px
+    box-sizing border-box
+    background-size 13px
+  &_portrait
+    width 172px
+    text-align center
+    img 
+      width 100%
+      height 215px
+    &_name
+      font-family 'Noto Sans', sans-serif
+      font-size 18px
+      line-height normal
+      margin 20px 0 0 0
+  .swiper-container
+    width 100%
 .gallery
   display flex
   flex-direction row
