@@ -20,13 +20,17 @@
               h3(slot="date") {{ card.date }}
               p(slot="text") {{ card.text }}
 
+          .events_button
+            a(href="/") 
+              Button Больше событий
+
         .about
           h2 Об отделении дзюдо в ДЮСШ "Буревестник"
           .about_content
             p 
               img(src="../assets/images/events_1.png")
               span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
-        
+
         // Знаю, что в этом блоке что-то не так и так нельзя делать, но пока придумать лучше не смог. Нужен совет
         .gallery
           .gallery_photo
@@ -51,6 +55,11 @@
                   :linkTo="galleryCard[2].linkTo"
                 )
                   h3(slot="date") {{ galleryCard[2].date }}
+
+            .events_button
+              a(href="/") 
+                Button Перейти к альбомам
+            
           .gallery_video
             h2 Видео
             .gallery_video_content
@@ -60,6 +69,10 @@
               )
                 h3(slot="date") {{ galleryCard[0].date }}
                 p(slot="text") {{ galleryCard[0].text }}
+
+            .events_button
+              a(href="/") 
+                Button Все видео
 
         .coach-staff
           h2 Тренерский состав
@@ -98,6 +111,7 @@
 <script>
 import MainLayout from '../components/layouts/MainLayout'
 import Card from '../components/elements/Card'
+import Button  from '../components/elements/UI/Button'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
@@ -136,7 +150,7 @@ export default {
       ],
     }
   },
-  components: { MainLayout, Card, swiper, swiperSlide }
+  components: { MainLayout, Card, swiper, swiperSlide, Button }
 }
 </script>
 
@@ -229,6 +243,11 @@ h2
 .gallery
   width 100%
   margin 95px 0
+.events_button
+  display flex
+  flex-direction row
+  justify-content center
+  margin 25px 0 0 0
 .events_cards
   display flex
   flex-direction row

@@ -127,6 +127,7 @@ header
     margin 0 23px 0 0
 .footer
   padding 29px 0 37px
+  margin 150px 0 0 0
   &-menu
     display flex
     flex-direction row
