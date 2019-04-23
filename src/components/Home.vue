@@ -1,6 +1,13 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
+      .carousel_main
+        swiper(:options="swiperMain")
+          swiper-slide
+            img(src="../assets/images/slider-1.png")
+          swiper-slide
+            img(src="../assets/images/slider-1.png")
+          .swiper-pagination(slot="pagination")
       .wrapper-fluid
         .events
           h2 События
@@ -99,16 +106,19 @@ export default {
     return {
       h1: 'Шрифт заголовков Behrens AntiqaC',
       p: 'Шрифт основного текста',
+      swiperMain: {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+      },
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 30,
         slidesPerGroup: 6,
         loop: true,
         loopFillGroupWithBlank: true,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -133,6 +143,18 @@ export default {
 <style lang="stylus" scoped>
 h2
   margin 0 0 25px 0
+.carousel_main
+  img 
+    width 100%
+  .swiper-container 
+    margin 0
+    padding 0
+    height 635px
+  .swiper-pagination
+    display flex
+    flex-direction row
+    justify-content center
+    padding 0 0 16px 0
 .coach-staff
   width 100%
   .swiper-button-next
@@ -206,7 +228,7 @@ h2
 .events,
 .gallery
   width 100%
-  margin 0 0 95px 0
+  margin 95px 0
 .events_cards
   display flex
   flex-direction row
