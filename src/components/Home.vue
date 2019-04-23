@@ -5,30 +5,33 @@
         .events
           h2 События
           .events_cards
-            .events_cards_one
-              img(src="../assets/images/events_1.png")
-              .events_cards_one_description
-                .events_cards_one_description_gradient
-                  .events_cards_one_description_date
-                    h3 14 апреля 2018
-                  .events_cards_one_description_text
-                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
-            .events_cards_one
-              img(src="../assets/images/events_1.png")
-              .events_cards_one_description
-                .events_cards_one_description_gradient
-                  .events_cards_one_description_date
-                    h3 14 апреля 2018
-                  .events_cards_one_description_text
-                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
-            .events_cards_one
-              img(src="../assets/images/events_1.png")
-              .events_cards_one_description
-                .events_cards_one_description_gradient
-                  .events_cards_one_description_date
-                    h3 14 апреля 2018
-                  .events_cards_one_description_text
-                    p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+            a(href="/")
+              .events_cards_one
+                img(src="../assets/images/events_1.png")
+                .events_cards_one_description
+                  .events_cards_one_description_gradient
+                    .events_cards_one_description_date
+                      h3 14 апреля 2018
+                    .events_cards_one_description_text
+                      p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+            a(href="/")
+              .events_cards_one
+                img(src="../assets/images/events_1.png")
+                .events_cards_one_description
+                  .events_cards_one_description_gradient
+                    .events_cards_one_description_date
+                      h3 14 апреля 2018
+                    .events_cards_one_description_text
+                      p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
+            a(href="/")
+              .events_cards_one
+                img(src="../assets/images/events_1.png")
+                .events_cards_one_description
+                  .events_cards_one_description_gradient
+                    .events_cards_one_description_date
+                      h3 14 апреля 2018
+                    .events_cards_one_description_text
+                      p С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...
 </template>
 
 <script>
@@ -63,10 +66,12 @@ export default {
     &_description
       &:hover
         .events_cards_one_description_gradient
+          transition all 0.25s ease
           background rgba(0,0,0,0.7)
           height 100%
           padding 11px 18px
           .events_cards_one_description_text
+            transition all 0.25s ease
             height 100%
       height 256px
       margin -256px 0 0 0
