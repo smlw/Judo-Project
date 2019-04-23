@@ -12,11 +12,7 @@
         .events
           h2 События
           .events_cards
-            Card( v-for="(card, index) in eventCard" :key="index"
-                  width="365px", height="256px", margin="-256px"
-                  :img="card.img"
-                  :linkTo="card.linkTo"
-                )
+            Card( v-for="(card, index) in eventCard" :key="index" )
               h3(slot="date") {{ card.date }}
               p(slot="text") {{ card.text }}
 

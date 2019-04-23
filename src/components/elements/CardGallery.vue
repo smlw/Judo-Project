@@ -1,8 +1,8 @@
 <template lang="pug">
-  a(:href="`${this.linkTo}`")
-    .card(:style="`width: ${this.width}; height: ${this.height}`")
-      img(:src="`${this.img}`")
-      .card_description(:style="`height: ${this.height}; margin-top: ${this.margin}`")
+  a(href="/")
+    .card()
+      img(src="/")
+      .card_description()
         .card_description_gradient
           .card_description_date
             slot(name="date")
