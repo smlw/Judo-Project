@@ -8,6 +8,7 @@ import Album from '../components/pages/Album.vue'
 import VideoAlbum from '../components/pages/VideoAlbum.vue'
 import OneNew from '../components/pages/OneNew.vue'
 import Trainer from '../components/pages/Trainer.vue'
+import Human from '../components/pages/Human.vue'
 
 const router = new Router({
   mode: 'history',
@@ -36,6 +37,11 @@ const router = new Router({
       path: '/staff/:id',
       component: Trainer,
       meta: {title: 'Тренер'}
+    },
+    {
+      path: '/human/:id',
+      component: Human,
+      meta: {title: 'Human'}
     }
   ]
 })
