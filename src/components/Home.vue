@@ -26,32 +26,36 @@
             p 
               img(src="../assets/images/events_1.png")
               span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
-
-        // Знаю, что в этом блоке что-то не так и так нельзя делать, но пока придумать лучше не смог. Нужен совет
+        
         .gallery
           .gallery_photo
             h2 Фото
             .gallery_photo_content
               .gallery_photo_content_main
-                Card( width="460px", height="269px", margin="-269px"
-                      :img="galleryCard[0].img"
-                      :linkTo="galleryCard[0].linkTo"
-                    )
-                  h3(slot="date") {{ galleryCard[0].date }}
-                  p(slot="text") {{ galleryCard[0].text }}
+                a(href="/")
+                  .gallery_card()
+                    img(src="../assets/images/events_1.png")
+                    .gallery_card_description()
+                      .gallery_card_description_gradient
+                        .gallery_card_description_date
+                          h3 13 апреля
+                        .gallery_card_description_text
+                          p Мастер-класс от Колесникова Сергея Викторовича
               .gallery_photo_content_second
-                Card( width="181px", height="129px", margin="-129px"
-                  :img="galleryCard[1].img"
-                  :linkTo="galleryCard[1].linkTo"
-                )
-                  h3(slot="date") {{ galleryCard[1].date }}
-
-                Card( width="181px", height="129px", margin="-129px"
-                  :img="galleryCard[2].img"
-                  :linkTo="galleryCard[2].linkTo"
-                )
-                  h3(slot="date") {{ galleryCard[2].date }}
-
+                a(href="/")
+                  .gallery_card.gallery_card_small()
+                    img(src="../assets/images/events_1.png")
+                    .gallery_card_small_description()
+                      .gallery_card_small_description_gradient
+                        .gallery_card_description_date
+                          h3 13 апреля
+                a(href="/")
+                  .gallery_card.gallery_card_small()
+                    img(src="../assets/images/events_1.png")
+                    .gallery_card_small_description()
+                      .gallery_card_small_description_gradient
+                        .gallery_card_description_date
+                          h3 13 апреля
             .events_button
               a(href="/") 
                 Button Перейти к альбомам
@@ -59,13 +63,15 @@
           .gallery_video
             h2 Видео
             .gallery_video_content
-              Card( width="364px", height="269px", margin="-269px"
-                    :img="galleryCard[0].img"
-                    :linkTo="galleryCard[0].linkTo"
-              )
-                h3(slot="date") {{ galleryCard[0].date }}
-                p(slot="text") {{ galleryCard[0].text }}
-
+              a(href="/")
+                .gallery_card_video
+                  img(src="../assets/images/events_1.png")
+                  .gallery_card_video_description
+                    .gallery_card_video_play_content
+                      .gallery_card_video_play
+                        .gallery_card_video_play_triangle
+                    .gallery_card_video_description_date
+                      h3 13 апреля
             .events_button
               a(href="/") 
                 Button Все видео
@@ -208,8 +214,105 @@ h2
   h3
     font-size 18px
     line-height normal
+    font-weight bold
   p
     font-size 20px
+  img
+    width 100%
+    height 100%
+    object-fit cover
+  &_card_video
+    width 364px
+    height 269px
+    color #fff
+    font-family 'Noto Sans', sans-serif
+    &_play
+      width 80px
+      height 80px
+      background rgba(140,140,140, .8)
+      border-radius 50px
+      display flex
+      justify-content center
+      align-items center
+      &_triangle
+        width 0
+        height 0
+        border-style solid
+        border-width 19px 0 19px 35px
+        border-color transparent transparent transparent #c4c4c4
+        margin 0 -8px 0 0 
+      &_content
+        position absolute
+        top 0
+        width 100%
+        height 100%
+        display flex
+        justify-content center
+        align-items center
+    &_description
+      position relative
+      background rgba(0, 0, 0, 0.39)
+      height 269px
+      margin -269px 0 0 0
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content space-between
+      align-items flex-end
+      align-content stretch
+      &_date
+        padding 19px
+  &_card
+    width 460px
+    height 269px
+    color #fff
+    font-family 'Noto Sans', sans-serif
+    h3
+      font-size 18px
+      line-height normal
+      word-break break-all
+    p
+      font-size 20px
+      line-height normal
+    &_description
+      height 269px
+      margin -269px 0 0 0
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content space-between
+      align-items flex-end
+      align-content stretch
+      &_gradient
+        height 60%
+        width 100%
+        overflow hidden
+        background rgba(0,0,0,0.8)
+        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
+        box-sizing border-box
+        padding 65px 20px 15px
+      &_text
+        overflow hidden
+  &_card_small
+    width 181px
+    height 129px
+    &_description
+      height 129px
+      margin -129px 0 0 0
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content space-between
+      align-items flex-end
+      align-content stretch
+      &_gradient
+        height 60%
+        width 100%
+        overflow hidden
+        background rgba(0,0,0,0.5)
+        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.5) 76.09%, rgba(0, 0, 0, 0.5) 96.87%)
+        box-sizing border-box
+        padding 45px 9px 5px
   &_photo
     &_content
       display flex

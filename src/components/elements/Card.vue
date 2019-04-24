@@ -1,5 +1,5 @@
 <template lang="pug">
-  a(:href="`${this.linkTo}`")
+  a(href="/")
     .card(:style="`width: ${this.width}; height: ${this.height}`")
       img(:src="`${this.img}`")
       .card_description(:style="`height: ${this.height}; margin-top: ${this.margin}`")
@@ -17,21 +17,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.gallery_video_content
-
-.gallery_photo_content
-  &_main
-    .card_description_gradient
-      padding 70px 18px 12px
-    .card_description_text
-      height 65%
-  &_second
-    .card_description
-      &:hover
-        .card_description_gradient
-          padding 50px 5px 5px
-      &_gradient
-        padding 50px 5px 5px
 .card
   width 365px
   height 256px
