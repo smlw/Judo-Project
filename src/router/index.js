@@ -6,6 +6,7 @@ Vue.use(Router)
 import Home from '../components/Home.vue'
 import Album from '../components/pages/Album.vue'
 import VideoAlbum from '../components/pages/VideoAlbum.vue'
+import OneNew from '../components/pages/OneNew.vue'
 
 const router = new Router({
   mode: 'history',
@@ -24,6 +25,11 @@ const router = new Router({
       path: '/videoalbum',
       component: VideoAlbum,
       meta: {title: 'Видеоальбомы'}
+    },
+    {
+      path: '/new/:id',
+      component: OneNew,
+      meta: {title: 'Новость'}
     }
   ]
 })
