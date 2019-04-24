@@ -12,13 +12,15 @@
               p 
                 img(src="../../assets/images/events_1.png")
                 span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
+            Attach(icon="doc") Протокол соревнований    
 </template>
 
 <script>
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
+import Attach from '../../components/elements/UI/Attach'
 export default {
- components: { MainLayout, BreadCrumbs }   
+ components: { MainLayout, BreadCrumbs, Attach }   
 }
 </script>
 
