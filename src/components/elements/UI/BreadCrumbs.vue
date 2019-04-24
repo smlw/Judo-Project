@@ -27,6 +27,7 @@ export default {
   display flex
   align-items flex-start
   flex-direction row
+  margin 0 0 37px 0
   &_item
     display flex
     flex-direction row
