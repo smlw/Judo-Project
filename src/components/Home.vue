@@ -184,8 +184,6 @@ h2
       font-size 18px
       line-height normal
       margin 20px 0 0 0
-  .swiper-container
-    width 100%
 .gallery
   display flex
   flex-direction row

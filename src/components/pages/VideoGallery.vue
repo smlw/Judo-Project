@@ -22,18 +22,131 @@
                   h3 Бой Иванова и Петрова
                   p Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание
               .video-gallery_content_second 
-                // Вставлю сюда компонент слайдера-видео, когда приведу в порядок компонент слайдера       
+                .swiper-slider
+                  swiper(:options='swiperOption')
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                            .gallery_card_video_small_description_date
+                              h3 Мастер-класс от Колесникова Сергея Викторовича
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                            .gallery_card_video_small_description_date
+                              h3 13 апреля
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                            .gallery_card_video_small_description_date
+                              h3 13 апреля
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                          .gallery_card_video_small_description_date
+                              h3 13 апреля
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                            .gallery_card_video_small_description_date
+                              h3 13 апреля
+                    swiper-slide 
+                      a(href="/")
+                        .gallery_card_video_small
+                          img(src="../../assets/images/events_1.png")
+                          .gallery_card_video_small_description
+                            .gallery_card_video_play_content
+                              .gallery_card_video_small_play 
+                            .gallery_card_video_small_description_date
+                              h3 13 апреля
+                  .swiper-button-prev(slot='button-prev')
+                  .swiper-button-next(slot='button-next')      
 </template>
 
 <script>
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 export default {
- components: { MainLayout, BreadCrumbs }   
+  data () {
+    return {
+      swiperOption: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
+    }
+  },
+  components: { MainLayout, BreadCrumbs, swiper, swiperSlide }   
 }
 </script>
 
 <style lang="stylus" scoped>
+.gallery_card_video_small
+  width 364px
+  height 203px
+  color #fff
+  font-family 'Noto Sans', sans-serif
+  img
+    width 100%
+    height 100%
+    object-fit cover
+  &_play
+    width 69px
+    height 69px
+    display flex
+    justify-content center
+    align-items center
+    background-size contain
+    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
+    &_content
+      position absolute
+      top 0
+      width 100%
+      height 100%
+      display flex
+      justify-content center
+      align-items center
+  &_description
+    position relative
+    background rgba(0, 0, 0, 0.39)
+    height 203px
+    margin -203px 0 0 0
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content space-between
+    align-items flex-end
+    align-content stretch
+    line-height 25px
+    &_date
+      padding 8px
 .video-gallery
   h2
     font-size 48px
@@ -48,6 +161,8 @@ export default {
     line-height 42px
     color #868686
   &_content
+    &_second
+      margin 50px 0 0 0
     &_main
       display flex
       flex-direction row
@@ -121,36 +236,5 @@ export default {
       align-content stretch
       &_date
         padding 19px
-  &_card
-    width 460px
-    height 269px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    h3
-      font-size 18px
-      line-height normal
-      word-break break-all
-    p
-      font-size 20px
-      line-height normal
-    &_description
-      height 269px
-      margin -269px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.8)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
-        box-sizing border-box
-        padding 65px 20px 15px
-      &_text
-        overflow hidden
 </style>
 
