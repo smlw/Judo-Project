@@ -69,7 +69,6 @@
                   .gallery_card_video_description
                     .gallery_card_video_play_content
                       .gallery_card_video_play
-                        .gallery_card_video_play_triangle
                     .gallery_card_video_description_date
                       h3 13 апреля
             .events_button
@@ -229,18 +228,11 @@ h2
     &_play
       width 80px
       height 80px
-      background rgba(140,140,140, .8)
-      border-radius 50px
       display flex
       justify-content center
       align-items center
-      &_triangle
-        width 0
-        height 0
-        border-style solid
-        border-width 19px 0 19px 35px
-        border-color transparent transparent transparent #c4c4c4
-        margin 0 -8px 0 0 
+      background-size contain
+      background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
       &_content
         position absolute
         top 0
