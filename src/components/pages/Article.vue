@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.attach
+  margin 30px 0 0 0
 h2
   font-size 48px
   line-height normal

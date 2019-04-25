@@ -10,6 +10,7 @@ import OneNew from '../components/pages/OneNew.vue'
 import Trainer from '../components/pages/Trainer.vue'
 import Human from '../components/pages/Human.vue'
 import Article from '../components/pages/Article.vue'
+import Information from '../components/pages/Information.vue'
 
 const router = new Router({
   mode: 'history',
@@ -47,6 +48,11 @@ const router = new Router({
     {
       path: '/article/:id',
       component: Article,
+      meta: {title: 'Статья'}
+    },
+    {
+      path: '/information',
+      component: Information,
       meta: {title: 'Статья'}
     }
   ]
