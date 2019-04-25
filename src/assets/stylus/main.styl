@@ -1,10 +1,28 @@
 @import './base/fonts.styl'
+@import './base/reset.styl'
 
-body
-  background #ccc
-
-h1
+.wrapper
+  display flex
+  min-height 100vh
+  flex-direction column
+.wrapper-fluid
+  width 1440px
+  margin 0 auto
+  padding 0 150px
+  box-sizing border-box
+  display flex
+  flex-direction column
+  flex-wrap: nowrap
+  justify-content space-between
+  align-content stretch
+  align-items center
+.swiper-wrapper
+  flex-direction row
+main
+  flex 1
+h2
+  font-size: 40px
+  line-height normal
   font-family "Behrens Antiqua", sans-serif
-
 p
   font-family "Noto Sans", sans-serif
