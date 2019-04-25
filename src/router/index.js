@@ -11,6 +11,8 @@ import Trainer from '../components/pages/Trainer.vue'
 import Human from '../components/pages/Human.vue'
 import Article from '../components/pages/Article.vue'
 import Information from '../components/pages/Information.vue'
+import EducationMaterials from '../components/pages/EducationMaterials.vue'
+import OneEducationMaterial from '../components/pages/OneEducationMaterial.vue'
 
 const router = new Router({
   mode: 'history',
@@ -53,6 +55,16 @@ const router = new Router({
     {
       path: '/information',
       component: Information,
+      meta: {title: 'Статья'}
+    },
+    {
+      path: '/education-materials',
+      component: EducationMaterials,
+      meta: {title: 'Статья'}
+    },
+    {
+      path: '/education-materials/:id',
+      component: OneEducationMaterial,
       meta: {title: 'Статья'}
     }
   ]
