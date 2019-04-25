@@ -14,6 +14,7 @@ import Information from '../components/pages/Information.vue'
 import EducationMaterials from '../components/pages/EducationMaterials.vue'
 import OneEducationMaterial from '../components/pages/OneEducationMaterial.vue'
 import PhotoGallery from '../components/pages/PhotoGallery.vue'
+import VideoGallery from '../components/pages/VideoGallery.vue'
 
 const router = new Router({
   mode: 'history',
@@ -71,6 +72,11 @@ const router = new Router({
     {
       path: '/photo-gallery',
       component: PhotoGallery,
+      meta: {title: 'Статья'}
+    },
+    {
+      path: '/video-gallery',
+      component: VideoGallery,
       meta: {title: 'Статья'}
     }
   ]
