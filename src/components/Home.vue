@@ -33,30 +33,20 @@
             h2 Фото
             .gallery_photo_content
               .gallery_photo_content_main
-                a(href="/")
-                  .gallery_card()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
-                        .gallery_card_description_text
-                          p Мастер-класс от Колесникова Сергея Викторовича
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSettings")
+                    img(slot="image" src="../assets/images/events_2.png")
+                    h3(slot="date") 13 апреля
+                    p(slot="text") Мастер-класс от Колесникова Сергея Викторовича
               .gallery_photo_content_second
-                a(href="/")
-                  .gallery_card.gallery_card_small()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_small_description()
-                      .gallery_card_small_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
-                a(href="/")
-                  .gallery_card.gallery_card_small()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_small_description()
-                      .gallery_card_small_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSmallSettings")
+                    img(slot="image" src="../assets/images/events_1.png")
+                    h3(slot="date") 13 апреля
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSmallSettings")
+                    img(slot="image" src="../assets/images/events_3.png")
+                    h3(slot="date") 13 апреля
             .events_button
               a(href="/") 
                 Button Перейти к альбомам
@@ -64,14 +54,10 @@
           .gallery_video
             h2 Видео
             .gallery_video_content
-              a(href="/")
-                .gallery_card_video
-                  img(src="../assets/images/events_1.png")
-                  .gallery_card_video_description
-                    .gallery_card_video_play_content
-                      .gallery_card_video_play
-                    .gallery_card_video_description_date
-                      h3 13 апреля
+              router-link(to="/video-gallery/1")
+                j-video-preview(:settings="videoCardSettings")
+                  img(slot="image" src="../assets/images/slider-1.png")
+                  h3(slot="title") 13 апреля
             .events_button
               a(href="/") 
                 Button Все видео
@@ -121,8 +107,23 @@ export default {
   name: 'Home',
   data () {
     return {
-      h1: 'Шрифт заголовков Behrens AntiqaC',
-      p: 'Шрифт основного текста',
+      videoCardSettings: {
+        width: '364px',
+        height: '269px',
+        titleClass: 'normal'
+      },
+      photoCardSettings: {
+        width: '460px',
+        height: '269px',
+        class: 'photo-card_normal',
+        small: false
+      },
+      photoCardSmallSettings: {
+        width: '181px',
+        height: '129px',
+        class: 'photo-card_small',
+        small: true
+      },
       swiperMain: {
         loop: true,
         pagination: {
@@ -168,7 +169,7 @@ h2
     font-size 64px
     line-height 76px
     color #FFFFFF
-    margin -165px 0 0 0
+    margin -215px 0 0 0
     text-align center
   img 
     width 100%

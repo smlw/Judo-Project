@@ -1,0 +1,45 @@
+<template lang="pug">
+  .video-card(:style="`width: ${this.settings.width}; height: ${this.settings.height}`")
+    slot(name="image")
+    .video-card_description(:style="`height: ${this.settings.height}; margin-top: -${this.settings.height}`")
+      .video-card_play_content
+        .video-card_play
+      .video-card_description_date
+        .video-card_title(:class="this.settings.title")
+          slot(name="title")
+</template>
+
+<script>
+export default {
+  props: ['settings']
+}
+</script>
+<style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+.video-card
+  color #fff
+  font-family 'Noto Sans', sans-serif
+  img 
+    width 100%
+    height 100%
+  &_play
+    flexbox(row, nowrap, center, center, stretch)
+    width 80px
+    height 80px
+    background-size contain
+    background-repeat no-repeat
+    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
+    &_content
+      flexbox(row, nowrap, center, center, stretch)
+      top 0
+      width 100%
+      height 100%
+      position absolute
+  &_description
+    flexbox(row, nowrap, space-between, flex-end, stretch)
+    position relative
+    background rgba(0, 0, 0, 0.39)
+    &_date
+      padding 19px
+</style>
+
