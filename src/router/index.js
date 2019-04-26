@@ -17,6 +17,7 @@ import PhotoGallery from '../components/pages/PhotoGallery.vue'
 import VideoGallery from '../components/pages/VideoGallery.vue'
 import HallOfFame from '../components/pages/HallOfFame.vue'
 import News from '../components/pages/News.vue'
+import HallOfFameCategory from '../components/pages/HallOfFameCategory.vue'
 
 const router = new Router({
   mode: 'history',
@@ -89,6 +90,11 @@ const router = new Router({
     {
       path: '/news',
       component: News,
+      meta: {title: 'Новости'}
+    },
+    {
+      path: '/hall/:category',
+      component: HallOfFameCategory,
       meta: {title: 'Новости'}
     }
   ]
