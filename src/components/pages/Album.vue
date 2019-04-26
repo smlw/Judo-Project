@@ -48,7 +48,7 @@
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 export default {
- components: { MainLayout, BreadCrumbs }   
+  components: { MainLayout, BreadCrumbs }   
 }
 </script>
 

@@ -30,72 +30,166 @@ const router = new Router({
     {
       path: '/album',
       component: Album,
-      meta: {title: 'Альбомы'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: 'Фотогалерея', link: '' }
+        ],
+        title: 'Альбомы'
+      }
     },
     {
       path: '/videoalbum',
       component: VideoAlbum,
-      meta: {title: 'Видеоальбомы'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: 'Видеогалерея', link: '/'}
+        ],
+        title: 'Видеоальбомы'
+      }
     },
     {
-      path: '/new/:id',
+      path: '/news/:id',
       component: OneNew,
-      meta: {title: 'Новость'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: '', link: ''}
+        ],
+        title: 'Новость'
+      }
     },
     {
       path: '/staff/:id',
       component: Staff,
-      meta: {title: 'Тренер'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: '', link: '/'}
+        ],
+        title: 'Тренер'
+      }
     },
     {
       path: '/human/:id',
       component: Human,
-      meta: {title: 'Human'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Доска почета', link: '/information'},
+          { name: '', link: '/'}
+        ],
+        title: 'Статья'
+      }
     },
     {
       path: '/article/:id',
       component: Article,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Информация', link: '/information'},
+          { name: '', link: '/'}
+        ],
+        title: 'Статья'
+      }
     },
     {
       path: '/information',
       component: Information,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Информация', link: '' }
+        ],
+        title: 'Информация'
+      }
     },
     {
       path: '/education-materials',
       component: EducationMaterials,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Учебные материалы', link: '' }
+        ],
+        title: 'Информация'
+      }
     },
     {
       path: '/education-materials/:id',
       component: OneEducationMaterial,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Учебные материалы', link: '/education-materials'},
+          { name: '', link: '/'}
+        ],
+        title: 'Учебные материалы'
+      }
     },
     {
-      path: '/photo-gallery',
+      path: '/photo-gallery/:id',
       component: PhotoGallery,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: 'Фотогалерея', link: '/album' },
+          { name: '', link: '' }
+        ],
+        title: 'Фотогалерея'
+      }
     },
     {
-      path: '/video-gallery',
+      path: '/video-gallery/:id',
       component: VideoGallery,
-      meta: {title: 'Статья'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: 'Видеогалерея', link: '/videoalbum' },
+          { name: '', link: '' }
+        ],
+        title: 'Видеогалерея'
+      }
     },
     {
       path: '/hall',
       component: HallOfFame,
-      meta: {title: 'Статья'}
-    },
-    {
-      path: '/news',
-      component: News,
-      meta: {title: 'Новости'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Доска почета', link: '' }
+        ],
+        title: 'Доска почета'
+      }
     },
     {
       path: '/hall/:category',
       component: HallOfFameCategory,
-      meta: {title: 'Новости'}
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Доска почета', link: '' }
+        ],
+        title: 'Новости'
+      }
+    },
+    {
+      path: '/news',
+      component: News,
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '' }
+        ],
+        title: 'Новости'
+      }
     }
   ]
 })

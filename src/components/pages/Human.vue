@@ -32,7 +32,10 @@
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 export default {
- components: { MainLayout, BreadCrumbs }   
+  beforeMount () {
+    this.$route.meta.breadcrumbs[2].name = 'Имя из запроса'
+  },
+  components: { MainLayout, BreadCrumbs }   
 }
 </script>
 

@@ -21,7 +21,10 @@ import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import Attach from '../../components/elements/UI/Attach'
 export default {
- components: { MainLayout, BreadCrumbs, Attach }   
+  beforeMount () {
+    this.$route.meta.breadcrumbs[2].name = 'Название новости из запроса'
+  },
+  components: { MainLayout, BreadCrumbs, Attach }   
 }
 </script>
 
