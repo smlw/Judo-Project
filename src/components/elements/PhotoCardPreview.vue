@@ -23,9 +23,13 @@ export default {
     font-size 18px
     line-height normal
     word-break break-word
+    font-weight bold
   p
     font-size 20px
     line-height normal
+  img 
+    width 100%
+    height 100%
   &_description
     flexbox(row, nowrap, space-between, flex-end, stretch)
     &_gradient
@@ -44,22 +48,6 @@ export default {
   &_small
     .photo-card_description
       &_gradient
-        padding 0px 9px 5px
-    // &_photo
-    //   &_content
-    //     display flex
-    //     flex-direction row
-    //     flex-wrap nowrap
-    //     justify-content space-between
-    //     align-items flex-start
-    //     align-content stretch
-    //     &_main
-    //       a
-    //         margin 0 11px 0 0
-    //     &_second
-    //       a
-    //         margin 0 0 11px 0
-    //         &:last-child
-    //           margin 0
+        padding 0px 9px 9px
 </style>
 

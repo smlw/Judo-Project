@@ -159,6 +159,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../assets/stylus/mixins/flexbox'
 h2
   margin 0 0 25px 0
 .carousel_main
@@ -196,123 +197,17 @@ h2
       line-height normal
       margin 20px 0 0 0
 .gallery
-  display flex
-  flex-direction row
-  flex-wrap nowrap
-  justify-content space-between
-  align-items flex-start
-  align-content stretch
-  h3
-    font-size 18px
-    line-height normal
-    font-weight bold
-  p
-    font-size 20px
-  img
-    width 100%
-    height 100%
-    object-fit cover
-  &_card_video
-    width 364px
-    height 269px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    &_play
-      width 80px
-      height 80px
-      display flex
-      justify-content center
-      align-items center
-      background-size contain
-      background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
-      &_content
-        position absolute
-        top 0
-        width 100%
-        height 100%
-        display flex
-        justify-content center
-        align-items center
-    &_description
-      position relative
-      background rgba(0, 0, 0, 0.39)
-      height 269px
-      margin -269px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_date
-        padding 19px
-  &_card
-    width 460px
-    height 269px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    h3
-      font-size 18px
-      line-height normal
-      word-break break-all
-    p
-      font-size 20px
-      line-height normal
-    &_description
-      height 269px
-      margin -269px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.8)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
-        box-sizing border-box
-        padding 65px 20px 15px
-      &_text
-        overflow hidden
-  &_card_small
-    width 181px
-    height 129px
-    &_description
-      height 129px
-      margin -129px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.5)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.5) 76.09%, rgba(0, 0, 0, 0.5) 96.87%)
-        box-sizing border-box
-        padding 45px 9px 5px
-  &_photo
-    &_content
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-start
-      align-content stretch
-      &_main
-        a
-          margin 0 11px 0 0
-      &_second
-        a
-          margin 0 0 11px 0
-          &:last-child
-            margin 0
+  flexbox(row, nowrap, space-between, flex-start, stretch)
+  &_photo_content
+    flexbox(row, nowrap, space-between, flex-start, stretch)
+    &_main
+      a
+        margin 0 11px 0 0
+    &_second
+      a
+        margin 0 0 11px 0
+        &:last-child
+          margin 0
 .article
   margin 95px 0 0 0
   &_content

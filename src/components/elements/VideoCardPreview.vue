@@ -19,6 +19,12 @@ export default {
 .video-card
   color #fff
   font-family 'Noto Sans', sans-serif
+  h3
+    font-size 18px
+    line-height normal
+    font-weight bold
+  p
+    font-size 20px
   img 
     width 100%
     height 100%
