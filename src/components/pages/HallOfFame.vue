@@ -4,7 +4,7 @@
       .wrapper-fluid
         .wrapper-fluid_content
           BreadCrumbs
-          //- LinkHeader
+          LinkHeader
           .hall
             .hall-container
               .hall-container_header
@@ -131,6 +131,7 @@
 <script>
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
+import LinkHeader from '../../components/elements/UI/LinkHeader'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
@@ -149,7 +150,7 @@ export default {
       }
     }
   },
-  components: { MainLayout, BreadCrumbs, swiper, swiperSlide }   
+  components: { MainLayout, BreadCrumbs, swiper, swiperSlide, LinkHeader }   
 }
 </script>
 
