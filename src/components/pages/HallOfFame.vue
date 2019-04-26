@@ -155,6 +155,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.link-header
+  margin 0 0 86px 0
 .link_full-list
   display flex
   flex-direction row
@@ -190,13 +192,16 @@ export default {
 .hall-container
   width 100%
   margin 0 0 80px 0
+  .swiper-button-next,
+  .swiper-button-prev
+    margin-top -80px
   &:last-child
     margin 0
   &_header
     display flex
     flex-direction row
     justify-content space-between
-    align-items flex-end
+    align-items center
     margin 0 0 20px 0
   &_portrait
     width 172px
