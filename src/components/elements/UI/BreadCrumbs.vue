@@ -1,18 +1,37 @@
 <template lang="pug">
   .bread-crumbs
-    .bread-crumbs_item
-      a(href="/") Главная
-    .bread-crumbs_item
-      a(href="/") Новости
-    .bread-crumbs_item
-      a(href="/") Видеогалерея
-    .bread-crumbs_item
-      a(href="/") "Название альбома"
+    .bread-crumbs_item( v-for="(breadcrumb, index) in breadCrumbsList" 
+                        :key="index"
+                        @click="routeTo(index)"
+                      )
+      router-link(:to="breadcrumb.link", tag="a") {{breadcrumb.name}}
+
 </template>
 
 <script>
 export default {
-    
+  name: 'Bread',
+  data () {
+    return {
+      breadCrumbsList : []
+    }
+  },
+  mounted () {
+    this.updateList()
+  },
+  watch: {
+    '$route' () {
+      this.updateList()
+    }
+  },
+  methods: {
+    routeTo (pRouteTo) {
+      if ( this.breadCrumbsList[pRouteTo].link ) this.$router.push(this.breadCrumbsList[pRouteTo].link)
+    },
+    updateList () {
+      this.breadCrumbsList = this.$route.meta.breadcrumbs
+    }
+  }
 }
 </script>
 

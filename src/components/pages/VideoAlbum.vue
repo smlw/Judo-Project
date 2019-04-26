@@ -12,49 +12,43 @@
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
+                      .gallery_card_description_date
+                        h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
               .album_content_item
                 a(href="/")
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
+                      .gallery_card_description_date
+                        h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
               .album_content_item
                 a(href="/")
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Мастер-класс от Колесникова Сергея Викторовича
+                      .gallery_card_description_date
+                        h3 Мастер-класс от Колесникова Сергея Викторовича
               .album_content_item
                 a(href="/")
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Мастер-класс от Колесникова Сергея Викторовича
+                      .gallery_card_description_date
+                        h3 Мастер-класс от Колесникова Сергея Викторовича
               .album_content_item
                 a(href="/")
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Мастер-класс от Колесникова Сергея Викторовича
+                      .gallery_card_description_date
+                        h3 Мастер-класс от Колесникова Сергея Викторовича
               .album_content_item
                 a(href="/")
                   .gallery_card()
                     img(src="../../assets/images/events_1.png")
                     .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 Мастер-класс от Колесникова Сергея Викторовича
+                      .gallery_card_description_date
+                        h3 Мастер-класс от Колесникова Сергея Викторовича
 </template>
 
 <script>
@@ -97,9 +91,13 @@ export default {
       width 100%
       height 100%
     h3
-      font-size 18px
       line-height normal
-      word-break break-all
+      word-break break-word
+      font-family 'Noto Sans', sans-serif
+      font-style normal
+      font-weight bold
+      font-size 18px
+      line-height 25px
     &_description
       height 219px
       margin -219px 0 0 0
@@ -109,13 +107,10 @@ export default {
       justify-content space-between
       align-items flex-end
       align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.8)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
-        box-sizing border-box
-        padding 65px 20px 15px
+      overflow hidden
+      background rgba(0, 0, 0, 0.39)
+      box-sizing border-box
+      padding 9px
+
 </style>
 

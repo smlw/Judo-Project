@@ -103,6 +103,9 @@ export default {
       },
     }
   },
+  beforeMount () {
+    this.$route.meta.breadcrumbs[3].name = 'Название видеоальбома из запроса'
+  },
   components: { MainLayout, BreadCrumbs, swiper, swiperSlide }   
 }
 </script>

@@ -4,7 +4,7 @@
       .wrapper-fluid
         .wrapper-fluid_content
           BreadCrumbs
-          //- LinkHeader
+          LinkHeader
           .hall
             .hall-container
               .hall-container_header
@@ -131,6 +131,7 @@
 <script>
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
+import LinkHeader from '../../components/elements/UI/LinkHeader'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 export default {
@@ -149,11 +150,13 @@ export default {
       }
     }
   },
-  components: { MainLayout, BreadCrumbs, swiper, swiperSlide }   
+  components: { MainLayout, BreadCrumbs, swiper, swiperSlide, LinkHeader }   
 }
 </script>
 
 <style lang="stylus" scoped>
+.link-header
+  margin 0 0 86px 0
 .link_full-list
   display flex
   flex-direction row
@@ -189,13 +192,16 @@ export default {
 .hall-container
   width 100%
   margin 0 0 80px 0
+  .swiper-button-next,
+  .swiper-button-prev
+    margin-top -80px
   &:last-child
     margin 0
   &_header
     display flex
     flex-direction row
     justify-content space-between
-    align-items flex-end
+    align-items center
     margin 0 0 20px 0
   &_portrait
     width 172px

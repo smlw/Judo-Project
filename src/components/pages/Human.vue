@@ -10,7 +10,7 @@
             .human_content
               .human_header
                 h2 Олег Владиславович Долганов
-                .human_old 22 года
+                .human_old 20 лет
               .human_info
                 .human_info_text
                   p Немного информации о спротсмене, чтобы ему и его мае было приятно, а так же все вокруг знали какой он классный! Немного информации о спротсмене, чтобывсе вокруг знали какой он классный! Немного информации о спротсмене, чтобывсе вокруг знали какой он классный!
@@ -32,7 +32,10 @@
 import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 export default {
- components: { MainLayout, BreadCrumbs }   
+  beforeMount () {
+    this.$route.meta.breadcrumbs[2].name = 'Имя из запроса'
+  },
+  components: { MainLayout, BreadCrumbs }   
 }
 </script>
 
@@ -41,6 +44,10 @@ export default {
   display flex
   flex-direction row
   justify-content flex-start
+  h2
+    font-size 48px
+    line-height 57px
+    margin 0 0 8px 0
   &_old
     font-family 'Noto Sans', sans-serif
     font-style italic
@@ -51,8 +58,8 @@ export default {
   &_photo
     width 380px
     height 442px
-    margin 0 30px 0 0
-    flex 1 
+    margin 0 55px 0 0
+    flex-shrink 0
     img 
       width 100%
       height 100%

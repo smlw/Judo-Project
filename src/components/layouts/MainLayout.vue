@@ -74,7 +74,7 @@ export default {
             { to: '/', name: 'Буревестник' },
           ]
         },
-        {to: '/materials', name: 'Учебные материалы'},
+        {to: '/education-materials', name: 'Учебные материалы'},
         {to: '/hall', name: 'Доска почета'},
       ]
     }

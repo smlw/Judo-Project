@@ -7,7 +7,7 @@
           article.article
             h2 Как правильно сформировать рацион ребенка, чтобы укрепить имунитет и увеличить его продуктивность. Еще линнее название для статьи мне не придумать    
             p Тут будет статья, если такая имеется, а если не имеется, то не беда, на странице будет отображаться документ-ссылка. Если имеется видео, то оно будет размещено ниже. Если такого не имеется, то тоже не беда, можно останить название учебного материала и документ-ссылку. Тут будет статья, если такая имеется, а если не имеется, то не беда, на странице будет отображаться документ-ссылка. Если имеется видео, то оно будет размещено ниже. Если такого не имеется, то тоже не беда, можно останить название учебного материала и документ-ссылку
-            Attach(icon="writting") Ссылка на прикрепленный файл
+            Attach(icon="writting", type="link") Ссылка на прикрепленный файл
 </template>
 
 <script>
@@ -15,7 +15,10 @@ import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import Attach from '../../components/elements/UI/Attach'
 export default {
- components: { MainLayout, BreadCrumbs, Attach }   
+  beforeMount () {
+    this.$route.meta.breadcrumbs[2].name = 'Название статьи из запроса'
+  },
+  components: { MainLayout, BreadCrumbs, Attach }   
 }
 </script>
 

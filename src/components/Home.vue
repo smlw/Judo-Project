@@ -5,6 +5,7 @@
         swiper(:options="swiperMain")
           swiper-slide
             img(src="../assets/images/slider-1.png")
+            h1 Отделение дзюдо УрФУ
           swiper-slide
             img(src="../assets/images/slider-1.png")
           .swiper-pagination(slot="pagination")
@@ -160,6 +161,15 @@ export default {
 h2
   margin 0 0 25px 0
 .carousel_main
+  h1
+    font-family 'Behrens Antiqua', sans-serif
+    font-style normal
+    font-weight normal
+    font-size 64px
+    line-height 76px
+    color #FFFFFF
+    margin -165px 0 0 0
+    text-align center
   img 
     width 100%
   .swiper-container 
@@ -170,7 +180,7 @@ h2
     display flex
     flex-direction row
     justify-content center
-    padding 0 0 16px 0
+    padding 0 0 10px 0
 .coach-staff
   width 100%
   &_portrait
@@ -300,8 +310,10 @@ h2
       &_second
         a
           margin 0 0 11px 0
+          &:last-child
+            margin 0
 .article
-  margin 0 0 95px 0
+  margin 95px 0 0 0
   &_content
     p
       line-height 35px
@@ -311,7 +323,10 @@ h2
       height 258px
       float left
       padding 0 24px 15px 0 
-.events,
+      box-sizing border-box
+      object-fit cover
+.events
+  margin 67px 0
 .gallery
   width 100%
   margin 95px 0

@@ -11,7 +11,7 @@
             .article_content
               p 
                 img(src="../../assets/images/events_1.png")
-                span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
+                span В минувшую субботу, в городе Озёрск, проходил традиционный XXXV турнир памяти Н.С. Мусатова среди юношей 2006-2008 г.р. Спортсмены из Челябинской, Пермской и Свердловской областей посетили соревнование и поборолись за медали. От ДЮСШ "Буревестник" в турнире приняли участие 4 спортсмена. Кузнецов Егор, в/к 66 кг. занял III место и получил специальный приз "За волю к победе".
             Attach(icon="doc", type="link") Протокол соревнований    
 
 </template>
@@ -21,7 +21,10 @@ import MainLayout from '../../components/layouts/MainLayout'
 import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import Attach from '../../components/elements/UI/Attach'
 export default {
- components: { MainLayout, BreadCrumbs, Attach }   
+  beforeMount () {
+    this.$route.meta.breadcrumbs[2].name = 'Название новости из запроса'
+  },
+  components: { MainLayout, BreadCrumbs, Attach }   
 }
 </script>
 
@@ -44,9 +47,10 @@ export default {
       line-height 35px
       font-size 20px
     img
-      width 420px
-      height 258px
+      width 556px
+      height 338px
       float left
-      padding 0 24px 15px 0
+      padding 0 20px 20px 0
+      object-fit cover
 </style>
 
