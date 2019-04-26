@@ -162,7 +162,7 @@
                       .gallery_card_video_play_content
                         .gallery_card_video_small_play 
                       .gallery_card_video_small_description_date
-                        h3 13 апреля
+                        h3 Мастер-класс от Колесникова Сергея Викторовича
                 a(href="/")
                   .gallery_card_video_small
                     img(src="../../assets/images/events_1.png")
@@ -170,7 +170,7 @@
                       .gallery_card_video_play_content
                         .gallery_card_video_small_play 
                       .gallery_card_video_small_description_date
-                        h3 13 апреля
+                        h3 Первенство Свердловской области 21.02.2019 город Екатеринбург.
                 a(href="/")
                   .gallery_card_video_small
                     img(src="../../assets/images/events_1.png")
@@ -181,7 +181,7 @@
                         h3 13 апреля
             .news_button
               a(href="/") 
-                Button Перейти ко всем альбомам
+                Button Больше видео
 </template>
 
 <script>
@@ -223,6 +223,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.link-header
+  margin 0 0 55px 0 
 .news
   &_events,
   &_video_album,
@@ -353,7 +355,12 @@ h2
     h3
       font-size 18px
       line-height normal
-      word-break break-all
+      word-break break-word
+      font-family 'Noto Sans', sans-serif
+      font-style normal
+      font-weight bold
+      font-size 18px
+      line-height 25px
     &_description
       height 219px
       margin -219px 0 0 0
@@ -370,7 +377,7 @@ h2
         background rgba(0,0,0,0.8)
         background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
         box-sizing border-box
-        padding 65px 20px 15px
+        padding 73px 13px 9px
 
 .gallery_card_video_small
   width 364px
@@ -410,7 +417,12 @@ h2
     align-content stretch
     line-height 25px
     &_date
-      padding 8px
+      padding 8px 13px
+      font-family 'Noto Sans', sans-serif
+      font-style normal
+      font-weight bold
+      font-size 18px
+      line-height 25px
 
 .gallery
   &_card_video
