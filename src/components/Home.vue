@@ -300,8 +300,10 @@ h2
       &_second
         a
           margin 0 0 11px 0
+          &:last-child
+            margin 0
 .article
-  margin 0 0 95px 0
+  margin 95px 0 0 0
   &_content
     p
       line-height 35px
@@ -311,7 +313,10 @@ h2
       height 258px
       float left
       padding 0 24px 15px 0 
-.events,
+      box-sizing border-box
+      object-fit cover
+.events
+  margin 67px 0
 .gallery
   width 100%
   margin 95px 0
