@@ -77,31 +77,32 @@
 
         .coach-staff
           h2 Тренерский состав
-          swiper(:options='swiperOption')
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
-            swiper-slide 
-              .coach-staff_portrait
-                img(src="../assets/images/face_coach.png")
-                .coach-staff_portrait_name О. В. Долганов
+          .swiper-slider
+            swiper(:options='swiperOption')
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide 
+                .coach-staff_portrait
+                  img(src="../assets/images/face_coach.png")
+                  .coach-staff_portrait_name О. В. Долганов
             .swiper-button-prev(slot='button-prev')
             .swiper-button-next(slot='button-next')
 
@@ -172,24 +173,6 @@ h2
     padding 0 0 16px 0
 .coach-staff
   width 100%
-  .swiper-button-next
-    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAxNSAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMC45OTk5OTkgMUwxNCAxMS41TDEgMjIiIHN0cm9rZT0iI0E0QTRBNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=')
-    box-shadow 0px 0px 15px rgba(0, 0, 0, 0.2)
-    border-radius 50px
-    padding 5px
-    height 50px
-    width 50px
-    box-sizing border-box
-    background-size 13px
-  .swiper-button-prev
-    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAxNSAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTQgMjJMMSAxMS41TDE0IDAuOTk5OTk5IiBzdHJva2U9IiNBNEE0QTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+')
-    box-shadow 0px 0px 15px rgba(0, 0, 0, 0.2)
-    border-radius 50px
-    padding 5px
-    height 50px
-    width 50px
-    box-sizing border-box
-    background-size 13px
   &_portrait
     width 172px
     text-align center
@@ -201,8 +184,6 @@ h2
       font-size 18px
       line-height normal
       margin 20px 0 0 0
-  .swiper-container
-    width 100%
 .gallery
   display flex
   flex-direction row
