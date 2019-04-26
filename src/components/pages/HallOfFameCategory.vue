@@ -137,7 +137,7 @@ export default {
     flex-direction row
     justify-content space-between
     align-items flex-end
-    margin 0 0 20px 0
+    margin 0 0 36px 0
   &_portrait
     width 172px
     text-align center
