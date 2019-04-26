@@ -46,6 +46,7 @@ export default {
     width 380px
     height 442px
     margin 0 30px 0 0 
+    flex-shrink 0
     img 
       width 100%
   &_content

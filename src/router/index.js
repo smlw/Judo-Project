@@ -7,7 +7,7 @@ import Home from '../components/Home.vue'
 import Album from '../components/pages/Album.vue'
 import VideoAlbum from '../components/pages/VideoAlbum.vue'
 import OneNew from '../components/pages/OneNew.vue'
-import Trainer from '../components/pages/Trainer.vue'
+import Staff from '../components/pages/Staff.vue'
 import Human from '../components/pages/Human.vue'
 import Article from '../components/pages/Article.vue'
 import Information from '../components/pages/Information.vue'
@@ -44,7 +44,7 @@ const router = new Router({
     },
     {
       path: '/staff/:id',
-      component: Trainer,
+      component: Staff,
       meta: {title: 'Тренер'}
     },
     {
