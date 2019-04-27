@@ -3,9 +3,9 @@
     slot(name="image")
     .video-card_description(:style="`height: ${this.settings.height}; margin-top: -${this.settings.height}`")
       .video-card_play_content
-        .video-card_play
-      .video-card_description_date
-        .video-card_title(:class="this.settings.title")
+        .video-card_play(:class="this.settings.icon")
+      .video-card_description_date(:class="this.settings.titleClass")
+        .video-card_title
           slot(name="title")
 </template>
 
@@ -28,6 +28,7 @@ export default {
   img 
     width 100%
     height 100%
+    object-fit cover
   &_play
     flexbox(row, nowrap, center, center, stretch)
     width 80px
@@ -41,10 +42,15 @@ export default {
       width 100%
       height 100%
       position absolute
+      .small
+        width 69px
+        height 69px
   &_description
     flexbox(row, nowrap, space-between, flex-end, stretch)
     position relative
     background rgba(0, 0, 0, 0.39)
+    .sm-padding
+      padding 8px 13px
     &_date
       padding 19px
 </style>

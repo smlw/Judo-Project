@@ -24,6 +24,8 @@ card-height = 256px
   height card-height
   img 
     height 100%
+    width 100%
+    object-fit cover
   &_description
     &:hover
       .new-card_description_gradient
