@@ -33,30 +33,20 @@
             h2 Фото
             .gallery_photo_content
               .gallery_photo_content_main
-                a(href="/")
-                  .gallery_card()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_description()
-                      .gallery_card_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
-                        .gallery_card_description_text
-                          p Мастер-класс от Колесникова Сергея Викторовича
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSettings")
+                    img(slot="image" src="../assets/images/events_2.png")
+                    h3(slot="date") 13 апреля
+                    p(slot="text") Мастер-класс от Колесникова Сергея Викторовича
               .gallery_photo_content_second
-                a(href="/")
-                  .gallery_card.gallery_card_small()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_small_description()
-                      .gallery_card_small_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
-                a(href="/")
-                  .gallery_card.gallery_card_small()
-                    img(src="../assets/images/events_1.png")
-                    .gallery_card_small_description()
-                      .gallery_card_small_description_gradient
-                        .gallery_card_description_date
-                          h3 13 апреля
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSmallSettings")
+                    img(slot="image" src="../assets/images/events_1.png")
+                    h3(slot="date") 13 апреля
+                router-link(to="/test")
+                  j-photo-preview(:settings="photoCardSmallSettings")
+                    img(slot="image" src="../assets/images/events_3.png")
+                    h3(slot="date") 13 апреля
             .events_button
               a(href="/") 
                 Button Перейти к альбомам
@@ -64,14 +54,10 @@
           .gallery_video
             h2 Видео
             .gallery_video_content
-              a(href="/")
-                .gallery_card_video
-                  img(src="../assets/images/events_1.png")
-                  .gallery_card_video_description
-                    .gallery_card_video_play_content
-                      .gallery_card_video_play
-                    .gallery_card_video_description_date
-                      h3 13 апреля
+              router-link(to="/video-gallery/1")
+                j-video-preview(:settings="videoCardSettings")
+                  img(slot="image" src="../assets/images/slider-1.png")
+                  h3(slot="title") 13 апреля
             .events_button
               a(href="/") 
                 Button Все видео
@@ -121,8 +107,23 @@ export default {
   name: 'Home',
   data () {
     return {
-      h1: 'Шрифт заголовков Behrens AntiqaC',
-      p: 'Шрифт основного текста',
+      videoCardSettings: {
+        width: '364px',
+        height: '269px',
+        titleClass: 'normal'
+      },
+      photoCardSettings: {
+        width: '460px',
+        height: '269px',
+        class: 'photo-card_normal',
+        small: false
+      },
+      photoCardSmallSettings: {
+        width: '181px',
+        height: '129px',
+        class: 'photo-card_small',
+        small: true
+      },
       swiperMain: {
         loop: true,
         pagination: {
@@ -158,6 +159,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../assets/stylus/mixins/flexbox'
 h2
   margin 0 0 25px 0
 .carousel_main
@@ -168,7 +170,7 @@ h2
     font-size 64px
     line-height 76px
     color #FFFFFF
-    margin -165px 0 0 0
+    margin -215px 0 0 0
     text-align center
   img 
     width 100%
@@ -195,123 +197,17 @@ h2
       line-height normal
       margin 20px 0 0 0
 .gallery
-  display flex
-  flex-direction row
-  flex-wrap nowrap
-  justify-content space-between
-  align-items flex-start
-  align-content stretch
-  h3
-    font-size 18px
-    line-height normal
-    font-weight bold
-  p
-    font-size 20px
-  img
-    width 100%
-    height 100%
-    object-fit cover
-  &_card_video
-    width 364px
-    height 269px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    &_play
-      width 80px
-      height 80px
-      display flex
-      justify-content center
-      align-items center
-      background-size contain
-      background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
-      &_content
-        position absolute
-        top 0
-        width 100%
-        height 100%
-        display flex
-        justify-content center
-        align-items center
-    &_description
-      position relative
-      background rgba(0, 0, 0, 0.39)
-      height 269px
-      margin -269px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_date
-        padding 19px
-  &_card
-    width 460px
-    height 269px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    h3
-      font-size 18px
-      line-height normal
-      word-break break-all
-    p
-      font-size 20px
-      line-height normal
-    &_description
-      height 269px
-      margin -269px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.8)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
-        box-sizing border-box
-        padding 65px 20px 15px
-      &_text
-        overflow hidden
-  &_card_small
-    width 181px
-    height 129px
-    &_description
-      height 129px
-      margin -129px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.5)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.5) 76.09%, rgba(0, 0, 0, 0.5) 96.87%)
-        box-sizing border-box
-        padding 45px 9px 5px
-  &_photo
-    &_content
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-start
-      align-content stretch
-      &_main
-        a
-          margin 0 11px 0 0
-      &_second
-        a
-          margin 0 0 11px 0
-          &:last-child
-            margin 0
+  flexbox(row, nowrap, space-between, flex-start, stretch)
+  &_photo_content
+    flexbox(row, nowrap, space-between, flex-start, stretch)
+    &_main
+      a
+        margin 0 11px 0 0
+    &_second
+      a
+        margin 0 0 11px 0
+        &:last-child
+          margin 0
 .article
   margin 95px 0 0 0
   &_content
