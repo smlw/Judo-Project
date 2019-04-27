@@ -1,13 +1,12 @@
 <template lang="pug">
-  a(href="/")
-    .card
-      img(src="../../assets/images/events_1.png")
-      .card_description
-        .card_description_gradient
-          .card_description_date
-            slot(name="date")
-          .card_description_text
-            slot(name="text")
+  .new-card
+    slot(name="image")
+    .new-card_description
+      .new-card_description_gradient
+        .new-card_description_date
+          slot(name="date")
+        .new-card_description_text
+          slot(name="text")
 </template>
 
 <script>
@@ -17,32 +16,30 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.card
-  width 365px
-  height 256px
+@import '../../assets/stylus/mixins/flexbox'
+card-width = 365px
+card-height = 256px
+.new-card
+  width card-width
+  height card-height
   img 
     height 100%
   &_description
     &:hover
-      .card_description_gradient
+      .new-card_description_gradient
         transition all 0.25s ease
         background rgba(0,0,0,0.7)
         height 100%
         padding 11px 18px
-        .card_description_text
+        .new-card_description_text
           transition all 0.25s ease
           height 100%
-    display flex
-    flex-direction column
-    flex-wrap wrap
-    justify-content flex-end
-    align-content flex-start
-    align-items flex-start
+    flexbox(column, wrap, flex-end, flex-start, flex-start)
+    height card-height
+    margin-top -(card-height)
+    color #fff
     line-height normal
     font-family 'Noto Sans', sans-serif
-    color #fff
-    margin -256px 0 0 0
-    height 256px
     &_date
       font-size 24px
       font-weight bold

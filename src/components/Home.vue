@@ -13,9 +13,11 @@
         .events
           h2 События
           .events_cards
-            Card( v-for="(card, index) in eventCard" :key="index" )
-              h3(slot="date") {{ card.date }}
-              p(slot="text") {{ card.text }}
+            router-link(:to="`/test/${index}`" v-for="(card, index) in eventCard" :key="index")
+              j-new-preview
+                img(slot="image" src="../assets/images/events_1.png")
+                h3(slot="date") {{ card.date }}
+                p(slot="text") {{ card.text }}
 
           .events_button
             a(href="/") 
@@ -99,7 +101,6 @@
 
 <script>
 import MainLayout from '../components/layouts/MainLayout'
-import Card from '../components/elements/Card'
 import Button  from '../components/elements/UI/Button'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -154,7 +155,7 @@ export default {
       ],
     }
   },
-  components: { MainLayout, Card, swiper, swiperSlide, Button }
+  components: { MainLayout, swiper, swiperSlide, Button }
 }
 </script>
 
