@@ -81,7 +81,6 @@
 </template>
 
 <script>
-import MainLayout from '../components/layouts/MainLayout'
 import Button  from '../components/elements/UI/Button'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -136,7 +135,7 @@ export default {
       ],
     }
   },
-  components: { MainLayout, swiper, swiperSlide, Button }
+  components: { swiper, swiperSlide, Button }
 }
 </script>
 
