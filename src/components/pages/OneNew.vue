@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           .article
             .article_info
               h2 Дзюдо: турнир памяти Н.С. Мусатова
@@ -17,14 +17,12 @@
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import Attach from '../../components/elements/UI/Attach'
 export default {
   beforeMount () {
     this.$route.meta.breadcrumbs[2].name = 'Название новости из запроса'
   },
-  components: { MainLayout, BreadCrumbs, Attach }   
+  components: { Attach }   
 }
 </script>
 

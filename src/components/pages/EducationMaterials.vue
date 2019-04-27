@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           .education-materials
             h2 Учебные материалы  
             .education-materials_container
@@ -15,11 +15,9 @@
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import Attach from '../../components/elements/UI/Attach'
 export default {
-  components: { MainLayout, BreadCrumbs, Attach } 
+  components: { Attach } 
 }
 </script>
 

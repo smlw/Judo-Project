@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           LinkHeader
           .news
             // Block of news

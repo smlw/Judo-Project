@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           .hall
             .hall-container
               .hall-container_header
@@ -60,8 +60,6 @@
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import LinkHeader from '../../components/elements/UI/LinkHeader'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -81,7 +79,7 @@ export default {
       }
     }
   },
-  components: { MainLayout, BreadCrumbs, swiper, swiperSlide, LinkHeader }   
+  components: { swiper, swiperSlide, LinkHeader }   
 }
 </script>
 

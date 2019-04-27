@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           .video-gallery
             .video-gallery_header
               h2 Дзюдо: турнир памяти Н.С. Мусатова
