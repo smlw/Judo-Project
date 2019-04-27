@@ -4,7 +4,7 @@
       .wrapper-fluid
         .wrapper-fluid_content
           j-breadcrumbs
-          LinkHeader
+          LinkHeader.hall_btn(:links="headerLinks")
           .hall
             .hall-container
               .hall-container_header
@@ -66,6 +66,11 @@ import 'swiper/dist/css/swiper.css'
 export default {
   data () {
     return {
+      headerLinks: [
+        {name: 'Призеры юношеских соревнований', to: '/hall/1'},
+        {name: 'Призеры студенческих соревнований', to: '/hall/2'},
+        {name: 'Галерея мастеров', to: '/hall/3'},
+      ],
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 20,

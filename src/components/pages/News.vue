@@ -4,7 +4,7 @@
       .wrapper-fluid
         .wrapper-fluid_content
           j-breadcrumbs
-          LinkHeader
+          LinkHeader.news_btn(:links="headerLinks")
           .news
             // Block of news
             .news_news
@@ -66,6 +66,12 @@ import Button  from '../../components/elements/UI/Button'
 export default {
   data () {
     return {
+      headerLinks: [
+        {name: 'Новости', to: '/news'},
+        {name: 'Грядущие события', to: '/news'},
+        {name: 'Фотогалерея', to: '/photo-gallery'},
+        {name: 'Видеогалерея', to: '/video-gallery'},
+      ],
       newsCard: [
         { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
         { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
@@ -113,7 +119,7 @@ export default {
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
 .link-header
-  margin 0 0 55px 0 
+  margin 0 0 55px 0
 .news
   &_events,
   &_video_album,
