@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           .human
             .human_photo
               img(src='../../assets/images/face_coach.png')
@@ -30,13 +30,10 @@
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 export default {
   beforeMount () {
     this.$route.meta.breadcrumbs[1].name = 'Имя тренера из запроса'
-  },
-  components: { MainLayout, BreadCrumbs }   
+  }  
 }
 </script>
 

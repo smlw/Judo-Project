@@ -13,9 +13,11 @@
         .events
           h2 События
           .events_cards
-            Card( v-for="(card, index) in eventCard" :key="index" )
-              h3(slot="date") {{ card.date }}
-              p(slot="text") {{ card.text }}
+            router-link(:to="`/test/${index}`" v-for="(card, index) in eventCard" :key="index")
+              j-new-preview
+                img(slot="image" src="../assets/images/events_1.png")
+                h3(slot="date") {{ card.date }}
+                p(slot="text") {{ card.text }}
 
           .events_button
             a(href="/") 
@@ -66,30 +68,11 @@
           h2 Тренерский состав
           .swiper-slider
             swiper(:options='swiperOption')
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
-              swiper-slide 
-                .coach-staff_portrait
-                  img(src="../assets/images/face_coach.png")
-                  .coach-staff_portrait_name О. В. Долганов
+              swiper-slide(v-for="(human, index) in 12" :key="index")
+                router-link(:to='`staff/${index}`')
+                  j-human-card
+                    img(slot="image" src="../assets/images/face_coach.png")
+                    span(slot="humanName") О. В. Долганов
             .swiper-button-prev(slot='button-prev')
             .swiper-button-next(slot='button-next')
 
@@ -98,8 +81,6 @@
 </template>
 
 <script>
-import MainLayout from '../components/layouts/MainLayout'
-import Card from '../components/elements/Card'
 import Button  from '../components/elements/UI/Button'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -154,7 +135,7 @@ export default {
       ],
     }
   },
-  components: { MainLayout, Card, swiper, swiperSlide, Button }
+  components: { swiper, swiperSlide, Button }
 }
 </script>
 
@@ -183,19 +164,6 @@ h2
     flex-direction row
     justify-content center
     padding 0 0 10px 0
-.coach-staff
-  width 100%
-  &_portrait
-    width 172px
-    text-align center
-    img 
-      width 100%
-      height 215px
-    &_name
-      font-family 'Noto Sans', sans-serif
-      font-size 18px
-      line-height normal
-      margin 20px 0 0 0
 .gallery
   flexbox(row, nowrap, space-between, flex-start, stretch)
   &_photo_content

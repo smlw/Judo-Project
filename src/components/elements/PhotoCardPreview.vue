@@ -3,7 +3,7 @@
     slot(name="image")
     .photo-card_description(:style="`height: ${this.settings.height}; margin-top: -${this.settings.height}`")
       .photo-card_description_gradient()
-        .photo-card_description_date
+        .photo-card_description_date(:class="this.settings.titleClass")
           slot(name="date")
         .photo-card_description_text(v-if="!this.settings.small")
           slot(name="text")
@@ -30,6 +30,7 @@ export default {
   img 
     width 100%
     height 100%
+    object-fit cover
   &_description
     flexbox(row, nowrap, space-between, flex-end, stretch)
     &_gradient
@@ -41,6 +42,8 @@ export default {
       box-sizing border-box
     &_text
       overflow hidden
+  .sm-padding
+    padding 8px 13px
   &_normal
     .photo-card_description
       &_gradient

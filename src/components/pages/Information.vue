@@ -3,7 +3,7 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
+          j-breadcrumbs
           LinkHeader
           .information
             .information_container
@@ -22,12 +22,10 @@
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import LinkHeader from '../../components/elements/UI/LinkHeader'
 import Attach from '../../components/elements/UI/Attach'
 export default {
- components: { MainLayout, BreadCrumbs, LinkHeader, Attach }   
+ components: { LinkHeader, Attach }   
 }
 </script>
 

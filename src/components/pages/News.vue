@@ -3,73 +3,20 @@
     template(v-slot:content)
       .wrapper-fluid
         .wrapper-fluid_content
-          BreadCrumbs
-          LinkHeader
+          j-breadcrumbs
+          LinkHeader.news_btn(:links="headerLinks")
           .news
+            // Block of news
             .news_news
               h2 Новости
               .swiper-slider
                 swiper(:options='swiperOption')
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
-                  swiper-slide 
-                    a(href="/")
-                      .card
-                        img(src="../../assets/images/events_1.png")
-                        .card_description
-                          .card_description_gradient
-                            .card_description_date
-                              h3 13 апреля
-                            .card_description_text
-                              p Эко-марафон «Сдай макулатуру – спаси дерево! 
+                  swiper-slide(v-for="(card, index) in newsCard" :key="index")
+                    router-link(:to="`${card.linkTo}`" )
+                      j-new-preview
+                        img(slot="image" src="../../assets/images/events_1.png")
+                        h3(slot="date") {{ card.date }}
+                        p(slot="text") {{ card.text }}
                 .swiper-button-prev(slot='button-prev')
                 .swiper-button-next(slot='button-next')  
               .news_button
@@ -79,75 +26,22 @@
               h2 Грядущие события
               .swiper-slider
                 swiper(:options='swiperEvents')
-                  swiper-slide 
-                    a(href="/")
-                      .card_upcoming
-                        img(src="../../assets/images/events_1.png")
-                        .card_upcoming_description
-                          .card_upcoming_description_gradient
-                            .card_upcoming_description_date
-                              h3 "Зажги синим!" 2 апреля
-                            .card_upcoming_description_text
-                              p Масштабная городская акция «Зажги синим», приуроченная ко Всемирному дню распространения информации о проблеме аутизма.
-                  swiper-slide 
-                    a(href="/")
-                      .card_upcoming
-                        img(src="../../assets/images/events_1.png")
-                        .card_upcoming_description
-                          .card_upcoming_description_gradient
-                            .card_upcoming_description_date
-                              h3 ГОиЧС: безопасность весной
-                            .card_upcoming_description_text
-                              p С наступлением весны лед на реках становится рыхлым, «съедается» сверху солнцем, талой водой, а снизу подтачивается течением
-                  swiper-slide 
-                    a(href="/")
-                      .card_upcoming
-                        img(src="../../assets/images/events_1.png")
-                        .card_upcoming_description
-                          .card_upcoming_description_gradient
-                            .card_upcoming_description_date
-                              h3 Летняя оздоровительная кампания: 22 загородных и 132 городских лагеря
-                            .card_upcoming_description_text
-                              p Летняя оздоровительная кампания начнется 1 апреля...
-                  swiper-slide 
-                    a(href="/")
-                      .card_upcoming
-                        img(src="../../assets/images/events_1.png")
-                        .card_upcoming_description
-                          .card_upcoming_description_gradient
-                            .card_upcoming_description_date
-                              h3 Первенство Свердловской области 21.02.2019 город Екатеринбург.
-                            .card_upcoming_description_text
-                              p Уже сегодня пройдёт Первенство Свердловской области по дзюдо среди юношей и девушек до 13 лет...
+                  swiper-slide(v-for="(event, index) in 5" :key="index")
+                    router-link(to="/")
+                      j-upcoming-card
+                        img(slot="image" src="../../assets/images/events_1.png")
+                        h3(slot="title") {{index}} ГОиЧС: безопасность весной
+                        p(slot="description") С наступлением весны лед на реках становится рыхлым, «съедается» сверху солнцем, талой водой, а снизу подтачивается течением
                 .swiper-button-prev(slot='button-prev')
                 .swiper-button-next(slot='button-next')  
             .news_album
               h2 Фотогалерея
               .album_content
-                .album_content_item
-                  a(href="/")
-                    .gallery_card()
-                      img(src="../../assets/images/events_1.png")
-                      .gallery_card_description()
-                        .gallery_card_description_gradient
-                          .gallery_card_description_date
-                            h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
-                .album_content_item
-                  a(href="/")
-                    .gallery_card()
-                      img(src="../../assets/images/events_1.png")
-                      .gallery_card_description()
-                        .gallery_card_description_gradient
-                          .gallery_card_description_date
-                            h3 Первенство Свердловской области 21.02.2019 город Екатеринбург
-                .album_content_item
-                  a(href="/")
-                    .gallery_card()
-                      img(src="../../assets/images/events_1.png")
-                      .gallery_card_description()
-                        .gallery_card_description_gradient
-                          .gallery_card_description_date
-                            h3 Мастер-класс от Колесникова Сергея Викторовича
+                .album_content_item(v-for="(photoCard, index) in 3" :key="index")
+                  router-link(to="/test")
+                    j-photo-preview(:settings="photoCardSettings")
+                      img(slot="image" src="../../assets/images/events_1.png")
+                      h3(slot="date") Мастер-класс от Колесникова Сергея Викторовича
               .news_button
                 a(href="/") 
                   Button Перейти ко всем альбомам
@@ -155,45 +49,45 @@
             .news_video_album
               h2 Видео
               .news_video_album_content
-                a(href="/")
-                  .gallery_card_video_small
-                    img(src="../../assets/images/events_1.png")
-                    .gallery_card_video_small_description
-                      .gallery_card_video_play_content
-                        .gallery_card_video_small_play 
-                      .gallery_card_video_small_description_date
-                        h3 Мастер-класс от Колесникова Сергея Викторовича
-                a(href="/")
-                  .gallery_card_video_small
-                    img(src="../../assets/images/events_1.png")
-                    .gallery_card_video_small_description
-                      .gallery_card_video_play_content
-                        .gallery_card_video_small_play 
-                      .gallery_card_video_small_description_date
-                        h3 Первенство Свердловской области 21.02.2019 город Екатеринбург.
-                a(href="/")
-                  .gallery_card_video_small
-                    img(src="../../assets/images/events_1.png")
-                    .gallery_card_video_small_description
-                      .gallery_card_video_play_content
-                        .gallery_card_video_small_play 
-                      .gallery_card_video_small_description_date
-                        h3 13 апреля
-            .news_button
-              a(href="/") 
-                Button Больше видео
+                router-link(to="/video-gallery/1" v-for="(videoCard, index) in 3" :key="index")
+                  j-video-preview(:settings="videoCardSettings")
+                    img(slot="image" src="../../assets/images/slider-1.png")
+                    h3(slot="title") Первенство Свердловской области 21.02.2019 город Екатеринбург.
+              .news_button
+                a(href="/") 
+                  Button Больше видео
 </template>
 
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 import LinkHeader from '../../components/elements/UI/LinkHeader'
 import Button  from '../../components/elements/UI/Button'
 export default {
   data () {
     return {
+      headerLinks: [
+        {name: 'Новости', to: '/news'},
+        {name: 'Грядущие события', to: '/news'},
+        {name: 'Фотогалерея', to: '/photo-gallery'},
+        {name: 'Видеогалерея', to: '/video-gallery'},
+      ],
+      newsCard: [
+        { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
+        { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
+        { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
+      ],
+      photoCardSettings: {
+        width: '364px',
+        height: '201px',
+        titleClass: 'sm-padding',
+        small: false
+      },
+      videoCardSettings: {
+        width: '364px',
+        height: '285px',
+        titleClass: 'sm-padding'
+      },
       swiperOption: {
         slidesPerView: 3,
         spaceBetween: 30,
@@ -218,13 +112,14 @@ export default {
       }
     }
   },
-  components: { MainLayout, BreadCrumbs, LinkHeader, swiper, swiperSlide, Button}
+  components: { LinkHeader, swiper, swiperSlide, Button}
 }
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
 .link-header
-  margin 0 0 55px 0 
+  margin 0 0 55px 0
 .news
   &_events,
   &_video_album,
@@ -237,203 +132,19 @@ h2
   flex-direction row
   justify-content center
   margin 25px 0 0 0
-.card_upcoming
-  width 268px
-  height 293px
-  img 
-    height 100%
-    object-fit cover
-  &_description
-    display flex
-    flex-direction column
-    flex-wrap wrap
-    justify-content flex-end
-    align-content flex-start
-    align-items flex-start
-    line-height normal
-    font-family 'Noto Sans', sans-serif
-    color #fff
-    margin -293px 0 0 0
-    height 293px
-    &_date
-      font-family 'Noto Sans', sans-serif
-      font-style normal
-      font-weight bold
-      font-size 20px
-      line-height 27px
-      margin 0 0 9px 0
-    &_text
-      font-family 'Noto Sans', sans-serif
-      font-style italic
-      font-weight normal
-      font-size 18px
-      line-height 29px
-    &_gradient
-      height 100%
-      width 100%
-      overflow hidden
-      background rgba(0, 0, 0, 0.4)
-      backdrop-filter blur(4px)
-      box-sizing border-box
-      padding 10px 14px
-.card
-  width 365px
-  height 256px
-  img 
-    height 100%
-  &_description
-    &:hover
-      .card_description_gradient
-        transition all 0.25s ease
-        background rgba(0,0,0,0.7)
-        height 100%
-        padding 11px 18px
-        .card_description_text
-          transition all 0.25s ease
-          height 100%
-    display flex
-    flex-direction column
-    flex-wrap wrap
-    justify-content flex-end
-    align-content flex-start
-    align-items flex-start
-    line-height normal
-    font-family 'Noto Sans', sans-serif
-    color #fff
-    margin -256px 0 0 0
-    height 256px
-    &_date
-      font-size 24px
-      font-weight bold
-    &_text
-      font-size 18px
-      height 50%
-      overflow hidden
-    &_gradient
-      height 60%
-      width 100%
-      overflow hidden
-      background rgba(0,0,0,0.7)
-      background linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 96.87%)
-      box-sizing border-box
-      padding 50px 18px 12px
+
 .news_video_album
   &_content
-    display flex
-    flex-direction row
-    justify-content space-between
+    flexbox(row, nowrap, space-between, flex-start, stretch)
 
 .album_content
-  display flex
-  flex-wrap wrap
-  flex-direction row
-  justify-content flex-start
-  align-content stretch
+  flexbox(row, wrap, flex-start, flex-start, stretch)
   &_item
     margin 0 24px 25px 0
     &:nth-child(3n)
       margin 0 0 15px 0
+      
 .gallery
-  display flex
-  flex-direction row
-  flex-wrap nowrap
-  justify-content space-between
-  align-items flex-start
-  align-content stretch
-  h3
-    font-size 18px
-    line-height normal
-    font-weight bold
-  &_card
-    width 364px
-    height 219px
-    color #fff
-    font-family 'Noto Sans', sans-serif
-    img 
-      width 100%
-      height 100%
-    h3
-      font-size 18px
-      line-height normal
-      word-break break-word
-      font-family 'Noto Sans', sans-serif
-      font-style normal
-      font-weight bold
-      font-size 18px
-      line-height 25px
-    &_description
-      height 219px
-      margin -219px 0 0 0
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content space-between
-      align-items flex-end
-      align-content stretch
-      &_gradient
-        height 60%
-        width 100%
-        overflow hidden
-        background rgba(0,0,0,0.8)
-        background linear-gradient(180deg, rgba(0, 31, 49, 0) 0%, rgba(0, 23, 36, 0.8) 76.09%, rgba(0, 0, 0, 0.8) 96.87%)
-        box-sizing border-box
-        padding 73px 13px 9px
-
-.gallery_card_video_small
-  width 364px
-  height 285px
-  color #fff
-  font-family 'Noto Sans', sans-serif
-  img
-    width 100%
-    height 100%
-    object-fit cover
-  &_play
-    width 69px
-    height 69px
-    display flex
-    justify-content center
-    align-items center
-    background-size contain
-    background-image url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjEwOSIgdmlld0JveD0iMCAwIDEwOSAxMDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01NC41IDEwOUM4NC41OTk1IDEwOSAxMDkgODQuNTk5NSAxMDkgNTQuNUMxMDkgMjQuNDAwNSA4NC41OTk1IDAgNTQuNSAwQzI0LjQwMDUgMCAwIDI0LjQwMDUgMCA1NC41QzAgODQuNTk5NSAyNC40MDA1IDEwOSA1NC41IDEwOVpNMzkuODc4NCA4MC43MjEzTDgzLjc0NDIgNTQuNDk5OUwzOS44Nzg0IDI4LjI3ODZMMzkuODc4NCA4MC43MjEzWiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC41OCIvPjwvc3ZnPg==')
-    &_content
-      position absolute
-      top 0
-      width 100%
-      height 100%
-      display flex
-      justify-content center
-      align-items center
-  &_description
-    position relative
-    background rgba(0, 0, 0, 0.39)
-    height 285px
-    margin -285px 0 0 0
-    display flex
-    flex-direction row
-    flex-wrap nowrap
-    justify-content space-between
-    align-items flex-end
-    align-content stretch
-    line-height 25px
-    &_date
-      padding 8px 13px
-      font-family 'Noto Sans', sans-serif
-      font-style normal
-      font-weight bold
-      font-size 18px
-      line-height 25px
-
-.gallery
-  &_card_video
-    &_play
-      &_content
-        position absolute
-        top 0
-        width 100%
-        height 100%
-        display flex
-        justify-content center
-        align-items center
+  flexbox(row, nowrap, space-between, flex-start, stretch)
 </style>
 
