@@ -8,40 +8,33 @@
             .photo-gallery_header
               h2 Дзюдо: турнир памяти Н.С. Мусатова
               .photo-gallery_date 21.02.2019
-            .photo-gallery_content
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-              .photo-gallery_content_image
-                img(src="../../assets/images/events_1.png")
-
+            .photo-gallery_content(v-viewer="options")
+              template(v-for='{source, thumbnail} in images')
+                img.photo-gallery_content_image(:src='thumbnail' :data-source="source" :key='source')
 </template>
 
 <script>
-import MainLayout from '../../components/layouts/MainLayout'
-import BreadCrumbs from '../../components/elements/UI/BreadCrumbs'
 export default {
+  data () {
+    return {
+      options: {  "inline": false, "button": true, "navbar": false, "title": true, "toolbar": true, 
+                  "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, 
+                  "scalable": true, "transition": true, 
+                  "fullscreen": false, "keyboard": true, 
+                  "url": "data-source" },
+      images: [
+        {thumbnail: 'https://picsum.photos/200/200?image=100', source: 'https://picsum.photos/1200/1200?image=100'},
+        {thumbnail: 'https://picsum.photos/200/200?image=101', source: 'https://picsum.photos/1200/720?image=101'},
+        {thumbnail: 'https://picsum.photos/200/200?image=102', source: 'https://picsum.photos/1200/720?image=102'},
+        {thumbnail: 'https://picsum.photos/200/200?image=103', source: 'https://picsum.photos/1200/720?image=103'},
+        {thumbnail: 'https://picsum.photos/200/200?image=104', source: 'https://picsum.photos/1200/720?image=104'},
+        {thumbnail: 'https://picsum.photos/200/200?image=200', source: 'https://picsum.photos/1200/720?image=200'}
+      ]
+    }
+  },
   beforeMount () {
     this.$route.meta.breadcrumbs[3].name = 'Название альбома из запроса'
-  },
-  components: { MainLayout, BreadCrumbs }   
+  }   
 }
 </script>
 
@@ -68,6 +61,8 @@ export default {
       width 268px
       height 180px
       margin 0 20px 20px 0
+      &:hover
+        cursor pointer
       &:nth-child(4n)
         margin 0 0 20px 0
       img 
