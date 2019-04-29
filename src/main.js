@@ -9,13 +9,17 @@ import './assets/stylus/main.styl'
 
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
+Vue.use(Viewer)
+
+import VuePlyr from 'vue-plyr';
+import 'vue-plyr/dist/vue-plyr.css';
+Vue.use(VuePlyr)
 
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
 Vue.use(VueAwesomeSwiper)
 Vue.use(PageComponents)
-Vue.use(Viewer)
 
 new Vue({
   render: h => h(App),
