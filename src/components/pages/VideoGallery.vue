@@ -12,8 +12,9 @@
               .video-gallery_content_main
                 .video-gallery_content_main_video
                   .video_content_playvideo
-                    j-video-preview(:settings="mainVideoCardSettings")
-                      img(slot="image" src="../../assets/images/slider-1.png")
+                    j-video-player
+                    //- j-video-preview(:settings="mainVideoCardSettings")
+                    //-   img(slot="image" src="../../assets/images/slider-1.png")
                 .video-gallery_content_main_description
                   h3 Бой Иванова и Петрова
                   p Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание
@@ -69,6 +70,10 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+.video
+  &_content
+    &_playvideo
+      width 669px
 .video-gallery
   h2
     font-size 48px
