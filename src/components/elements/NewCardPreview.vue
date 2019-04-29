@@ -59,9 +59,13 @@ card-height = 256px
     @media screen and (min-width: md)
       height 153px
       margin-top -153px
+      .new-card_description_gradient
+        height 100%
     @media screen and (min-width: lg)
       height 195px
       margin-top -195px
+      .new-card_description_gradient
+        height 60%
     @media screen and (min-width: xl)
       height 256px
       margin-top -256px

@@ -1,34 +1,24 @@
 @import './base/fonts.styl'
 @import './base/reset.styl'
+@import './base/breakpoints.styl'
 
-my-html-object-color = blue
-
-.wrapper
-  display flex
-  min-height 100vh
-  flex-direction column
-.wrapper-fluid
-  width 1440px
-  margin 0 auto
-  padding 0 150px
-  box-sizing border-box
-  display flex
-  flex-direction column
-  flex-wrap: nowrap
-  justify-content space-between
-  align-content stretch
-  &_content
-    margin 50px 0
 .swiper-wrapper
   flex-direction row
 main
   flex 1
 h2
-  font-size: 40px
+  font-size: 30px
   line-height normal
   font-family "Behrens Antiqua", sans-serif
+  @media screen and (min-width: sm)
+    font-size: 40px
 p
   font-family "Noto Sans", sans-serif
+  line-height 27px
+  font-size 16px
+  @media screen and (min-width: sm)
+    line-height 35px
+    font-size 20px
 
 .plyr__control.plyr__control--overlaid svg
   display none
@@ -103,7 +93,7 @@ p
   background rgba(0, 0, 0, 0.3)
   border 1px solid rgba(255, 255, 255, 0.05)
   box-shadow inset 0px 0px 4px rgba(0, 0, 0, 0.2)
-  margin 0 12.5px
+  margin 0 12.5px!important
   &-active
     background rgba(255, 241, 165, 0.79)
     box-shadow 0px 0px 4px rgba(0, 0, 0, 0.2)
@@ -120,7 +110,10 @@ p
     width 50px
     box-sizing border-box
     background-size 13px
-    margin-right -85px
+    @media screen and (min-width: xl) 
+      margin-right -85px
+    // @media screen and (min-width: lg) 
+    //   margin-right -115px
     &:active
       box-shadow 0px 0px 15px rgba(0, 0, 0, 0.24)
     &:focus
@@ -137,7 +130,8 @@ p
     width 50px
     box-sizing border-box
     background-size 13px
-    margin-left -85px
+    @media screen and (min-width: xl) 
+      margin-left -85px
     &:focus
       outline none
     &:active

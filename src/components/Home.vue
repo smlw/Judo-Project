@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      //- .carousel_main
+      .carousel_main
         swiper(:options="swiperMain")
           swiper-slide
             img(src="../assets/images/slider-1.png")
@@ -64,7 +64,7 @@
               a(href="/") 
                 Button Все видео
 
-        //- .coach-staff
+        .coach-staff
           h2 Тренерский состав
           .swiper-slider
             swiper(:options='swiperOption')
@@ -88,11 +88,6 @@ export default {
   name: 'Home',
   data () {
     return {
-      // videoCardSettings: {
-      //   width: '364px',
-      //   height: '269px',
-      //   titleClass: 'normal'
-      // },
       swiperMain: {
         loop: true,
         pagination: {
@@ -103,12 +98,30 @@ export default {
       swiperOption: {
         slidesPerView: 6,
         spaceBetween: 30,
-        slidesPerGroup: 6,
+        slidesPerGroup: 1,
         loop: true,
         loopFillGroupWithBlank: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
+        },
+        breakpoints: {
+          1140: {
+            slidesPerView: 6,
+            spaceBetween: 30
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
         }
       },
       eventCard: [
@@ -133,15 +146,18 @@ export default {
 h2
   margin 0 0 25px 0
 .carousel_main
-  h1
-    font-family 'Behrens Antiqua', sans-serif
-    font-style normal
-    font-weight normal
-    font-size 64px
-    line-height 76px
-    color #FFFFFF
-    margin -215px 0 0 0
-    text-align center
+  display none
+  @media screen and (min-width lg)
+    display flex
+    h1
+      font-family 'Behrens Antiqua', sans-serif
+      font-style normal
+      font-weight normal
+      font-size 64px
+      line-height 76px
+      color #FFFFFF
+      margin -215px 0 0 0
+      text-align center
   img 
     width 100%
   .swiper-container 
@@ -155,8 +171,15 @@ h2
     padding 0 0 10px 0
 .gallery
   flexbox(column, nowrap, space-between, flex-start, stretch)
+  width 100%
+  margin 10px 0
+  &_video
+    margin 30px 0
+    @media screen and (min-width sm)
+      margin 0
   @media screen and (min-width: lg)
     flexbox(row, nowrap, space-between, flex-start, stretch)
+    margin 65px 0 0 0
   &_photo_content
     flexbox(column, nowrap, space-between, flex-start, stretch)
     @media screen and (min-width: md)
@@ -176,7 +199,9 @@ h2
         &:last-child
           margin 0
 .article
-  margin 95px 0 0 0
+  margin 30px 0
+  @media screen and (min-width xl)
+    margin 95px 0 0 0
   &_content
     p
       line-height 35px
@@ -191,12 +216,9 @@ h2
         width 420px
         height 258px
 .events
-  margin 10px
+  margin 30px 0
   @media screen and (min-width: md)
     margin 67px 0 0 0
-.gallery
-  width 100%
-  margin 95px 0
 .events_button
   display flex
   flex-direction row

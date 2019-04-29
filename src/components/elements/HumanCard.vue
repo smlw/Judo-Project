@@ -16,16 +16,21 @@ export default {
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
 .human-card
-  width 172px
-  text-align center
+  width 150px
+  margin 0 auto
+  @media screen and (min-width: md) 
+    margin-left -85px
   img 
     width 100%
-    height 215px
+    height 100%
+    display flex
   &_name
     font-family 'Noto Sans', sans-serif
     font-size 18px
     line-height normal
     margin 20px 0 0 0
+    color #000000
+    text-align center
   &_discharge
     font-family 'Noto Sans', sans-serif
     font-style italic
