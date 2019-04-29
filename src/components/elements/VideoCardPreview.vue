@@ -1,10 +1,10 @@
 <template lang="pug">
-  .video-card(:style="`width: ${this.settings.width}; height: ${this.settings.height}`")
+  .video-card
     slot(name="image")
-    .video-card_description(:style="`height: ${this.settings.height}; margin-top: -${this.settings.height}`")
+    .video-card_description
       .video-card_play_content
-        .video-card_play(:class="this.settings.icon")
-      .video-card_description_date(:class="this.settings.titleClass")
+        .video-card_play
+      .video-card_description_date
         .video-card_title
           slot(name="title")
 </template>
@@ -16,19 +16,40 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .video-card
+
+  &_home
+    width 100%
+    height 200px
+    .video-card_description
+      height 200px
+      margin-top -200px 
+    @media screen and (min-width: lg)
+      width 364px
+      height 269px
+      .video-card_description
+        height 269px
+        margin-top -269px
+    
+
   color #fff
   font-family 'Noto Sans', sans-serif
   h3
     font-size 18px
     line-height normal
     font-weight bold
+    margin 0
+    padding 0
   p
     font-size 20px
+    margin 0
+    padding 0
   img 
     width 100%
     height 100%
     object-fit cover
+    display flex
   &_play
     flexbox(row, nowrap, center, center, stretch)
     width 80px!important
@@ -51,8 +72,6 @@ export default {
     flexbox(row, nowrap, space-between, flex-end, stretch)
     position relative
     background rgba(0, 0, 0, 0.39)
-    .sm-padding
-      padding 8px 13px
     &_date
       padding 19px
 </style>

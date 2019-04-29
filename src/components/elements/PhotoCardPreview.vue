@@ -1,11 +1,11 @@
 <template lang="pug">
-  .photo-card(:style="`width: ${this.settings.width}; height: ${this.settings.height}`" :class="this.settings.class")
+  .photo-card()
     slot(name="image")
-    .photo-card_description(:style="`height: ${this.settings.height}; margin-top: -${this.settings.height}`")
+    .photo-card_description()
       .photo-card_description_gradient()
-        .photo-card_description_date(:class="this.settings.titleClass")
+        .photo-card_description_date()
           slot(name="date")
-        .photo-card_description_text(v-if="!this.settings.small")
+        .photo-card_description_text()
           slot(name="text")
 </template>
 
@@ -16,7 +16,43 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .photo-card
+
+  &_home
+    width 100%
+    height 269px
+    margin 0 0 10px 0
+    .photo-card_description
+      height 269px
+      margin -269px 0 0 0
+      &_gradient
+        padding 0px 20px 15px
+    @media screen and (min-width: md)
+      width 460px
+      height 269px
+      .photo-card_description
+        height 269px
+        margin -269px 0 0 0
+        &_gradient
+          padding 0px 20px 15px
+    @media screen and (min-width: lg)
+      width 310px
+    @media screen and (min-width: xl)
+      width 460px
+  &_home_small
+    margin 0 0 10px 0
+    width 100%
+    height 129px
+    .photo-card_description
+      height 129px
+      margin -129px 0 0 0
+      &_gradient
+        padding 0px 9px 9px
+    @media screen and (min-width: lg)
+      width 181px
+
+    
   color #fff
   font-family 'Noto Sans', sans-serif
   h3
@@ -24,13 +60,18 @@ export default {
     line-height normal
     word-break break-word
     font-weight bold
+    padding 0
+    margin 0
   p
     font-size 20px
     line-height normal
+    margin 0
+    padding 0
   img 
     width 100%
     height 100%
     object-fit cover
+    display flex
   &_description
     flexbox(row, nowrap, space-between, flex-end, stretch)
     &_gradient
@@ -42,15 +83,5 @@ export default {
       box-sizing border-box
     &_text
       overflow hidden
-  .sm-padding
-    padding 8px 13px
-  &_normal
-    .photo-card_description
-      &_gradient
-        padding 0px 20px 15px
-  &_small
-    .photo-card_description
-      &_gradient
-        padding 0px 9px 9px
 </style>
 
