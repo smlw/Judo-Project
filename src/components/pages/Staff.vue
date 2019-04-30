@@ -8,32 +8,49 @@
             .human_photo
               img(src='../../assets/images/face_coach.png')
             .human_content
-              h2 Олег Владиславович Долганов
-              .human_info
+              h2 {{ `${getStaff.name} ${getStaff.patronymic} ${getStaff.family}`}}
+              //- .human_info(v-for="(staff, index) in getStaff")
                 .human_info_title Уровень образования, квалификация
                 .human_info_descr Высшее образование.
-              .human_info
-                .human_info_title Квалификационная категория: 
-                .human_info_descr Высшая квалификационная категория
-              .human_info
-                .human_info_title Курсы повышения квалификации: 
-                .human_info_descr 
-              .human_info
-                .human_info_title Ученая степень: 
-                .human_info_descr Кандидат педагогических наук.
-              .human_info
-                .human_info_title Общий стаж работы:
-                .human_info_descr 
-              .human_info
-                .human_info_title Стаж работы по специальности:
-                .human_info_descr 
+              //- .human_info
+              //-   .human_info_title Квалификационная категория: 
+              //-   .human_info_descr Высшая квалификационная категория
+              //- .human_info
+              //-   .human_info_title Курсы повышения квалификации: 
+              //-   .human_info_descr 
+              //- .human_info
+              //-   .human_info_title Ученая степень: 
+              //-   .human_info_descr Кандидат педагогических наук.
+              //- .human_info
+              //-   .human_info_title Общий стаж работы:
+              //-   .human_info_descr 
+              //- .human_info
+              //-   .human_info_title Стаж работы по специальности:
+              //-   .human_info_descr 
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  beforeMount () {
-    this.$route.meta.breadcrumbs[1].name = 'Имя тренера из запроса'
-  }  
+  data () {
+    return {
+      staffId: this.$route.params.id
+    }
+  },
+  created () {
+    this.$store.dispatch('loadStaff', this.staffId)
+      .then( () => {
+        this.addBread()
+      })
+  },
+  methods: {
+    addBread () {
+      this.$route.meta.breadcrumbs[1].name = `${this.$store.state.staff.staff.name} ${this.$store.state.staff.staff.patronymic} ${this.$store.state.staff.staff.family} `
+    }
+  },
+  computed: {
+    ...mapGetters(['getStaff'])
+  }
 }
 </script>
 

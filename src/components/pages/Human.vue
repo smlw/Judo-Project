@@ -6,7 +6,7 @@
           j-breadcrumbs
           .human
             .human_photo
-              img(:src='`http://192.168.0.100:8000${getHuman.photo}`')
+              img(:src='`http://192.168.0.100:8000/${getHuman.photo}`')
             .human_content
               .human_header
                 h2 {{ `${getHuman.name} ${getHuman.family}` }}
