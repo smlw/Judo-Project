@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .hall
@@ -41,11 +41,23 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .hall-container_content
   flexbox(row, wrap, flex-start, stretch, stretch)
   .human-card
-    margin 0 20px 60px 0
-    &:nth-child(6n)
-      margin 0 0 60px 0
+    width 250px
+    margin 20px auto
+    img
+      height 300px
+    @media screen and (min-width: md)
+      width 164px
+      img
+        width 100%
+        height 190px
+    @media screen and (min-width: xl)
+      width 172px
+      img 
+        height 210px
+
 </style>
 

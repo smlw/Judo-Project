@@ -26,6 +26,10 @@ export default {
     width 100%
     height 100%
     display flex
+    @media screen and (min-width: md) 
+      // margin-left -85px
+      width 172px
+      height 214px
   &_name
     font-family 'Noto Sans', sans-serif
     font-size 18px
