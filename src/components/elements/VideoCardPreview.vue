@@ -19,6 +19,20 @@ export default {
 @import '../../assets/stylus/base/breakpoints'
 .video-card
 
+  &_material
+    width 100%
+    height 200px
+    margin 0 0 20px
+    .video-card_description
+      height 200px
+      margin-top -200px 
+    @media screen and (min-width: lg)
+      width 364px
+      height 269px
+      .video-card_description
+        height 269px
+        margin-top -269px
+
   &_home
     width 100%
     height 200px
