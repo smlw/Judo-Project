@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .human
@@ -38,20 +38,37 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .human
-  display flex
-  flex-direction row
-  justify-content flex-start
+  flexbox(column, nowrap, flex-start, stretch, stretch)
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, flex-start, stretch, stretch)
   &_photo
-    width 380px
-    height 442px
-    margin 0 30px 0 0 
+    width 100%
     flex-shrink 0
+    margin 0
+    @media screen and (min-width: md)
+      width 380px
+      height 442px
+      margin 0 10px 0 0
+    @media screen and (min-width: lg)
+      width 380px
+      height 442px
+      margin 0 55px 0 0
     img 
       width 100%
+      height 100%
   &_content
     h2
-      margin 0 0 20px 0
+      font-size 28px
+      line-height 37px
+      margin 0 0 8px 0
+      text-align center
+      @media screen and (min-width: md)
+        font-size 48px
+        line-height 57px
+        text-align left
   &_info
     font-family 'Noto Sans', sans-serif
     font-style normal

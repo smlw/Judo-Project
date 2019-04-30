@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .human
@@ -37,14 +37,21 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .human
-  display flex
-  flex-direction row
-  justify-content flex-start
+  flexbox(column, nowrap, flex-start, stretch, stretch)
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, flex-start, stretch, stretch)
   h2
-    font-size 48px
-    line-height 57px
+    font-size 28px
+    line-height 37px
     margin 0 0 8px 0
+    text-align center
+    @media screen and (min-width: md)
+      font-size 48px
+      line-height 57px
+      text-align left
   &_old
     font-family 'Noto Sans', sans-serif
     font-style italic
@@ -53,10 +60,12 @@ export default {
     line-height normal
     color #868686
   &_photo
-    width 380px
-    height 442px
+    width 100%
     margin 0 55px 0 0
     flex-shrink 0
+    @media screen and (min-width: md)
+      width 380px
+      height 442px
     img 
       width 100%
       height 100%
@@ -83,18 +92,22 @@ export default {
   h2
     margin 0 0 45px 0
   &_item
-    display flex
-    flex-direction row
-    justify-content flex-start
+    flexbox(row, nowrap, flex-start, stretch, stretch)
     margin 0 0 30px 0
     &_icon
-      margin  0 7px 0 0
+      margin 0 14px 0 0 
+      flex-shrink 0
+      @media screen and (min-width md)
+        margin  0 7px 0 0
     &_text
+      font-size 19px
+      line-height 26px
       font-family 'Noto Sans', sans-serif
       font-style normal
       font-weight normal
-      font-size 22px
-      line-height 39px
+      @media screen and (min-width md)
+        font-size 22px
+        line-height 39px
 .gold
   width 32px
   height 43px
