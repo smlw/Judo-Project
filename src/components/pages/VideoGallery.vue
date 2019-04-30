@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .video-gallery
@@ -23,7 +23,7 @@
                   swiper(:options='swiperOption')
                     swiper-slide(v-for="(item, index) in 8" :key="index")
                       router-link(:to="`/video-gallery/${index}`")
-                        j-video-preview(:settings="secondVideoCardSettings")
+                        j-video-preview.video-card_video()
                           img(slot="image" src="../../assets/images/slider-1.png")
                           h3(slot="title") Мастер-класс от Колесникова Сергея Викторовича
 
@@ -57,19 +57,22 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
+        },
+        breakpoints: {
+          1140: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 40
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
         }
-      },
-      mainVideoCardSettings: {
-        width: '669px',
-        height: '357px',
-        titleClass: 'normal'
-      },
-      secondVideoCardSettings: {
-        width: '364px',
-        height: '203px',
-        titleClass: 'sm-padding',
-        icon: 'small'
-      },
+      }
     }
   },
   beforeMount () {
@@ -81,14 +84,18 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .video
   &_content
     &_playvideo
-      width 669px
+      width 100%
+      @media screen and (min-width: lg)
+        width 669px
 .video-gallery
   h2
     font-size 48px
     line-height 57px
+    margin 0
   &_header
     margin 0 0 30px 0
   &_date
@@ -102,9 +109,11 @@ export default {
     &_second
       margin 50px 0 0 0
     &_main
-      flexbox(row, nowrap, flex-start, stretch, stretch)
-      &_video
-        margin 0 40px 0 0
+      flexbox(column, nowrap, flex-start, stretch, stretch)
+      @media screen and (min-width: sm)
+        flexbox(row, nowrap, flex-start, stretch, stretch)
+        &_video
+          margin 0 40px 0 0
       &_description
         h3 
           font-family 'Noto Sans', sans-serif
@@ -112,7 +121,8 @@ export default {
           font-weight bold
           font-size 28px
           line-height 38px
-          margin 0 0 28px 0
+          @media screen and (min-width md)
+            margin 0 0 28px 0
         p 
           font-family 'Noto Sans', sans-serif
           font-style normal

@@ -73,6 +73,30 @@ export default {
         &_date
           padding 10px 14px
     
+  // Video gallery page styles
+  &_video
+    width 100%
+    height 200px
+    margin 0 0 20px 0
+    .video-card_description
+      height 200px
+      margin-top -200px 
+    // @media screen and (min-width: lg)
+    //   width 364px
+    //   height 203px
+    //   .video-card_description
+    //     height 203px
+    //     margin-top -203px
+    //     &_date
+    //       padding 10px 14px
+    @media screen and (min-width: xl)
+      width 364px
+      height 203px
+      .video-card_description
+        height 203px
+        margin-top -203px
+        &_date
+          padding 10px 14px
 
   color #fff
   font-family 'Noto Sans', sans-serif
