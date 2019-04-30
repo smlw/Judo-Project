@@ -1,38 +1,58 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="getHuman")
         .wrapper-fluid_content
           j-breadcrumbs
           .human
             .human_photo
-              img(src='../../assets/images/face_coach.png')
+              img(:src='`http://192.168.0.100:8000${getHuman.photo}`')
             .human_content
               .human_header
-                h2 Олег Владиславович Долганов
-                .human_old 20 лет
+                h2 {{ `${getHuman.name} ${getHuman.family}` }}
+                .human_old {{ currentAge() }}
               .human_info
                 .human_info_text
-                  p Немного информации о спротсмене, чтобы ему и его мае было приятно, а так же все вокруг знали какой он классный! Немного информации о спротсмене, чтобывсе вокруг знали какой он классный! Немного информации о спротсмене, чтобывсе вокруг знали какой он классный!
+                  p {{ getHuman.description }}
           .human-progress
             h2 Достижения
-            .human-progress_content
-              .human-progress_item
-                .human-progress_item_icon.gold
-                .human-progress_item_text Золото в Первенстве Свердловской области 21.02.2019 город Екатеринбург.
-              .human-progress_item
-                .human-progress_item_icon.silver
-                .human-progress_item_text Серебро в Традиционном турнире дзюдо
-              .human-progress_item
-                .human-progress_item_icon.bronze
-                .human-progress_item_text Серебро в турнире памяти Н.С. Мусатова
+            .human-progress_content(v-if="getHuman.medals")
+              .human-progress_item(v-for="(progress, index) in getHuman.medals" :key="index")
+                .human-progress_item_icon(:class="progress.medal")
+                .human-progress_item_text {{ progress.title }}
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  beforeMount () {
-    this.$route.meta.breadcrumbs[2].name = 'Имя из запроса'
-  }  
+  data () {
+    return {
+      humanId: this.$route.params.id
+    }
+  },
+  created () {
+    this.$store.dispatch('loadHuman', this.humanId)
+      .then( () => {
+        this.addBread()
+      })
+  },
+  methods: {
+    currentAge () { 
+      const date = this.$store.state.human.human.birthday;
+      const years = (new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000) | 0
+      const titles = ['год', 'года', 'лет']
+      const cases = [2, 0, 1, 1, 1, 2];  
+      const title = titles[ (years%100>4 && years%100<20)? 2 : cases[(years%10<5)?years%10:5] ]; 
+
+      return `${years} ${title}`
+    },
+    addBread () {
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.human.human.name} ${this.$store.state.human.human.family}`
+    }
+  },
+  computed: {
+    ...mapGetters(['getHuman'])
+  }
 }
 </script>
 

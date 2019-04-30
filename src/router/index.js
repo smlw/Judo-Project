@@ -75,15 +75,16 @@ const router = new Router({
       }
     },
     {
+      name: 'human profile',
       path: '/human/:id',
       component: Human,
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Доска почета', link: '/information'},
+          { name: 'Доска почета', link: '/hall'},
           { name: '', link: '/'}
         ],
-        title: 'Статья'
+        title: 'Профиль'
       }
     },
     {
@@ -194,5 +195,9 @@ const router = new Router({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
 
 export default router
