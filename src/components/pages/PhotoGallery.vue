@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .photo-gallery
@@ -39,10 +39,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .photo-gallery
   h2
     font-size 48px
     line-height 57px
+    margin 0
   &_header
     margin 0 0 30px 0
   &_date
@@ -53,20 +56,28 @@ export default {
     line-height 42px
     color #868686
   &_content
-    display flex
-    flex-direction row
-    justify-content flex-start
-    flex-wrap wrap
+    flexbox(column, nowrap, flex-start, stretch, stretch)
+    @media screen and (min-width: sm)
+      flexbox(row, wrap, flex-start, stretch, stretch)
     &_image
-      width 268px
+      width 100%
       height 180px
-      margin 0 20px 20px 0
+      margin 0 0 20px 0
+      object-fit cover
+      display flex
+      @media screen and (min-width: sm)
+        width 157px
+        height 150px
+        margin 0 20px 20px 0
+      @media screen and (min-width: lg)
+        width 217px
+        height 180px
+        margin 0 20px 20px 0
       &:hover
         cursor pointer
       &:nth-child(4n)
         margin 0 0 20px 0
-      img 
-        width 100%
-        height 100%
+      @media screen and (min-width: xl)
+        width 262px
 </style>
 
