@@ -61,6 +61,20 @@ export default {
       &_gradient
         padding 0px 20px 15px
 
+  // News page styles
+  &_news
+    width 100%
+    height 269px
+    margin 0 0 10px 0
+    .photo-card_description
+      height 219px
+      margin -219px 0 0 0
+      &_gradient
+        padding 0px 20px 15px
+    @media screen and (min-width: lg)
+      width 354px
+      height 201px
+
     
   color #fff
   font-family 'Noto Sans', sans-serif

@@ -36,6 +36,8 @@ card-height = 256px
   p
     margin 0
     padding 0
+    line-height 25px
+    font-size 18px
   h3
     padding 0
     margin 0
@@ -92,6 +94,6 @@ card-height = 256px
         padding 11px 18px
         .new-card_description_text
           transition all 0.25s ease
-          height 100%
+          height auto
 </style>
 

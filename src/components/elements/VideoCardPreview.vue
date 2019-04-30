@@ -19,6 +19,7 @@ export default {
 @import '../../assets/stylus/base/breakpoints'
 .video-card
 
+  // Education material page styles
   &_material
     width 100%
     height 200px
@@ -33,6 +34,7 @@ export default {
         height 269px
         margin-top -269px
 
+  // Home page styles
   &_home
     width 100%
     height 200px
@@ -45,6 +47,31 @@ export default {
       .video-card_description
         height 269px
         margin-top -269px
+
+  // Video page styles
+  &_news
+    width 100%
+    height 200px
+    margin 0 0 20px 0
+    .video-card_description
+      height 200px
+      margin-top -200px 
+    @media screen and (min-width: lg)
+      width 297px
+      height 250px
+      .video-card_description
+        height 250px
+        margin-top -250px
+        &_date
+          padding 10px 14px
+    @media screen and (min-width: xl)
+      width 354px
+      height 285px
+      .video-card_description
+        height 285px
+        margin-top -285px
+        &_date
+          padding 10px 14px
     
 
   color #fff
