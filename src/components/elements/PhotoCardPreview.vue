@@ -19,6 +19,7 @@ export default {
 @import '../../assets/stylus/base/breakpoints'
 .photo-card
 
+  // Home page styles
   &_home
     width 100%
     height 269px
@@ -51,6 +52,14 @@ export default {
         padding 0px 9px 9px
     @media screen and (min-width: lg)
       width 181px
+
+  // Albums page styles
+  &_album
+    .photo-card_description
+      height 219px
+      margin -219px 0 0 0
+      &_gradient
+        padding 0px 20px 15px
 
     
   color #fff
