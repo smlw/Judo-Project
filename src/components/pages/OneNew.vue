@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .article
@@ -27,6 +27,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
+h2
+  margin 0
 .attach
   margin 70px 0 0 0
 .article
@@ -45,10 +49,14 @@ export default {
       line-height 35px
       font-size 20px
     img
-      width 556px
-      height 338px
+      width 100%
       float left
-      padding 0 20px 20px 0
       object-fit cover
+      @media screen and (min-width md)
+        width 456px
+        height 338px
+        padding 0 20px 20px 0
+      @media screen and (min-width lg)
+        width 556px
 </style>
 
