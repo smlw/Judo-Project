@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           article.article
@@ -21,17 +21,23 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .attach
   margin 30px 0 0 0
 h2
-  font-size 48px
+  font-size 24px
   line-height normal
   margin 0 0 32px 0
+  @media screen and (min-width md)
+    font-size 48px
 p
   font-family 'Noto Sans', sans-serif
   font-style normal
   font-weight normal
-  font-size 20px
-  line-height 35px
+  font-size 16px
+  line-height 20px
+  @media screen and (min-width md)
+    font-size 20px
 </style>
 
