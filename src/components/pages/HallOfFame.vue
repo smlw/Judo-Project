@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           LinkHeader.hall_btn(:links="headerLinks")
@@ -73,15 +73,33 @@ export default {
       ],
       swiperOption: {
         slidesPerView: 6,
-        spaceBetween: 20,
+        spaceBetween: 30,
         slidesPerGroup: 1,
         loop: true,
         loopFillGroupWithBlank: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
+        },
+        breakpoints: {
+          1140: {
+            slidesPerView: 6,
+            spaceBetween: 30
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
         }
-      }
+      },
     }
   },
   components: { swiper, swiperSlide, LinkHeader }   
@@ -90,7 +108,9 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .link-header
   margin 0 0 86px 0
+
 </style>
 

@@ -15,11 +15,13 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .human-card
   width 150px
   margin 0 auto
   @media screen and (min-width: md) 
-    margin-left -85px
+    // margin-left -85px
+    width 172px
   img 
     width 100%
     height 100%
@@ -37,6 +39,7 @@ export default {
     font-weight normal
     font-size 16px
     line-height 22px
+    text-align center
     color #868686
 </style>
 
