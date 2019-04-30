@@ -13,10 +13,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../../assets/stylus/mixins/flexbox'
+@import '../../../assets/stylus/base/breakpoints'
 .link-header
-  display flex
-  flex-direction row
-  justify-content space-between
   margin 0 0 45px 0
+  flexbox(column, nowrap, space-between, stretch, stretch)
+  .btn
+    margin 0 0 10px 0
+  @media screen and (min-width: lg)
+    flexbox(row, nowrap, space-between, stretch, stretch)
 </style>
 

@@ -17,12 +17,21 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .card_upcoming
-  width 268px
+  width 100%
   height 293px
+  margin 0 auto
+  @media screen and (min-width md)
+    width 268px
+    height 293px
+  h3
+    margin 0
   img 
     height 100%
+    width 100%
     object-fit cover
+    display flex
   &_description
     flexbox(column, wrap, flex-end, flex-start, flex-start)
     line-height normal
@@ -36,7 +45,7 @@ export default {
       font-weight bold
       font-size 20px
       line-height 27px
-      margin 0 0 9px 0
+      // margin 0 0 9px 0
     &_text
       font-family 'Noto Sans', sans-serif
       font-style italic
@@ -46,6 +55,9 @@ export default {
       display flex
       height 100%
       overflow hidden
+      p
+        line-height 29px
+        font-size 18px
     &_gradient
       height 100%
       width 100%

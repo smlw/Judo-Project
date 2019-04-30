@@ -1,25 +1,28 @@
 <template lang="pug">
   .wrapper
     header
-      .wrapper-fluid
-        .header
-          .logotypes
-            // Поменяю на svg позже.
-            img(src="../../assets/images/urfuLogo.png")
-            img(src="../../assets/images/adminLogo.png")
-          nav.header-navigation
-            ul
-              router-link(
-                v-for="(item, index) in menuItems" :key="index"
-                :to="item.to"
-                tag="li"
-              )
-                a {{ item.name }}
+      .container
+        .row
+          .col-12.col-md-3.header
+            .logotypes
+              // Поменяю на svg позже.
+              img(src="../../assets/images/urfuLogo.png")
+              img(src="../../assets/images/adminLogo.png")
+            //- button.menu-show(@click="isMenuShow = !isMenuShow") Меню
+          .col-12.col-md-9(v-if="isMenuShow")
+            nav.header-navigation
+              ul
+                router-link(
+                  v-for="(item, index) in menuItems" :key="index"
+                  :to="item.to"
+                  tag="a"
+                )
+                  span {{ item.name }}
     // Content wrapper
     main
       slot(name='content')
     footer.footer
-      .wrapper-fluid
+      .container
         .footer-content
           .footer-menu
             .footer-menu_column(v-for="(item, index) in menuItems" :key="index")
@@ -34,17 +37,16 @@
               img(src="../../assets/images/adminLogo.png")
               img(src="../../assets/images/bfr.png")
             .footer-bottom_contacts
-              .footer-bottom_contacts
-                address
-                  span +01234567891
-                  span Июлская 22, г. Екатеринбург
-                .footer-bottom_contacts_soc-links
-                  a
-                    img(src="../../assets/images/vk.png")
-                  a
-                    img(src="../../assets/images/insta.png")
-                  a
-                    img(src="../../assets/images/youtube.png")
+              address
+                div +01234567891
+                div Июлская 22, г. Екатеринбург
+              .footer-bottom_contacts_soc-links
+                a
+                  img(src="../../assets/images/vk.png")
+                a
+                  img(src="../../assets/images/insta.png")
+                a
+                  img(src="../../assets/images/youtube.png")
               
 
 </template>
@@ -53,6 +55,7 @@
 export default {
   data () {
     return {
+      isMenuShow: true,
       menuItems: [
         { 
           to: '/news', 
@@ -83,107 +86,112 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .header
   width 100%
   box-sizing border-box
-  display flex
-  flex-direction row
-  flex-wrap: nowrap
-  justify-content space-between
-  align-content flex-start
-  align-items center
+  padding 10px 0
+  flexbox(row, nowrap, center, stretch, stretch)
+  @media screen and (min-width: md)
+    padding 0
+    flexbox(row, nowrap, space-between, center, center)
 header
   background #2B6CA8
 .header-navigation
+  @media screen and (min-width md)
+    padding 0 0 0 20px
   ul
-    display flex
-    flex-direction row
-    flex-wrap: nowrap
-    justify-content space-between
-    align-content stretch
-    align-items flex-start
-  a
-    padding 30px 20px 37px
-    font-size 22px
-  li
-    color: #fff
-    margin 0 47px 0 0
-    &:last-child
-      margin 0
-    &:hover
-      background #24649E
-      cursor pointer
-    &:active
-      background: rgb(36,100,158);
-      background: linear-gradient(180deg, rgba(36,100,158,1) 0%, rgba(255,255,255,1) 100%);
+    flexbox(column, nowrap, space-between, stretch, flex-start)
+    a
+      font-family 'Noto Sans', sans-serif
+      line-height 27px
+      font-size 20px
+      padding 10px
+      color #fff
+    @media screen and (min-width: md)
+      flexbox(row, nowrap, flex-end, stretch, flex-start)
+      a
+        padding 30px 7px 30px
+        font-size 15px
+        &:last-child
+          margin 0
+        &:hover
+          background #24649E
+          cursor pointer
+        &:active
+          background rgb(36,100,158);
+          background linear-gradient(180deg, rgba(36,100,158,1) 0%, rgba(255,255,255,1) 100%)
+    @media screen and (min-width: lg)
+      flexbox(row, nowrap, space-between, stretch, flex-start)
+      a
+        padding 30px 10px 30px
+        font-size 20px
+
 .logotypes
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
+  flexbox(row, nowrap, flex-start, stretch, flex-start)
   img
     margin 0 23px 0 0
+
 .footer
   padding 29px 0 37px
   margin 150px 0 0 0
   &-menu
-    display flex
-    flex-direction row
-    flex-wrap nowrap
-    justify-content flex-start
-    align-content stretch
-    align-items flex-start
+    flexbox(column, nowrap, flex-end, stretch, flex-start)
+    @media screen and (min-width: md)
+      flexbox(row, nowrap, flex-start, stretch, flex-start)
+
     &_column
-      margin 0 100px 0 0
+      margin 0 0 10px 0
+      @media screen and (min-width: md)
+        margin 0 100px 0 0
+
       &_sublink
         font-size 14px
         line-height 23px
+      a 
+        color #fff
+        font-family 'Noto sans', sans-serif
+        display flex
+        &:hover
+          text-decoration underline 
+
       &_title
         font-size 20px
-        margin 0 0 14px 0
+        @media screen and (min-width: md)
+          margin 0 0 14px 0
   &-content
     width 100%
+    flexbox(column, nowrap, flex-end, stretch, flex-start)
+
   &-bottom
-    display flex
-    flex-direction row
-    flex-wrap nowrap
-    justify-content space-between
-    align-content space-between
-    align-items flex-end
+    flexbox(column-reverse, nowrap, flex-end, stretch, flex-start)
+    @media screen and (min-width: md)
+      flexbox(row, nowrap, space-between, space-between, flex-end)
     &_contacts
-      // text-align right
-      display flex
-      flex-direction column
-      flex-wrap nowrap
-      justify-content flex-start
-      align-content stretch
-      align-items flex-end
       text-align right
+      flexbox(column, nowrap, flex-start, stretch, flex-end)
       address
-        margin 0 0 47px 0 
-        line-height normal
+        font-style normal
+        font-size 18px
+        line-height 25px
+        @media screen and (min-width: md)
+          margin 0 0 20px 0
       &_soc-links
-        display flex
-        flex-direction row
-        flex-wrap nowrap
-        justify-content flex-start
-        align-content stretch
-        align-items center
+        flexbox(row, nowrap, center, center, stretch)
+        margin 15px 0
+        @media screen and (min-width: md)
+          flexbox(row, nowrap, flex-end, center, stretch)
         a
           margin 0 16px 0 0
           &:last-child
             margin 0
     &_partners
-      display flex
-      flex-direction row
-      flex-wrap nowrap
-      justify-content flex-start
-      align-content stretch
-      align-items center
-      img 
-        margin 0 35px 0 0
+      flexbox(row, nowrap, space-between, center, center)
+      @media screen and (min-width: md)
+        flexbox(row, nowrap, flex-start, flex-end,center)
+        img 
+          margin 0 35px 0 0
 footer
   font-family 'Noto Sans', sans-serif
   background #2B6CA8

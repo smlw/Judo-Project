@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped> 
+@import '../../../assets/stylus/mixins/flexbox'
+@import '../../../assets/stylus/base/breakpoints'
 .bread-crumbs
   font-family 'Noto Sans', sans-serif
   font-style normal
@@ -43,20 +45,23 @@ export default {
   font-size 22px
   line-height normal
   color #868686
-  display flex
-  align-items flex-start
-  flex-direction row
-  margin 0 0 37px 0
+  flexbox(column, nowrap, stretch, flex-start, stretch)
+  margin 20px 0
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, flex-start, stretch, stretch)
+    margin 50px 0 37px 0
+
   &_item
     display flex
     flex-direction row
     a
       text-decoration-line underline
+      color #868686
       &:hover
         text-decoration-line none
     &:before
       content '>'
-      margin 0 15px
+      margin 0 15px 0 0
     &:first-child
       &:before
         content ''
@@ -64,5 +69,9 @@ export default {
     &:last-child
       color #000
       a
+        color #000
         text-decoration-line none
+    @media screen and (min-width: md)
+      &:before
+        margin 0 15px
 </style>

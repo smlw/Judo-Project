@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .wrapper-fluid
+      .container
         .wrapper-fluid_content
           j-breadcrumbs
           .one-education-material
@@ -13,7 +13,7 @@
               h2 Видеоматериал
               .video_content
                 .video_content_playvideo
-                  j-video-preview(:settings="videoCardSettings")
+                  j-video-preview.video-card_material()
                     img(slot="image" src="../../assets/images/slider-1.png")
                 .video_content_info
                   .video_content_info_header
@@ -29,15 +29,6 @@
 <script>
 import Attach from '../../components/elements/UI/Attach'
 export default {
-  data () {
-    return {
-      videoCardSettings: {
-        width: '475px',
-        height: '254px',
-        titleClass: 'normal'
-      },
-    }
-  },
   beforeMount () {
     this.$route.meta.breadcrumbs[2].name = 'Название учебного материала из запроса'
   },
@@ -47,12 +38,15 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
 .video
   margin 80px 0 0 0
 .video_content
-  flexbox(row, nowrap, space-between, stretch, stretch)
-  &_playvideo
-    margin 0 60px 0 0
+  flexbox(column, nowrap, space-between, stretch, stretch)
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, space-between, stretch, stretch)
+    &_playvideo
+      margin 0 60px 0 0
   &_info
     &_text
       font-family Noto Sans
