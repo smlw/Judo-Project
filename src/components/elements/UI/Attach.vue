@@ -23,6 +23,8 @@ export default {
     text-decoration-line underline
   &_content
     flexbox(row, nowrap, flex-start, center, stretch)
+    @media screen and (min-width: xl)
+      flexbox(row, nowrap, stretch, stretch, stretch)
     &_text 
       font-style normal
       font-weight normal
@@ -30,7 +32,8 @@ export default {
       line-height normal
       font-family 'Noto Sans', sans-serif
       color #000
-      line-height 0
+      line-height 20px
+      margin 0
       @media screen and (min-width: xl)
         font-size 24px
         line-height 33px

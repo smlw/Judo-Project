@@ -39,5 +39,6 @@ p
   line-height 20px
   @media screen and (min-width md)
     font-size 20px
+    line-height 35px
 </style>
 
