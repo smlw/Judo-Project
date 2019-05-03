@@ -2,22 +2,20 @@
   .wrapper
     header
       .container
-        .row
-          .col-12.col-md-3.header
-            .logotypes
-              // Поменяю на svg позже.
-              img(src="../../assets/images/urfuLogo.png")
-              img(src="../../assets/images/adminLogo.png")
-            //- button.menu-show(@click="isMenuShow = !isMenuShow") Меню
-          .col-12.col-md-9(v-if="isMenuShow")
-            nav.header-navigation
-              ul
-                router-link(
-                  v-for="(item, index) in menuItems" :key="index"
-                  :to="item.to"
-                  tag="a"
-                )
-                  span {{ item.name }}
+        .header
+          .logotypes
+            // Поменяю на svg позже.
+            img(src="../../assets/images/urfuLogo.png")
+            img(src="../../assets/images/adminLogo.png")
+          //- button.menu-show(@click="isMenuShow = !isMenuShow") Меню
+          nav.header-navigation(v-if="isMenuShow")
+            ul
+              router-link(
+                v-for="(item, index) in menuItems" :key="index"
+                :to="item.to"
+                tag="a"
+              )
+                span {{ item.name }}
     // Content wrapper
     main
       slot(name='content')
@@ -88,48 +86,55 @@ export default {
 <style lang="stylus" scoped>
 @import '../../assets/stylus/mixins/flexbox'
 @import '../../assets/stylus/base/breakpoints'
+header
+  background #2B6CA8
 .header
   width 100%
   box-sizing border-box
   padding 10px 0
-  flexbox(row, nowrap, center, stretch, stretch)
+  flexbox(column, nowrap, center, stretch, stretch)
   @media screen and (min-width: md)
-    padding 0
     flexbox(row, nowrap, space-between, center, center)
-header
-  background #2B6CA8
-.header-navigation
-  @media screen and (min-width md)
-    padding 0 0 0 20px
-  ul
-    flexbox(column, nowrap, space-between, stretch, flex-start)
-    a
-      font-family 'Noto Sans', sans-serif
-      line-height 27px
-      font-size 20px
-      padding 10px
-      color #fff
-    @media screen and (min-width: md)
-      flexbox(row, nowrap, flex-end, stretch, flex-start)
-      a
-        padding 30px 7px 30px
-        font-size 15px
-        &:last-child
-          margin 0
-        &:hover
-          background #24649E
-          cursor pointer
-        &:active
-          background rgb(36,100,158);
-          background linear-gradient(180deg, rgba(36,100,158,1) 0%, rgba(255,255,255,1) 100%)
-    @media screen and (min-width: lg)
-      flexbox(row, nowrap, space-between, stretch, flex-start)
-      a
-        padding 30px 10px 30px
-        font-size 20px
+  @media screen and (min-width: lg)
+    padding 0
 
+.header-navigation ul
+  flexbox(column, nowrap, space-between, stretch, flex-start)
+  a
+    font-family 'Noto Sans', sans-serif
+    line-height 27px
+    font-size 20px
+    padding 10px
+    color #fff
+    &:last-child
+      margin 0
+    &:hover
+      background #24649E
+      cursor pointer
+    &:active
+      background rgb(36,100,158);
+      background linear-gradient(180deg, rgba(36,100,158,1) 0%, rgba(255,255,255,1) 100%)
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, flex-end, stretch, flex-start)
+    a
+      padding 7px 3px
+      margin 0 5px 0 0
+      font-size 15px
+  @media screen and (min-width: lg)
+    flexbox(row, nowrap, space-between, stretch, flex-start)
+    a
+      padding 30px 10px 30px
+      font-size 20px
+  @media screen and (min-width: xl)
+    a
+      margin 0 50px 0 0
+
+.header-navigation
+  flexbox(row, nowrap, flex-start, stretch, flex-start)
 .logotypes
   flexbox(row, nowrap, flex-start, stretch, flex-start)
+  @media screen and (min-width: md)
+    flexbox(row, nowrap, center, stretch, flex-start)
   img
     margin 0 23px 0 0
 

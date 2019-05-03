@@ -1,6 +1,9 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
+      //
+      // Slider block
+      //
       .carousel_main
         swiper(:options="swiperMain")
           swiper-slide
@@ -10,6 +13,9 @@
             img(src="../assets/images/slider-1.png")
           .swiper-pagination(slot="pagination")
       .container
+        //
+        // Events block
+        //
         .events
           h2 События
           .events_cards
@@ -18,18 +24,21 @@
                 img(slot="image" src="../assets/images/events_1.png")
                 h3(slot="date") {{ card.date }}
                 p(slot="text") {{ card.text }}
-
-          .events_button
-            a(href="/") 
-              Button Больше событий
-
+            .show_more_button
+              a(href="/") 
+                j-button Больше событий
+        //
+        // About block
+        //
         .article
           h2 Об отделении дзюдо в ДЮСШ "Буревестник"
           .article_content
             p 
               img(src="../assets/images/events_1.png")
               span Основной целью деятельности школы является образовательная деятельность по дополнительным общеобразовательным программам в сфере физической культуры и спорта для детей до 18 лет: бокс, гандбол, дзюдо, карате, плавание, футбол. Основным видом деятельности Учреждения является дополнительное образование детей и взрослых: 1) реализация дополнительных предпрофессиональных программ 1) реализация дополнительных предпрофессиональных программ в области физической культуры и спорта; 2) реализация дополнительных общеразвивающих программ. Обучение в спортивной школе "Буревестник" ведется на бесплатной основе.
-        
+        //
+        // Gallery block
+        //
         .gallery
           .gallery_photo
             h2 Фото
@@ -49,10 +58,9 @@
                   j-photo-preview.photo-card_home_small()
                     img(slot="image" src="../assets/images/events_3.png")
                     h3(slot="date") 13 апреля
-            .events_button
+            .show_more_button
               a(href="/") 
-                Button Перейти к альбомам
-            
+                j-button Перейти к альбомам
           .gallery_video
             h2 Видео
             .gallery_video_content
@@ -60,10 +68,12 @@
                 j-video-preview.video-card_home
                   img(slot="image" src="../assets/images/slider-1.png")
                   h3(slot="title") 13 апреля
-            .events_button
+            .show_more_button
               a(href="/") 
-                Button Все видео
-
+                j-button Все видео
+        //
+        // Coach block
+        //
         .coach-staff
           h2 Тренерский состав
           .swiper-slider
@@ -75,15 +85,9 @@
                     span(slot="humanName") О. В. Долганов
             .swiper-button-prev(slot='button-prev')
             .swiper-button-next(slot='button-next')
-
-
-
 </template>
 
 <script>
-import Button  from '../components/elements/UI/Button'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
 export default {
   name: 'Home',
   data () {
@@ -128,15 +132,9 @@ export default {
         { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
         { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
         { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
-      ],
-      galleryCard: [
-        { linkTo: '/link/1', img: '123', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
-        { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
-        { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
-      ],
+      ]
     }
-  },
-  components: { swiper, swiperSlide, Button }
+  }
 }
 </script>
 
@@ -147,8 +145,19 @@ h2
   margin 0 0 25px 0
 .carousel_main
   display none
-  @media screen and (min-width lg)
+  @media screen and (min-width: md)
     display flex
+    .swiper-container 
+      margin 0
+      padding 0
+      height 300px
+      img 
+        width 100%
+    .swiper-pagination
+      display flex
+      flex-direction row
+      justify-content center
+      padding 0 0 10px 0
     h1
       font-family 'Behrens Antiqua', sans-serif
       font-style normal
@@ -156,19 +165,18 @@ h2
       font-size 64px
       line-height 76px
       color #FFFFFF
-      margin -215px 0 0 0
+      margin -150px 0 0 0
       text-align center
-  img 
-    width 100%
-  .swiper-container 
-    margin 0
-    padding 0
-    height 635px
-  .swiper-pagination
-    display flex
-    flex-direction row
-    justify-content center
-    padding 0 0 10px 0
+  @media screen and (min-width: lg)
+    .swiper-container 
+      height 430px
+    h1
+      margin -150px 0 0 0
+  @media screen and (min-width: xl)
+    h1
+      margin -220px 0 0 0
+    .swiper-container 
+      height 635px
 .gallery
   flexbox(column, nowrap, space-between, flex-start, stretch)
   width 100%
@@ -184,7 +192,7 @@ h2
     flexbox(column, nowrap, space-between, flex-start, stretch)
     @media screen and (min-width: md)
       flexbox(row, nowrap, space-between, flex-start, stretch)
-    &_main
+    &_main_item
       &_item
         display flex
         width 100%
@@ -196,8 +204,9 @@ h2
       &_item
         width 100%
         display flex
-        &:last-child
-          margin 0
+        @media screen and (min-width: md)
+          &:last-child
+            margin 10px 0 0 0
 .article
   margin 30px 0
   @media screen and (min-width xl)
@@ -211,18 +220,21 @@ h2
       box-sizing border-box
       object-fit cover
       width 100%
+      display flex
       @media screen and (min-width: md)
         padding 0 24px 15px 0 
         width 420px
         height 258px
-.events
+.events,
+.coach-staff
   margin 30px 0
-  @media screen and (min-width: md)
+  @media screen and (min-width: sm)
+    margin 40px 0 0 0
+  @media screen and (min-width: lg)
     margin 67px 0 0 0
-.events_button
-  display flex
-  flex-direction row
-  justify-content center
+.show_more_button
+  flexbox(row, nowrap, center, stretch, stretch)
+  width 100%
   margin 25px 0 0 0
 .events_cards
   flexbox(column, wrap, space-between, center, stretch)
