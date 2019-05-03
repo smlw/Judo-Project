@@ -7,7 +7,6 @@ import { sync } from 'vuex-router-sync'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import PageComponents from './plugins/'
 import './assets/bootstrap-grid.css'
-
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 Vue.use(Viewer)

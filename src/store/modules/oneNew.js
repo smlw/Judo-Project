@@ -6,9 +6,8 @@ const state = {
 
 const actions = {
   loadOneNew: async ({commit}, id) => {
-      const {data} = await Axios.get('http://192.168.0.100:8000/api/news/' + id)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/news/` + id)
       commit('loadOneNew', data)
-      console.log(process.env.TEST)
     }
   }
   const mutations = {
