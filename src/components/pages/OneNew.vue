@@ -22,8 +22,7 @@ import Attach from '../../components/elements/UI/Attach'
 export default {
   data () {
     return {
-      oneNewId: this.$route.params.id,
-      date: null
+      oneNewId: this.$route.params.id
     }
   },
   created () {

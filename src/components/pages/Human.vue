@@ -1,23 +1,23 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container(v-if="getHuman")
+      .container(v-if="human")
         .wrapper-fluid_content
           j-breadcrumbs
           .human
             .human_photo
-              img(:src='`http://192.168.0.100:8000/${getHuman.photo}`')
+              img(:src='`http://192.168.0.100:8000/${human.photo}`')
             .human_content
               .human_header
-                h2 {{ `${getHuman.name} ${getHuman.family}` }}
+                h2 {{ `${human.name} ${human.family}` }}
                 .human_old {{ currentAge() }}
               .human_info
                 .human_info_text
-                  p {{ getHuman.description }}
+                  p {{ human.description }}
           .human-progress
             h2 Достижения
-            .human-progress_content(v-if="getHuman.medals")
-              .human-progress_item(v-for="(progress, index) in getHuman.medals" :key="index")
+            .human-progress_content(v-if="human.medals")
+              .human-progress_item(v-for="(progress, index) in human.medals" :key="index")
                 .human-progress_item_icon(:class="progress.medal")
                 .human-progress_item_text {{ progress.title }}
 </template>
@@ -31,7 +31,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loadHuman', this.humanId)
+    this.$store.dispatch('getHuman', this.humanId)
       .then( () => {
         this.addBread()
       })
@@ -51,7 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getHuman'])
+    ...mapGetters(['human'])
   }
 }
 </script>

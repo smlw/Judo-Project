@@ -4,37 +4,52 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          .photo-gallery
+          .photo-gallery(v-if="albumPhotos")
             .photo-gallery_header
-              h2 Дзюдо: турнир памяти Н.С. Мусатова
-              .photo-gallery_date 21.02.2019
+              h2 {{ albumPhotos.title }}
+              .photo-gallery_date {{ dateFormat() }}
             .photo-gallery_content(v-viewer="options")
-              template(v-for='{source, thumbnail} in images')
+              template(v-for='{source, thumbnail} in albumPhotos')
                 img.photo-gallery_content_image(:src='thumbnail' :data-source="source" :key='source')
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      options: {  "inline": false, "button": true, "navbar": false, "title": true, "toolbar": true, 
-                  "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, 
-                  "scalable": true, "transition": true, 
-                  "fullscreen": false, "keyboard": true, 
-                  "url": "data-source" },
-      images: [
-        {thumbnail: 'https://picsum.photos/200/200?image=100', source: 'https://picsum.photos/1200/1200?image=100'},
-        {thumbnail: 'https://picsum.photos/200/200?image=101', source: 'https://picsum.photos/1200/720?image=101'},
-        {thumbnail: 'https://picsum.photos/200/200?image=102', source: 'https://picsum.photos/1200/720?image=102'},
-        {thumbnail: 'https://picsum.photos/200/200?image=103', source: 'https://picsum.photos/1200/720?image=103'},
-        {thumbnail: 'https://picsum.photos/200/200?image=104', source: 'https://picsum.photos/1200/720?image=104'},
-        {thumbnail: 'https://picsum.photos/200/200?image=200', source: 'https://picsum.photos/1200/720?image=200'}
-      ]
+      date: null,
+      albumId: this.$route.params.id,
+      options: {  
+        "inline": false, "button": true, "navbar": false, "title": true, "toolbar": true, 
+        "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, 
+        "scalable": true, "transition": true, 
+        "fullscreen": false, "keyboard": true, 
+        "url": "data-source" 
+      }
     }
   },
-  beforeMount () {
-    this.$route.meta.breadcrumbs[3].name = 'Название альбома из запроса'
-  }   
+  methods: {
+    dateFormat () {
+      const date = this.$store.state.photoGallery.albumPhotos.created
+      const d = new Date(date);
+      const formatDate = ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + ' г.' ;
+      
+      return formatDate
+    },
+    addBread () {
+      this.$route.meta.breadcrumbs[3].name = `${this.$store.state.photoGallery.albumPhotos.title}`
+    },
+  },
+  created () {
+    this.$store.dispatch('getAlbumPhotos', this.albumId)
+      .then(() => {
+        this.addBread()
+      })
+  },
+  computed: {
+    ...mapGetters(['albumPhotos'])
+  }
 }
 </script>
 

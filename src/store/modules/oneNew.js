@@ -3,23 +3,29 @@ import Axios from 'axios'
 const state = {
   oneNew: null
 }
-
 const actions = {
-  loadOneNew: async ({commit}, id) => {
-      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/news/` + id)
-      commit('loadOneNew', data)
+  getOneNew: async ({commit}, payload) => {
+    try {
+      const {data} = await Axios.post(`${process.env.VUE_APP_API_URL}/`, payload)
+      
+      if (data) {
+        commit('setOneNew', data)
+      }
+    } catch (error) {
+      throw error
     }
   }
-  const mutations = {
-    loadOneNew: (state, payload) => {
-      state.oneNew = payload
-    }
+}
+const mutations = {
+  setOneNew: (state, payload) => {
+    state.oneNew = payload
   }
-  const getters = {
-    getOneNew: state => {
-      return state.oneNew
-    }
+}
+const getters = {
+  oneNew: (state) => {
+    return state.oneNew
   }
+}
 
 export default {
   state,

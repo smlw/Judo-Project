@@ -18,7 +18,7 @@ export default {
 @import '../../assets/stylus/mixins/flexbox'
 @import '../../assets/stylus/base/breakpoints'
 .photo-card
-
+  height 100%
   // Home page styles
   &_home
     width 100%
@@ -31,6 +31,7 @@ export default {
     @media screen and (min-width: md)
       width 460px
       height 269px
+      margin 0 10px 0 0 
       .photo-card_description
         height 269px
         margin -269px 0 0 0

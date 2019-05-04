@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import human from './modules/human'
 import staff from './modules/staff'
 import oneNew from './modules/oneNew'
+import photoAlbums from './modules/photoAlbums'
+import photoGallery from './modules/photoGallery'
 
 Vue.use(Vuex)
 
@@ -13,7 +15,9 @@ export default new Vuex.Store({
   modules: {
     human,
     staff,
-    oneNew
+    oneNew,
+    photoAlbums,
+    photoGallery
   },
   strict: debug
 })

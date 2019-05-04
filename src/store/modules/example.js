@@ -1,12 +1,31 @@
 import Axios from 'axios'
 
 const state = {
-  human: null
+  object: null
 }
-
-const actions = {}
-const mutations = {}
-const getters = {}
+const actions = {
+  get: async ({commit}, payload) => {
+    try {
+      const {data} = await Axios.post(`${process.env.VUE_APP_API_URL}/`, payload)
+      
+      if (data) {
+        commit('', data)
+      }
+    } catch (error) {
+      throw error
+    }
+  }
+}
+const mutations = {
+  set: (state, payload) => {
+    state.object = payload
+  }
+}
+const getters = {
+  object: (state) => {
+    return state.object
+  }
+}
 
 export default {
   state,

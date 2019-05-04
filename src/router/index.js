@@ -4,8 +4,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from '../components/Home.vue'
-import Album from '../components/pages/Album.vue'
-import VideoAlbum from '../components/pages/VideoAlbum.vue'
+import PhotoAlbums from '../components/pages/PhotoAlbums.vue'
+import VideoAlbums from '../components/pages/VideoAlbums.vue'
 import OneNew from '../components/pages/OneNew.vue'
 import Staff from '../components/pages/Staff.vue'
 import Human from '../components/pages/Human.vue'
@@ -28,8 +28,8 @@ const router = new Router({
       meta: {title: 'Главная страница'}
     },
     {
-      path: '/album',
-      component: Album,
+      path: '/photo-gallery',
+      component: PhotoAlbums,
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
@@ -40,8 +40,8 @@ const router = new Router({
       }
     },
     {
-      path: '/videoalbum',
-      component: VideoAlbum,
+      path: '/video-gallery',
+      component: VideoAlbums,
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
@@ -140,7 +140,7 @@ const router = new Router({
         breadcrumbs: [
           { name: 'Главная', link: '/'},
           { name: 'Новости', link: '/news'},
-          { name: 'Фотогалерея', link: '/album' },
+          { name: 'Фотогалерея', link: '/photo-gallery' },
           { name: '', link: '' }
         ],
         title: 'Фотогалерея'
@@ -153,7 +153,7 @@ const router = new Router({
         breadcrumbs: [
           { name: 'Главная', link: '/'},
           { name: 'Новости', link: '/news'},
-          { name: 'Видеогалерея', link: '/videoalbum' },
+          { name: 'Видеогалерея', link: '/video-gallery' },
           { name: '', link: '' }
         ],
         title: 'Видеогалерея'

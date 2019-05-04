@@ -8,25 +8,10 @@
             .human_photo
               img(src='../../assets/images/face_coach.png')
             .human_content
-              h2 {{ `${getStaff.name} ${getStaff.patronymic} ${getStaff.family}`}}
-              //- .human_info(v-for="(staff, index) in getStaff")
-                .human_info_title Уровень образования, квалификация
-                .human_info_descr Высшее образование.
-              //- .human_info
-              //-   .human_info_title Квалификационная категория: 
-              //-   .human_info_descr Высшая квалификационная категория
-              //- .human_info
-              //-   .human_info_title Курсы повышения квалификации: 
-              //-   .human_info_descr 
-              //- .human_info
-              //-   .human_info_title Ученая степень: 
-              //-   .human_info_descr Кандидат педагогических наук.
-              //- .human_info
-              //-   .human_info_title Общий стаж работы:
-              //-   .human_info_descr 
-              //- .human_info
-              //-   .human_info_title Стаж работы по специальности:
-              //-   .human_info_descr 
+              h2 {{ `${staff.name} ${staff.patronymic} ${staff.family}`}}
+              .human_info(v-for="(info, index) in staff.info")
+                .human_info_title {{info.name}}
+                .human_info_descr {{info.descr}}
 </template>
 
 <script>
@@ -38,7 +23,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loadStaff', this.staffId)
+    this.$store.dispatch('getStaff', this.staffId)
       .then( () => {
         this.addBread()
       })
@@ -49,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getStaff'])
+    ...mapGetters(['staff'])
   }
 }
 </script>

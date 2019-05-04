@@ -7,26 +7,30 @@
           .album
             h2 Альбомы
             .album_content
-              .album_content_item(v-for="(photoCard, index) in 4" :key="index")
+              .album_content_item(v-for="(photoCard, index) in photoAlbums" :key="index")
                 router-link.photo-card_album(:to="`/photo-gallery/${index}`")
-                  j-photo-preview(:settings="photoCardSettings")
-                    img(slot="image" src="../../assets/images/events_1.png")
-                    h3(slot="date") Мастер-класс от Колесникова Сергея Викторовича
+                  j-photo-preview
+                    img(slot="image" :src='`${mediaUrl}${photoCard.cover}`')
+                    h3(slot="date") {{ photoCard.title }} {{mediaUrl}}
+                    
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   data () {
-    return { 
-      photoCardSettings: {
-        width: '364px',
-        height: '219px',
-        titleClass: 'sm-padding',
-        small: false
-      }
+    return {
+      mediaUrl: process.env.VUE_APP_BACK_URL
     }
+  },
+  created () {
+    this.$store.dispatch('getPhotoAlbums')
+  },
+  computed: {
+    ...mapGetters(['photoAlbums'])
   }
 }
+
 </script>
 
 <style lang="stylus" scoped>
@@ -38,6 +42,7 @@ export default {
   &_item
     margin 15px 0
     width 100%
+    height 220px
     @media screen and (min-width: md)
       width 210px
       margin 0 30px 30px 0
@@ -55,5 +60,7 @@ export default {
       width 350px
       &:nth-child(3n)
         margin 0 0 15px 0
+      &:nth-child(4n)
+        margin 0 25px 15px 0
 </style>
 
