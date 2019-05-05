@@ -4,44 +4,48 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          .video-gallery
+          .video-gallery(v-if="video")
             .video-gallery_header
-              h2 Дзюдо: турнир памяти Н.С. Мусатова
-              .video-gallery_date 21.02.2019
+              h2 {{ video.title }}
+              .video-gallery_date {{ video.created }}
             .video-gallery_content
               .video-gallery_content_main
                 .video-gallery_content_main_video
                   .video_content_playvideo
                     vue-plyr(:options="plyrSettings" controls ref="plyr")
-                      video(poster='poster.png', src='video.mp4')
-                        source(src='../../assets/video.mp4', type='video/mp4', size='720')
+                      video(poster='poster.png', :src='`${mediaUrl}${video.video.video}`')
+                        source(:src='`${mediaUrl}${video.video.video}`', type='video/mp4', size='720')
                 .video-gallery_content_main_description
-                  h3 Бой Иванова и Петрова
-                  p Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание боя или комментарий тренера уже на усмотрение заказчика Здесь буде описание
+                  h3 {{ video.video.title }}
+                  p {{ video.video.descriptions }}
               .video-gallery_content_second 
                 .swiper-slider
                   swiper(:options='swiperOption')
-                    swiper-slide(v-for="(item, index) in 8" :key="index")
-                      router-link(:to="`/video-gallery/${index}`")
-                        j-video-preview.video-card_video()
-                          img(slot="image" src="../../assets/images/slider-1.png")
-                          h3(slot="title") Мастер-класс от Колесникова Сергея Викторовича
+                    swiper-slide(v-for="(oneVideo, index) in relatedVideos.videos" :key="index")
+                      router-link(:to="`/video-gallery/${relatedVideos.id}/${oneVideo.id}`")
+                        j-video-preview.video-card_video
+                          img(slot="image" :src='`${mediaUrl}${oneVideo.cover}`')
+                          h3(slot="title") {{ oneVideo.title }}
 
                   .swiper-button-prev(slot='button-prev')
                   .swiper-button-next(slot='button-next')      
 </template>
 
 <script>
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
+      payload: {
+        album: this.$route.params.album,
+        video: this.$route.params.video
+      },
+      mediaUrl: process.env.VUE_APP_BACK_URL,
       plyrSettings: {
         enabled: true,
         controls: ['play-large', 'play', 'progress', 'mute', 'volume', 'settings', 'fullscreen'],
         hideControls: true,
-        debug: true
+        debug: false
         // disableContextMenu: true
         // displayDuration: false
         // tooltips: { controls: true, seek: true }
@@ -75,10 +79,21 @@ export default {
       }
     }
   },
-  beforeMount () {
-    this.$route.meta.breadcrumbs[3].name = 'Название видеоальбома из запроса'
+  methods: {
+    addBread () {
+      this.$route.meta.breadcrumbs[3].name = `${this.$store.state.videoGallery.video.title}`
+    }
   },
-  components: { swiper, swiperSlide }   
+  created () {
+    this.$store.dispatch('getVideo', this.payload)
+      .then(() => {
+        this.addBread()
+      })
+    this.$store.dispatch('getRelatedVideos', this.payload.album)
+  },
+  computed: {
+    ...mapGetters(['video', 'relatedVideos'])
+  }
 }
 </script>
 

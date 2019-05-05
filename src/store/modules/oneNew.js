@@ -6,7 +6,7 @@ const state = {
 const actions = {
   getOneNew: async ({commit}, payload) => {
     try {
-      const {data} = await Axios.post(`${process.env.VUE_APP_API_URL}/`, payload)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/`, payload)
       
       if (data) {
         commit('setOneNew', data)

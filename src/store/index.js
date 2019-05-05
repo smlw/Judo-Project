@@ -6,6 +6,8 @@ import staff from './modules/staff'
 import oneNew from './modules/oneNew'
 import photoAlbums from './modules/photoAlbums'
 import photoGallery from './modules/photoGallery'
+import videoAlbums from './modules/videoAlbums'
+import videoGallery from './modules/videoGallery'
 
 Vue.use(Vuex)
 
@@ -17,7 +19,9 @@ export default new Vuex.Store({
     staff,
     oneNew,
     photoAlbums,
-    photoGallery
+    photoGallery,
+    videoAlbums,
+    videoGallery
   },
   strict: debug
 })

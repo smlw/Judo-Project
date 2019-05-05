@@ -11,7 +11,7 @@
                 router-link.photo-card_album(:to="`/photo-gallery/${index}`")
                   j-photo-preview
                     img(slot="image" :src='`${mediaUrl}${photoCard.cover}`')
-                    h3(slot="date") {{ photoCard.title }} {{mediaUrl}}
+                    h3(slot="date") {{ photoCard.title }}
                     
 </template>
 

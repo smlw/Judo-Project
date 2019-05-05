@@ -147,7 +147,7 @@ const router = new Router({
       }
     },
     {
-      path: '/video-gallery/:id',
+      path: '/video-gallery/:album/:video',
       component: VideoGallery,
       meta: {
         breadcrumbs: [

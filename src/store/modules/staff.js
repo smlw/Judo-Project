@@ -7,7 +7,7 @@ const actions = {
   // loadStaff: async ({commit}, payload) => {
   getStaff: async ({commit}) => {
     try {
-      // const {data} = await Axios.post(`${process.env.VUE_APP_API_URL}/sportcard/staff/`, payload)
+      // const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/sportcard/staff/`, payload)
       
       const data =  {
         "id": 2,

@@ -19,13 +19,13 @@
         .events
           h2 События
           .events_cards
-            router-link(:to="`/test/${index}`" v-for="(card, index) in eventCard" :key="index")
+            router-link(:to="`/news/${index}`" v-for="(card, index) in eventCard" :key="index")
               j-new-preview
                 img(slot="image" src="../assets/images/events_1.png")
                 h3(slot="date") {{ card.date }}
                 p(slot="text") {{ card.text }}
             .show_more_button
-              a(href="/") 
+              router-link(to="/news")
                 j-button Больше событий
         //
         // About block
@@ -59,7 +59,7 @@
                     img(slot="image" src="../assets/images/events_3.png")
                     h3(slot="date") 13 апреля
             .show_more_button
-              a(href="/") 
+              router-link(to="/photo-gallery") 
                 j-button Перейти к альбомам
           .gallery_video
             h2 Видео
@@ -69,7 +69,7 @@
                   img(slot="image" src="../assets/images/slider-1.png")
                   h3(slot="title") 13 апреля
             .show_more_button
-              a(href="/") 
+              router-link(to="/video-gallery") 
                 j-button Все видео
         //
         // Coach block

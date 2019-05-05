@@ -7,7 +7,7 @@ const actions = {
   // getAlbumPhotos: async ({commit}, payload) => {
   getAlbumPhotos: async ({commit}) => {
     try {
-      // const {data} = await Axios.post(`${process.env.VUE_APP_API_URL}/p-gallery/album/`, payload)
+      // const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/p-gallery/album/`, payload)
       
       const data = {
         "id": 1,
