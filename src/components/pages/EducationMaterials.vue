@@ -7,16 +7,20 @@
           .education-materials
             h2 Учебные материалы  
             .education-materials_container
-              Attach(icon="doc") Дзюдо и как применить хорошо знакомые навыки в плохо знакомой жизни
-              Attach(icon="doc") Как правильно сформировать рацион ребенка, чтобы укрепить имунитет и увеличить его продуктивность. Еще линнее название для статьи мне не придумать
-              Attach(icon="doc") Как все успевать? Краткий курс по выживанию
-              Attach(icon="doc") Приемы дзюдо и как выучить их у себя дома не вставая с дивана, но лучше все-таки иногда вставать и пробовать
-              Attach(icon="doc") Как быть молодцом?
+              router-link(:to="`education-materials/${material.id}`" v-for="(material, index) in materials" :key="index")
+                Attach(icon="doc") {{ material.title}}
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import Attach from '../../components/elements/UI/Attach'
 export default {
+  created () {
+    this.$store.dispatch('getMaterials')
+  },
+  computed: {
+    ...mapGetters(['materials'])
+  },
   components: { Attach } 
 }
 </script>
