@@ -4,14 +4,14 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          .human
+          .human(v-if="oneStaff")
             .human_photo
-              img( :src='`${mediaUrl}/${staff.photo}`' )
+              img( :src='`${mediaUrl}/${oneStaff.photo}`' )
             .human_content
-              h2 {{ `${staff.name} ${staff.patronymic} ${staff.family}`}}
-              .human_info(v-for="(info, index) in staff.info")
+              h2 {{ `${oneStaff.name} ${oneStaff.patronymic} ${oneStaff.family}`}}
+              .human_info(v-for="(info, index) in oneStaff.info")
                 .human_info_title {{info.name}}
-                .human_info_descr {{info.descr}}
+                .human_info_descr {{info.content}}
 </template>
 
 <script>
@@ -23,18 +23,18 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getStaff', this.staffId)
+    this.$store.dispatch('getOneStaff', this.staffId)
       .then( () => {
         this.addBread()
       })
   },
   methods: {
     addBread () {
-      this.$route.meta.breadcrumbs[1].name = `${this.$store.state.staff.staff.name} ${this.$store.state.staff.staff.patronymic} ${this.$store.state.staff.staff.family} `
+      this.$route.meta.breadcrumbs[1].name = `${this.$store.state.staff.oneStaff.name} ${this.$store.state.staff.oneStaff.patronymic} ${this.$store.state.staff.oneStaff.family} `
     }
   },
   computed: {
-    ...mapGetters(['staff'])
+    ...mapGetters(['oneStaff'])
   }
 }
 </script>

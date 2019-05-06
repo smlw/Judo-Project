@@ -1,23 +1,23 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container(v-if="human")
+      .container(v-if="oneHuman")
         .wrapper-fluid_content
           j-breadcrumbs
           .human
             .human_photo
-              img(:src='`${mediaUrl}/${human.photo}`')
+              img(:src='`${mediaUrl}/${oneHuman.photo}`')
             .human_content
               .human_header
-                h2 {{ `${human.name} ${human.family}` }}
+                h2 {{ `${oneHuman.name} ${oneHuman.family}` }}
                 .human_old {{ currentAge() }}
               .human_info
                 .human_info_text
-                  p {{ human.description }}
+                  p {{ oneHuman.description }}
           .human-progress
             h2 Достижения
-            .human-progress_content(v-if="human.medals")
-              .human-progress_item(v-for="(progress, index) in human.medals" :key="index")
+            .human-progress_content(v-if="oneHuman.medals")
+              .human-progress_item(v-for="(progress, index) in oneHuman.medals" :key="index")
                 .human-progress_item_icon(:class="progress.medal")
                 .human-progress_item_text {{ progress.title }}
 </template>
@@ -31,14 +31,14 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getHuman', this.humanId)
+    this.$store.dispatch('getOneHuman', this.humanId)
       .then( () => {
         this.addBread()
       })
   },
   methods: {
     currentAge () { 
-      const date = this.$store.state.human.human.birthday;
+      const date = this.$store.state.human.oneHuman.birthday;
       const years = (new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000) | 0
       const titles = ['год', 'года', 'лет']
       const cases = [2, 0, 1, 1, 1, 2];  
@@ -47,11 +47,11 @@ export default {
       return `${years} ${title}`
     },
     addBread () {
-      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.human.human.name} ${this.$store.state.human.human.family}`
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.human.oneHuman.name} ${this.$store.state.human.oneHuman.family}`
     }
   },
   computed: {
-    ...mapGetters(['human'])
+    ...mapGetters(['oneHuman'])
   }
 }
 </script>

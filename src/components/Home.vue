@@ -74,22 +74,22 @@
         //
         // Coach block
         //
-        .coach-staff
+        .coach-staff(v-if="staff")
           h2 Тренерский состав
           .swiper-slider
             swiper(:options='swiperOption')
-              swiper-slide(v-for="(human, index) in 12" :key="index")
-                router-link(:to='`staff/${index}`')
+              swiper-slide(v-for="(staff, index) in staff" :key="index")
+                router-link(:to='`staff/${staff.id}`')
                   j-human-card
-                    img(slot="image" src="../assets/images/face_coach.png")
-                    span(slot="humanName") О. В. Долганов
+                    img(slot="image" :src='`${mediaUrl}/${staff.photo}`')
+                    span(slot="humanName") {{ staff.initials }} {{ staff.family }}
             .swiper-button-prev(slot='button-prev')
             .swiper-button-next(slot='button-next')
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  name: 'Home',
   data () {
     return {
       swiperMain: {
@@ -132,9 +132,15 @@ export default {
         { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
         { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
         { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
-      ]
+      ],
     }
-  }
+  },
+  created () {
+    this.$store.dispatch('getStaff')
+  },
+  computed: {
+    ...mapGetters(['staff'])
+  },
 }
 </script>
 
