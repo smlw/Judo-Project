@@ -7,21 +7,16 @@
           .album
             h2 Видеоальбомы
             .album_content
-              .album_content_item(v-for="(photoCard, index) in videoAlbums" :key="index")
-                router-link(:to="`/video-gallery/${photoCard.id}/1`")
+              .album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
+                router-link(:to="`/video-gallery/${videoCard.id}`")
                   j-photo-preview.photo-card_album()
-                    img(slot="image" :src='`${mediaUrl}${photoCard.cover}`')
-                    h3(slot="date") {{ photoCard.title }}
+                    img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
+                    h3(slot="date") {{ videoCard.title }}
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 export default {
-  data () {
-    return {
-      mediaUrl: process.env.VUE_APP_BACK_URL
-    }
-  },
   created () {
     this.$store.dispatch('getVideoAlbums')
   },

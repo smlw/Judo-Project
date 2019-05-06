@@ -4,9 +4,9 @@ const state = {
   oneNew: null
 }
 const actions = {
-  getOneNew: async ({commit}, payload) => {
+  getOneNew: async ({commit}, newId) => {
     try {
-      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/`, payload)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/news/${newId}`)
       
       if (data) {
         commit('setOneNew', data)

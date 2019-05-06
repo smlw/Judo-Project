@@ -4,15 +4,16 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          .article(v-if="getOneNew")
+          .article(v-if="oneNew")
             .article_info
-              h2 {{getOneNew.title}}
+              h2 {{oneNew.title}}
               .article_info_date {{ dateFormat() }}
             .article_content
               p 
-                img(:src='`http://192.168.0.100:8000/${getOneNew.mainimg}`')
-                span {{ getOneNew.text }}
-            Attach(icon="doc", type="link" v-if="getOneNew.file") Протокол соревнований    
+                img(:src='`${mediaUrl}/${oneNew.mainimg}`')
+                span {{ oneNew.text }}
+            a(:href="`${mediaUrl}/${oneNew.file}`" download="")
+              Attach(icon="doc", type="link" v-if="oneNew.file") Протокол соревнований    
 
 </template>
 
@@ -26,7 +27,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loadOneNew', this.oneNewId)
+    this.$store.dispatch('getOneNew', this.oneNewId)
       .then( () => {
         this.addBread()
       })
@@ -45,7 +46,7 @@ export default {
   },
   components: { Attach },
   computed: {
-    ...mapGetters(['getOneNew'])
+    ...mapGetters(['oneNew'])
   }
 }
 </script>

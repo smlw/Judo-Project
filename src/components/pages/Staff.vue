@@ -6,7 +6,7 @@
           j-breadcrumbs
           .human
             .human_photo
-              img(src='../../assets/images/face_coach.png')
+              img( :src='`${mediaUrl}/${staff.photo}`' )
             .human_content
               h2 {{ `${staff.name} ${staff.patronymic} ${staff.family}`}}
               .human_info(v-for="(info, index) in staff.info")

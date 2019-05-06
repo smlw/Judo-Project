@@ -6,7 +6,7 @@
           j-breadcrumbs
           .human
             .human_photo
-              img(:src='`http://192.168.0.100:8000/${human.photo}`')
+              img(:src='`${mediaUrl}/${human.photo}`')
             .human_content
               .human_header
                 h2 {{ `${human.name} ${human.family}` }}
@@ -27,7 +27,7 @@ import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
-      humanId: this.$route.params.id
+      humanId: this.$route.params.id,
     }
   },
   created () {

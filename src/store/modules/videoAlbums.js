@@ -1,43 +1,27 @@
-// import Axios from 'axios'
+import Axios from 'axios'
 
 const state = {
-  videoAlbums: null
+  videoAlbums: null,
+  videoAlbum: null
 }
 const actions = {
   getVideoAlbums: async ({commit}) => {
     try {
-      // const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/`, payload)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/v-albums/`)
       
-      const data = [
-        {
-          "id": 1,
-          "title": "Порно",
-          "created": "2019-04-26"
-        },
-        {
-          "id": 2,
-          "title": "Порно1",
-          "created": "2019-04-26"
-        },
-        {
-          "id": 3,
-          "title": "Порно2",
-          "created": "2019-04-26"
-        },
-        {
-          "id": 4,
-          "title": "Порно3",
-          "created": "2019-04-26"
-        },
-        {
-          "id": 5,
-          "title": "Порно4",
-          "created": "2019-04-26"
-        },
-      ]
-
       if (data) {
         commit('setVideoAlbums', data)
+      }
+    } catch (error) {
+      throw error
+    }
+  },
+  getVideoAlbum: async ({commit},albumId) => {
+    try {
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/v-albums/${albumId}`)
+      
+      if (data) {
+        commit('setVideoAlbum', data)
       }
     } catch (error) {
       throw error
@@ -47,12 +31,18 @@ const actions = {
 const mutations = {
   setVideoAlbums: (state, payload) => {
     state.videoAlbums = payload
+  },
+  setVideoAlbum: (state, payload) => {
+    state.videoAlbum = payload
   }
 }
 const getters = {
   videoAlbums: (state) => {
     return state.videoAlbums
-  }
+  },
+  videoAlbum: (state) => {
+    return state.videoAlbum
+  },
 }
 
 export default {

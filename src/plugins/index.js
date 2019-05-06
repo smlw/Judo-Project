@@ -9,6 +9,15 @@ import Button from '../components/elements/UI/Button.vue'
 
 export default {
   install (Vue) {
+    Vue.mixin({
+      computed: {
+          // `users` так же будет доступен везде
+          mediaUrl () {
+              return process.env.VUE_APP_BACK_URL
+          },
+      }
+    })
+
     Vue.component('MainLayout', MainLayout),
     Vue.component('j-video-preview', VideoPlayerPreview),
     Vue.component('j-photo-preview', PhotoPreview),

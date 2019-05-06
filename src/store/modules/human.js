@@ -4,9 +4,9 @@ const state = {
   human: null
 }
 const actions = {
-  getHuman: async ({commit}, payload) => {
+  getHuman: async ({commit}, humanId) => {
     try {
-      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/sportcard/human/`, payload)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/sportcard/human/${humanId}`)
       
       if (data) {
         commit('setHuman', data)

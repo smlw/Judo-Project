@@ -6,6 +6,7 @@ Vue.use(Router)
 import Home from '../components/Home.vue'
 import PhotoAlbums from '../components/pages/PhotoAlbums.vue'
 import VideoAlbums from '../components/pages/VideoAlbums.vue'
+import VideoAlbum from '../components/pages/VideoAlbum.vue'
 import OneNew from '../components/pages/OneNew.vue'
 import Staff from '../components/pages/Staff.vue'
 import Human from '../components/pages/Human.vue'
@@ -46,7 +47,20 @@ const router = new Router({
         breadcrumbs: [
           { name: 'Главная', link: '/'},
           { name: 'Новости', link: '/news'},
-          { name: 'Видеогалерея', link: '/'}
+          { name: 'Видеогалерея', link: '/'},
+        ],
+        title: 'Видеоальбомы'
+      }
+    },
+    {
+      path: '/video-gallery/:album',
+      component: VideoAlbum,
+      meta: {
+        breadcrumbs: [
+          { name: 'Главная', link: '/'},
+          { name: 'Новости', link: '/news'},
+          { name: 'Видеогалерея', link: '/video-gallery'},
+          { name: 'Название альбома', link: '/'},
         ],
         title: 'Видеоальбомы'
       }
@@ -154,6 +168,7 @@ const router = new Router({
           { name: 'Главная', link: '/'},
           { name: 'Новости', link: '/news'},
           { name: 'Видеогалерея', link: '/video-gallery' },
+          { name: '', link: '/video-gallery/'},
           { name: '', link: '' }
         ],
         title: 'Видеогалерея'

@@ -1,57 +1,26 @@
-// import Axios from 'axios'
+import Axios from 'axios'
 
 const state = {
   video: null,
   relatedVideos: null
 }
 const actions = {
-  // getVideo: async ({commit}, payload) => {
-  getVideo: async ({commit}) => {
+  getVideo: async ({commit}, payload) => {
     try {
-      // const {video} = await Axios.get(`${process.env.VUE_APP_API_URL}/album/`, payload)
-      
-      const video = {
-        "id": 1,
-        "title": "Порно",
-        "created": "26-04-2019",
-        "video": {
-          "id": 3,
-          "title": "asdasdas",
-          "video": null,
-          "descriptions": "asdasdasd"
-        }
-      }
-
-      if (video) {
-        commit('setVideo', video)
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/v-gallery/album/${payload.album}/${payload.video}`)
+      if (data) {
+        commit('setVideo', data)
       }
     } catch (error) {
       throw error
     }
   },
-  // getRelatedVideos: async ({commit}, payload) => {
-  getRelatedVideos: async ({commit}) => {
+  getRelatedVideos: async ({commit}, albumId) => {
     try {
-      // const {relatedVideos} = await Axios.post(`${process.env.VUE_APP_API_URL}/v-albums/items/`, payload)
-      
-      const relatedVideos = {
-        "id": 1,
-        "videos": [
-          {
-            "id": 1,
-            "title": "asdasdas",
-            "cover": null, // ссылка на картинку (обложку). Ссылку на самое видео (mp4) не нужно
-          },
-          {
-            "id": 2,
-            "title": "asdasdas2",
-            "cover": null,  // ссылка на картинку (обложку). Ссылку на самое видео (mp4) не нужно
-          }
-        ]
-      }
+      const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/v-albums/items/${albumId}`)
 
-      if (relatedVideos) {
-        commit('setRelatedVideos', relatedVideos)
+      if (data) {
+        commit('setRelatedVideos', data)
       }
     } catch (error) {
       throw error

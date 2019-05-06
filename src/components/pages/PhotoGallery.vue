@@ -9,8 +9,8 @@
               h2 {{ albumPhotos.title }}
               .photo-gallery_date {{ dateFormat() }}
             .photo-gallery_content(v-viewer="options")
-              template(v-for='{source, thumbnail} in albumPhotos')
-                img.photo-gallery_content_image(:src='thumbnail' :data-source="source" :key='source')
+              template(v-for='{photo, photo_s} in albumPhotos.photos')
+                img.photo-gallery_content_image(:src='`${mediaUrl}/${photo_s}`' :data-source="`${mediaUrl}/${photo}`" :key='photo')
 </template>
 
 <script>

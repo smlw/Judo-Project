@@ -1,10 +1,9 @@
 <template lang="pug">
   .attach
-    a(href="/")
-      .attach_content
-        span.attach-type(:class="this.icon")
-        p.attach_content_text(:class="this.type")
-          slot
+    .attach_content
+      span.attach-type(:class="this.icon")
+      p.attach_content_text(:class="this.type")
+        slot
 
 </template>
 
