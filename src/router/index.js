@@ -10,7 +10,7 @@ import VideoAlbum from '../components/pages/VideoAlbum.vue'
 import OneNew from '../components/pages/OneNew.vue'
 import Staff from '../components/pages/Staff.vue'
 import Human from '../components/pages/Human.vue'
-import Article from '../components/pages/Article.vue'
+import OneInformation from '../components/pages/OneInformation.vue'
 import Information from '../components/pages/Information.vue'
 import EducationMaterials from '../components/pages/EducationMaterials.vue'
 import OneEducationMaterial from '../components/pages/OneEducationMaterial.vue'
@@ -102,8 +102,8 @@ const router = new Router({
       }
     },
     {
-      path: '/article/:id',
-      component: Article,
+      path: '/information/:id',
+      component: OneInformation,
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},

@@ -8,6 +8,7 @@ import photoAlbums from './modules/photoAlbums'
 import photoGallery from './modules/photoGallery'
 import videoAlbums from './modules/videoAlbums'
 import videoGallery from './modules/videoGallery'
+import information from './modules/information'
 
 Vue.use(Vuex)
 
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     photoAlbums,
     photoGallery,
     videoAlbums,
-    videoGallery
+    videoGallery,
+    information
   },
   strict: debug
 })
