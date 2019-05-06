@@ -44,19 +44,25 @@ const getters = {
     return state.information
   },
   informationParents: (state, getters) => {
-    return getters.information.filter(info => {
-      return info.type === 'Для родителей'
-    })
+    if (getters.information) {
+      return getters.information.filter(info => {
+        return info.type === 'Для родителей'
+      })
+    }
   },
   informationChildren: (state, getters) => {
-    return getters.information.filter(info => {
-      return info.type === 'Для детей'
-    })
+    if (getters.information) {
+      return getters.information.filter(info => {
+        return info.type === 'Для детей'
+      })
+    }
   },
   informationOther: (state, getters) => {
-    return getters.information.filter(info => {
-      return info.type === 'Другое'
-    })
+    if (getters.information) {
+      return getters.information.filter(info => {
+        return info.type === 'Другое'
+      })
+    }
   }
 }
 

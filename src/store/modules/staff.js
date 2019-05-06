@@ -9,7 +9,13 @@ const actions = {
     try {
       const {data} = await Axios.get(`${process.env.VUE_APP_API_URL}/sportcard/staff/${staffId}`)
       
+      
       if (data) {
+        // Create initials for each human
+        const name = data.name.charAt(0)
+        const patronymic = data.patronymic.charAt(0)
+        data.initials = `${name}. ${patronymic}.`
+
         commit('setOneStaff', data)
       }
     } catch (error) {

@@ -4,33 +4,53 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          .one-education-material
-            h2 Название учебного материала
+          .one-education-material(v-if="oneMaterial")
+            h2 {{ oneMaterial.title }}
             .one-education-material_text
-              p Тут будет статья, если такая имеется, а если не имеется, то не беда, на странице будет отображаться документ-ссылка. Если имеется видео, то оно будет размещено ниже. Если такого не имеется, то тоже не беда, можно останить название учебного материала и документ-ссылку. Тут будет статья, если такая имеется, а если не имеется, то не беда, на странице будет отображаться документ-ссылка. Если имеется видео, то оно будет размещено ниже. Если такого не имеется, то тоже не беда, можно останить название учебного материала и документ-ссылку.
-            Attach(icon="writting", type="link") Ссылка на прикрепленный файл
-            .video
+              p {{ oneMaterial.text }}
+            router-link(:to="`${oneMaterial.file}`" v-if="oneMaterial.file")
+              Attach(icon="writting", type="link") Прикрепленный файл
+            .video(v-if="oneMaterial.video")
               h2 Видеоматериал
               .video_content
-                .video_content_playvideo
-                  j-video-preview.video-card_material()
-                    img(slot="image" src="../../assets/images/slider-1.png")
-                .video_content_info
-                  .video_content_info_header
+                .video_content_playvideo(v-if="oneMaterial.video.videoLink")
+                  router-link(:to="`/video-gallery/${oneMaterial.video.videoLink}`")
+                    j-video-preview.video-card_material
+                      img(slot="image" :src='`${mediaUrl}/${oneMaterial.video.videoCover}`')
+                .video_content_info(v-if="oneMaterial.video.autorId")
+                  .video_content_info_header(v-if="oneStaff")
                     .video_content_info_header_photo
-                      img(src="../../assets/images/face_coach.png")
-                    .video_content_info_header_title О. В. Долганов
+                      img(:src='`${mediaUrl}/${oneStaff.photo}`')
+                    .video_content_info_header_title {{oneStaff.initials}} {{oneStaff.family}} 
                   .video_content_info_text
-                    p Если тренер захочет оставить свой комментарий, то это будет отображаться рядом с видео. Если видео отсутствует, но тренер желает прокомментировать учебный материал, то это так же отображается ниже, под документом
+                    p {{oneMaterial.video.comment}}
                 
                 
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import Attach from '../../components/elements/UI/Attach'
 export default {
-  beforeMount () {
-    this.$route.meta.breadcrumbs[2].name = 'Название учебного материала из запроса'
+  data () {
+    return {
+      materialId: this.$route.params.id
+    }
+  },
+  created () {
+    this.$store.dispatch('getOneMaterial', this.materialId)
+      .then(() => {
+        this.addBread()
+        this.$store.dispatch('getOneStaff', this.$store.state.material.oneMaterial.video.autorId)
+      })
+  },
+  computed: {
+    ...mapGetters(['oneMaterial', 'oneStaff'])
+  },
+  methods: {
+    addBread () {
+      this.$route.meta.breadcrumbs[2].name = this.$store.state.material.oneMaterial.title
+    }
   },
   components: { Attach } 
 }
@@ -44,7 +64,7 @@ export default {
 .video_content
   flexbox(column, nowrap, space-between, stretch, stretch)
   @media screen and (min-width: md)
-    flexbox(row, nowrap, space-between, stretch, stretch)
+    flexbox(row, nowrap, flex-start, stretch, stretch)
     &_playvideo
       margin 0 60px 0 0
   &_info
