@@ -191,7 +191,8 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Доска почета', link: '' }
+          { name: 'Доска почета', link: '/hall' },
+          { name: '', link: '' }
         ],
         title: 'Новости'
       }
