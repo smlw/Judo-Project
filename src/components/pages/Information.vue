@@ -4,7 +4,9 @@
       .container(v-if="information")
         .wrapper-fluid_content
           j-breadcrumbs
-          LinkHeader
+          .link-header
+            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+              j-button.link-header_button {{ link.name }}
           .information
             .information_container
               h2 Для родителей
@@ -22,20 +24,47 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import LinkHeader from '../../components/elements/UI/LinkHeader'
 import Attach from '../../components/elements/UI/Attach'
 export default {
+  data () {
+    return {
+      headerLinks: [
+        {name: 'Для родителей', to: '/information'},
+        {name: 'Для детей', to: '/information'},
+        {name: 'Другое', to: '/information'},
+      ]
+    }
+  },
   created () {
     this.$store.dispatch('getInformation')
   },
   computed: {
     ...mapGetters(['information', 'informationParents', 'informationChildren', 'informationOther'])
   },
-  components: { LinkHeader, Attach }   
+  components: { Attach }   
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
+@import '../../assets/stylus/mixins/flexbox'
+@import '../../assets/stylus/base/breakpoints'
+.link-header
+  flexbox(column, nowrap, space-between, stretch, stretch)
+  margin 0 0 45px 0
+  @media screen and (min-width: lg)
+    flexbox(row, nowrap, space-between, stretch, stretch)
+  .link-header_button
+    @media screen and (max-width sm)
+      margin 10px auto
+      width 100%
+    @media screen and (min-width md)
+      margin 10px auto
+      padding 7px
+      width 200px
+    @media screen and (min-width xl)
+      width 349px
+      padding 7px 40px
+
 .information
   &_container
     margin-bottom 60px

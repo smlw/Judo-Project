@@ -11,7 +11,6 @@ export default {
   install (Vue) {
     Vue.mixin({
       computed: {
-          // `users` так же будет доступен везде
           mediaUrl () {
               return process.env.VUE_APP_BACK_URL
           },

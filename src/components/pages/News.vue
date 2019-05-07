@@ -4,7 +4,9 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          LinkHeader.news_btn(:links="headerLinks")
+          .link-header
+            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+              j-button.link-header_button {{ link.name }}
           .news
             // Block of news
             .news_news
@@ -21,7 +23,7 @@
                 .swiper-button-next(slot='button-next')  
               .news_button
                 router-link(to='/news')
-                  Button Больше событий
+                  j-button Больше событий
             .news_events
               h2 Грядущие события
               .swiper-slider
@@ -44,7 +46,7 @@
                       h3(slot="date") {{ photoCard.title}}
               .news_button
                 router-link(to="/photo-gallery")
-                  Button Перейти ко всем альбомам
+                  j-button Перейти ко всем альбомам
 
             .news_video_album
               h2 Видео
@@ -56,13 +58,11 @@
                       h3(slot="title") {{videoCard.title}}
               .news_button
                 router-link(to="/video-gallery")
-                  Button Больше видео
+                  j-button Больше видео
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
-import LinkHeader from '../../components/elements/UI/LinkHeader'
-import Button  from '../../components/elements/UI/Button'
 export default {
   data () {
     return {
@@ -132,8 +132,7 @@ export default {
   },
   computed: {
     ...mapGetters(['news', 'events', 'photoAlbums', 'videoAlbums'])
-  },
-  components: { LinkHeader, Button}
+  }
 }
 </script>
 
@@ -141,7 +140,22 @@ export default {
 @import '../../assets/stylus/mixins/flexbox'
 @import '../../assets/stylus/base/breakpoints'
 .link-header
-  margin 0 0 55px 0
+  flexbox(column, nowrap, space-between, stretch, stretch)
+  margin 0 0 45px 0
+  @media screen and (min-width: lg)
+    flexbox(row, nowrap, space-between, stretch, stretch)
+  .link-header_button
+    @media screen and (max-width sm)
+      margin 10px auto
+      width 100%
+    @media screen and (min-width md)
+      margin 10px auto
+      padding 7px
+      width 200px
+    @media screen and (min-width xl)
+      width 268px
+      padding 7px 40px
+
 .news
   &_events,
   &_video_album,

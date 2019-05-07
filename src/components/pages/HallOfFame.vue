@@ -4,7 +4,9 @@
       .container
         .wrapper-fluid_content
           j-breadcrumbs
-          LinkHeader.hall_btn(:links="headerLinks")
+          .link-header
+            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+              j-button.link-header_button {{ link.name }}
           .hall
             .hall-container(v-for="(category, index) in fullHallOfFame" :key="index")
               .hall-container_header
@@ -27,7 +29,6 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import LinkHeader from '../../components/elements/UI/LinkHeader'
 export default {
   data () {
     return {
@@ -74,8 +75,7 @@ export default {
   },
   computed: {
     ...mapGetters(['fullHallOfFame'])
-  },
-  components: { LinkHeader }   
+  }
 }
 </script>
 
@@ -83,7 +83,18 @@ export default {
 @import '../../assets/stylus/mixins/flexbox'
 @import '../../assets/stylus/base/breakpoints'
 .link-header
-  margin 0 0 86px 0
-
+  flexbox(column, nowrap, space-between, stretch, stretch)
+  margin 0 0 45px 0
+  @media screen and (min-width: lg)
+    flexbox(row, nowrap, space-between, stretch, stretch)
+  .link-header_button
+    width 100%
+    height 68px
+    padding 0 40px
+    margin 0 0 10px 0
+    @media screen and (min-width: lg)
+      width 300px
+    @media screen and (min-width: xl)
+      width 349px
 </style>
 

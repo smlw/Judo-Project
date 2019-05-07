@@ -12,19 +12,26 @@ export default {
 <style lang="stylus" scoped>
 @import '../../../assets/stylus/mixins/flexbox'
 @import '../../../assets/stylus/base/breakpoints'
-.news_btn
-  .btn
-    width 268px
-    padding 7px 40px
-.hall_btn
-  .btn
-    width 100%
-    height 68px
-    padding 0 40px
-    @media screen and (min-width: lg)
-      width 300px
-    @media screen and (min-width: xl)
-      width 349px
+// .news_btn
+//   .btn
+//     @media screen and (max-width sm)
+//       margin 10px auto
+//     @media screen and (min-width md)
+//       margin 10px auto
+//       padding 7px
+//       width 200px
+//     @media screen and (min-width xl)
+//       width 263px
+//       padding 7px 40px
+// .hall_btn
+//   .btn
+//     width 100%
+//     height 68px
+//     padding 0 40px
+//     @media screen and (min-width: lg)
+//       width 300px
+//     @media screen and (min-width: xl)
+//       width 349px
 .btn
   padding 12px 70px
   border 2px solid #e8d35f
