@@ -9,15 +9,15 @@
             .one-education-material_text
               p {{ oneMaterial.text }}
             router-link(:to="`${oneMaterial.file}`" v-if="oneMaterial.file")
-              Attach(icon="writting", type="link") Прикрепленный файл
-            .video(v-if="oneMaterial.video")
+              Attach(icon="writting", type="link") Прикрепленный фай
+            .video(v-if="oneMaterial.video.trener != null || oneMaterial.video.cover != null")
               h2 Видеоматериал
               .video_content
-                .video_content_playvideo(v-if="oneMaterial.video.videoLink")
-                  router-link(:to="`/video-gallery/${oneMaterial.video.videoLink}`")
+                .video_content_playvideo(v-if="oneMaterial.video.video")
+                  router-link(:to="`/video-gallery/${oneMaterial.video.video}`")
                     j-video-preview.video-card_material
-                      img(slot="image" :src='`${mediaUrl}/${oneMaterial.video.videoCover}`')
-                .video_content_info(v-if="oneMaterial.video.autorId")
+                      img(slot="image" :src='`${mediaUrl}/${oneMaterial.video.cover}`')
+                .video_content_info(v-if="oneMaterial.video.trener")
                   .video_content_info_header(v-if="oneStaff")
                     .video_content_info_header_photo
                       img(:src='`${mediaUrl}/${oneStaff.photo}`')
@@ -41,7 +41,7 @@ export default {
     this.$store.dispatch('getOneMaterial', this.materialId)
       .then(() => {
         this.addBread()
-        this.$store.dispatch('getOneStaff', this.$store.state.material.oneMaterial.video.autorId)
+        this.$store.dispatch('getOneStaff', this.$store.state.material.oneMaterial.video.trener)
       })
   },
   computed: {
