@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import human from './modules/human'
 import staff from './modules/staff'
-import oneNew from './modules/oneNew'
+import news from './modules/news'
 import photoAlbums from './modules/photoAlbums'
 import photoGallery from './modules/photoGallery'
 import videoAlbums from './modules/videoAlbums'
@@ -19,7 +19,7 @@ export default new Vuex.Store({
   modules: {
     human,
     staff,
-    oneNew,
+    news,
     photoAlbums,
     photoGallery,
     videoAlbums,

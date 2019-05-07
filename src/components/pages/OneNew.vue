@@ -34,10 +34,10 @@ export default {
   },
   methods: {
     addBread () {
-      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.oneNew.oneNew.title}`
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.news.oneNew.title}`
     },
     dateFormat () {
-      const date = this.$store.state.oneNew.oneNew.created
+      const date = this.$store.state.news.oneNew.created
       const d = new Date(date);
       const formatDate = ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear() + ' г.' ;
 
@@ -81,7 +81,7 @@ h2
       @media screen and (min-width md)
         width 456px
         height 338px
-        padding 0 20px 20px 0
+        margin 0 20px 20px 0
       @media screen and (min-width lg)
         width 556px
 </style>

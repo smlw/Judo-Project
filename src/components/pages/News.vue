@@ -11,56 +11,56 @@
               h2 Новости
               .swiper-slider
                 swiper(:options='swiperOption')
-                  swiper-slide(v-for="(card, index) in newsCard" :key="index")
-                    router-link(:to="`${card.linkTo}`" )
+                  swiper-slide(v-for="(card, index) in news" :key="index")
+                    router-link(:to="`/news/${card.id}`" )
                       j-new-preview
-                        img(slot="image" src="../../assets/images/events_1.png")
-                        h3(slot="date") {{ card.date }}
-                        p(slot="text") {{ card.text }}
+                        img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
+                        h3(slot="date") 12 апреля
+                        p(slot="text") {{ card.title }}
                 .swiper-button-prev(slot='button-prev')
                 .swiper-button-next(slot='button-next')  
               .news_button
-                a(href="/") 
+                router-link(to='/news')
                   Button Больше событий
             .news_events
               h2 Грядущие события
               .swiper-slider
                 swiper(:options='swiperEvents')
-                  swiper-slide(v-for="(event, index) in 5" :key="index")
-                    router-link(to="/")
+                  swiper-slide(v-for="(event, index) in events" :key="index")
+                    router-link(:to="`news/${event.id}`")
                       j-upcoming-card
-                        img(slot="image" src="../../assets/images/events_1.png")
-                        h3(slot="title") {{index}} ГОиЧС: безопасность весной
-                        p(slot="description") С наступлением весны лед на реках становится рыхлым, «съедается» сверху солнцем, талой водой, а снизу подтачивается течением
+                        img(slot="image" :src='`${mediaUrl}/${event.mainimg}`')
+                        h3(slot="title") {{ event.title }}
+                        p(slot="description") {{ event.anons }}
                 .swiper-button-prev(slot='button-prev')
                 .swiper-button-next(slot='button-next')  
             .news_album
               h2 Фотогалерея
               .album_content
                 .album_content_item(v-for="(photoCard, index) in 3" :key="index")
-                  router-link(to="/test")
-                    j-photo-preview.photo-card_news()
-                      img(slot="image" src="../../assets/images/events_1.png")
-                      h3(slot="date") Мастер-класс от Колесникова Сергея Викторовича
+                  router-link(:to="`/photo-gallery/${photoCard.id}`")
+                    j-photo-preview.photo-card_news
+                      img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
+                      h3(slot="date") {{ photoCard.title}}
               .news_button
-                a(href="/") 
+                router-link(to="/photo-gallery")
                   Button Перейти ко всем альбомам
 
             .news_video_album
               h2 Видео
               .news_video_album_content
-                router-link(to="/video-gallery/1" v-for="(videoCard, index) in 3" :key="index")
-                  j-video-preview.video-card_news
-                    img(slot="image" src="../../assets/images/slider-1.png")
-                    h3(slot="title") Первенство Свердловской области 21.02.2019 город Екатеринбург.
+                .news_video_album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
+                  router-link(:to="`/video-gallery/${videoCard.id}`" )
+                    j-video-preview.video-card_news
+                      img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
+                      h3(slot="title") {{videoCard.title}}
               .news_button
-                a(href="/") 
+                router-link(to="/video-gallery")
                   Button Больше видео
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import {mapGetters} from 'vuex'
 import LinkHeader from '../../components/elements/UI/LinkHeader'
 import Button  from '../../components/elements/UI/Button'
 export default {
@@ -71,11 +71,6 @@ export default {
         {name: 'Грядущие события', to: '/news'},
         {name: 'Фотогалерея', to: '/photo-gallery'},
         {name: 'Видеогалерея', to: '/video-gallery'},
-      ],
-      newsCard: [
-        { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
-        { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
-        { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
       ],
       swiperOption: {
         slidesPerView: 3,
@@ -130,7 +125,15 @@ export default {
       }
     }
   },
-  components: { LinkHeader, swiper, swiperSlide, Button}
+  created () {
+    this.$store.dispatch('getNews')
+    this.$store.dispatch('getPhotoAlbums')
+    this.$store.dispatch('getVideoAlbums')
+  },
+  computed: {
+    ...mapGetters(['news', 'events', 'photoAlbums', 'videoAlbums'])
+  },
+  components: { LinkHeader, Button}
 }
 </script>
 
@@ -144,6 +147,7 @@ export default {
   &_video_album,
   &_album
     margin 80px 0 0 0
+    
 h2
   margin  0 0 22px 0
 .news_button
@@ -162,12 +166,24 @@ h2
     @media screen and (min-width: md)
       flexbox(row, wrap, space-between, flex-start, stretch)
 
-.album_content
-  flexbox(row, wrap, center, flex-start, stretch)
+.album_content,
+.news_video_album_content
+  flexbox(row, wrap, flex-start, flex-start, stretch)
   &_item
     margin 0 0 10px 0
+    @media screen and (max-width sm)
+      width 100%
+    @media screen and (min-width md)
+      padding 0 24px 25px 0
+      width 50%
+      &:nth-child(3n)
+        margin 0 0 15px 0
     @media screen and (min-width lg)
-      margin 0 24px 25px 0
+      padding 10px
+      width 33.333%
+      .photo-card_news,
+      .video-card_news
+        width 100%
       &:nth-child(3n)
         margin 0 0 15px 0
       

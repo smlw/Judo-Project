@@ -19,6 +19,15 @@ export default {
   margin 0 0 45px 0
   flexbox(column, nowrap, space-between, stretch, stretch)
   .btn
+    @media screen and (max-width sm)
+      margin 10px auto
+    @media screen and (min-width md)
+      margin 10px auto
+      padding 7px
+      width 200px
+    @media screen and (min-width xl)
+      width 268px
+      padding 7px 40px
     margin 0 0 10px 0
   @media screen and (min-width: lg)
     flexbox(row, nowrap, space-between, stretch, stretch)
