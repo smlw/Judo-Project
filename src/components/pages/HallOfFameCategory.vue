@@ -1,10 +1,10 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="oneHuman")
         .wrapper-fluid_content
           j-breadcrumbs
-          .hall()
+          .hall
             .hall-container
               .hall-container_header
                 h2 {{title}}
@@ -36,7 +36,7 @@ export default {
   methods: {
     getTitle () {
       switch (this.category) {
-        case "unosha":
+        case "junior":
           this.title = 'Призеры юношеских соревнований'
           break;
         case "student":

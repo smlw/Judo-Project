@@ -1,10 +1,10 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="oneMaterial")
         .wrapper-fluid_content
           j-breadcrumbs
-          .one-education-material(v-if="oneMaterial")
+          .one-education-material
             h2 {{ oneMaterial.title }}
             .one-education-material_text
               p {{ oneMaterial.text }}

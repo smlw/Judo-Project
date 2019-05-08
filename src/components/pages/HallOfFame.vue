@@ -1,13 +1,13 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="fullHallOfFame")
         .wrapper-fluid_content
           j-breadcrumbs
           .link-header
             router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
               j-button.link-header_button {{ link.name }}
-          .hall
+          .hall(v-if="category")
             .hall-container(v-for="(category, index) in fullHallOfFame" :key="index")
               .hall-container_header
                 h2 {{category.name}}

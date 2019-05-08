@@ -1,11 +1,11 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="videoAlbum")
         .wrapper-fluid_content
           j-breadcrumbs
           .album
-            h2(v-if="videoAlbum") Видеоальбом {{ videoAlbum.title }}
+            h2 Видеоальбом {{ videoAlbum.title }}
             .album_content(v-if="relatedVideos")
               .album_content_item(v-for="(relVideo, index) in relatedVideos.videos" :key="index")
                 router-link(:to="`/video-gallery/${relatedVideos.id}/${relVideo.id}`")

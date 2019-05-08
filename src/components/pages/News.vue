@@ -1,15 +1,15 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="allNews")
         .wrapper-fluid_content
           j-breadcrumbs
           .link-header
             router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
               j-button.link-header_button {{ link.name }}
-          .news
+          .news(v-if="news")
             // Block of news
-            .news_news(v-if="news")
+            .news_news
               h2 Новости
               .swiper-slider
                 swiper(:options='swiperOption')
@@ -131,7 +131,7 @@ export default {
     this.$store.dispatch('getVideoAlbums')
   },
   computed: {
-    ...mapGetters(['news', 'events', 'photoAlbums', 'videoAlbums'])
+    ...mapGetters(['news', 'events', 'allNews', 'photoAlbums', 'videoAlbums'])
   }
 }
 </script>

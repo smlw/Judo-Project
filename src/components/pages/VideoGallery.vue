@@ -1,7 +1,7 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="video")
         .wrapper-fluid_content
           j-breadcrumbs
           .video-gallery(v-if="video")

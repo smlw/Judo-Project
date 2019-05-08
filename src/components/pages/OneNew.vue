@@ -1,10 +1,10 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="oneNew")
         .wrapper-fluid_content
           j-breadcrumbs
-          .article(v-if="oneNew")
+          .article
             .article_info
               h2 {{oneNew.title}}
               .article_info_date {{ dateFormat() }}

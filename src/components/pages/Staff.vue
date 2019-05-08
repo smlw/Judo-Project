@@ -1,10 +1,10 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="oneStaff")
         .wrapper-fluid_content
           j-breadcrumbs
-          .human(v-if="oneStaff")
+          .human
             .human_photo
               img( :src='`${mediaUrl}/${oneStaff.photo}`' )
             .human_content

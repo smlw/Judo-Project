@@ -1,10 +1,10 @@
 <template lang="pug">
   MainLayout
     template(v-slot:content)
-      .container
+      .container(v-if="oneInformation")
         .wrapper-fluid_content
           j-breadcrumbs
-          article.article(v-if="oneInformation")
+          article.article
             h2 {{oneInformation.title}}
             p {{oneInformation.text}}
             a(:href="`${mediaUrl}/${oneInformation.file}`" download="" v-if="oneInformation.file")
