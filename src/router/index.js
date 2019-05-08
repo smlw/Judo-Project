@@ -19,6 +19,7 @@ import VideoGallery from '../components/pages/VideoGallery.vue'
 import HallOfFame from '../components/pages/HallOfFame.vue'
 import News from '../components/pages/News.vue'
 import HallOfFameCategory from '../components/pages/HallOfFameCategory.vue'
+import Page404 from '../components/pages/Page404.vue'
 
 const router = new Router({
   mode: 'history',
@@ -207,7 +208,8 @@ const router = new Router({
         ],
         title: 'Новости'
       }
-    }
+    },
+    { path: "*", component: Page404 }
   ]
 })
 

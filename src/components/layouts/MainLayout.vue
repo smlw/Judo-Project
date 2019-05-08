@@ -5,9 +5,8 @@
         .header
           .logotypes
             // Поменяю на svg позже.
-            img(src="../../assets/images/urfuLogo.png")
-            img(src="../../assets/images/adminLogo.png")
-          //- button.menu-show(@click="isMenuShow = !isMenuShow") Меню
+            img(src="../../assets/images/urfuLogo.svg")
+            img(src="../../assets/images/adminLogo.svg")
           nav.header-navigation(v-if="isMenuShow")
             ul
               router-link(
@@ -31,22 +30,20 @@
           .footer-bottom
             .footer-bottom_partners
               // Поменяю на svg позже
-              img(src="../../assets/images/fd.png")
-              img(src="../../assets/images/adminLogo.png")
-              img(src="../../assets/images/bfr.png")
+              img(src="../../assets/images/fd.svg")
+              img(src="../../assets/images/adminLogo.svg")
+              img(src="../../assets/images/bfr.svg")
             .footer-bottom_contacts
               address
                 div +01234567891
                 div Июлская 22, г. Екатеринбург
               .footer-bottom_contacts_soc-links
-                a
-                  img(src="../../assets/images/vk.png")
-                a
-                  img(src="../../assets/images/insta.png")
-                a
-                  img(src="../../assets/images/youtube.png")
-              
-
+                a(href="http://vk.com")
+                  img(src="../../assets/images/vk.svg")
+                a(href="http://instagram.com")
+                  img(src="../../assets/images/insta.svg")
+                a(href="http://youtube.com")
+                  img(src="../../assets/images/youtube.svg")
 </template>
 
 <script>
@@ -59,24 +56,22 @@ export default {
           to: '/news', 
           name: 'Новости', 
           nested: [
-            { to: '/', name: 'Новости и события' },
-            { to: '/', name: 'Фотогалерея' },
-            { to: '/', name: 'Видео' },
+            { to: '/news', name: 'Новости и события' },
+            { to: '/photo-gallery', name: 'Фотогалерея' },
+            { to: '/video-gallery', name: 'Видео' },
           ]
         },
         {
           to: '/information',
           name: 'Информация',
           nested: [
-            { to: '/', name: 'Тренерский состав' },
-            { to: '/', name: 'Ученический состав' },
-            { to: '/', name: 'Для студентов' },
-            { to: '/', name: 'Для родителей' },
-            { to: '/', name: 'Буревестник' },
+            { to: '/info/student', name: 'Для студентов' },
+            { to: '/info/junior', name: 'Для родителей' },
+            { to: '/info/other', name: 'Другое' },
           ]
         },
         {to: '/education-materials', name: 'Учебные материалы'},
-        {to: '/hall', name: 'Доска почета'},
+        {to: '/hall', name: 'Доска почета'}
       ]
     }
   }
@@ -165,6 +160,7 @@ header
         font-size 20px
         @media screen and (min-width: md)
           margin 0 0 14px 0
+
   &-content
     width 100%
     flexbox(column, nowrap, flex-end, stretch, flex-start)
@@ -184,7 +180,7 @@ header
           margin 0 0 20px 0
       &_soc-links
         flexbox(row, nowrap, center, center, stretch)
-        margin 15px 0
+        margin 15px 0 0 0
         @media screen and (min-width: md)
           flexbox(row, nowrap, flex-end, center, stretch)
         a
@@ -197,6 +193,7 @@ header
         flexbox(row, nowrap, flex-start, flex-end,center)
         img 
           margin 0 35px 0 0
+          height 74px
 footer
   font-family 'Noto Sans', sans-serif
   background #2B6CA8

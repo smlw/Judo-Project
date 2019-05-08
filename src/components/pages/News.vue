@@ -9,7 +9,7 @@
               j-button.link-header_button {{ link.name }}
           .news
             // Block of news
-            .news_news
+            .news_news(v-if="news")
               h2 Новости
               .swiper-slider
                 swiper(:options='swiperOption')
@@ -24,7 +24,7 @@
               .news_button
                 router-link(to='/news')
                   j-button Больше событий
-            .news_events
+            .news_events(v-if="events")
               h2 Грядущие события
               .swiper-slider
                 swiper(:options='swiperEvents')
@@ -36,7 +36,7 @@
                         p(slot="description") {{ event.anons }}
                 .swiper-button-prev(slot='button-prev')
                 .swiper-button-next(slot='button-next')  
-            .news_album
+            .news_album(v-if="photoAlbums")
               h2 Фотогалерея
               .album_content
                 .album_content_item(v-for="(photoCard, index) in 3" :key="index")
@@ -48,7 +48,7 @@
                 router-link(to="/photo-gallery")
                   j-button Перейти ко всем альбомам
 
-            .news_video_album
+            .news_video_album(v-if="videoAlbums")
               h2 Видео
               .news_video_album_content
                 .news_video_album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
@@ -56,7 +56,7 @@
                     j-video-preview.video-card_news
                       img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
                       h3(slot="title") {{videoCard.title}}
-              .news_button
+              .news_button 
                 router-link(to="/video-gallery")
                   j-button Больше видео
 </template>

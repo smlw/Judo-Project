@@ -13,7 +13,7 @@
                 .human_old {{ currentAge() }}
               .human_info
                 .human_info_text
-                  p {{ oneHuman.description }}
+                  p(v-html="oneHuman.description")
           .human-progress
             h2 Достижения
             .human-progress_content(v-if="oneHuman.medals")

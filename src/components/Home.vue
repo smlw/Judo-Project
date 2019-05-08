@@ -16,12 +16,12 @@
         //
         // Events block
         //
-        .events
+        .events(v-if="news")
           h2 События
           .events_cards
-            router-link(:to="`/news/${index}`" v-for="(card, index) in eventCard" :key="index")
+            router-link(:to="`/news/${index}`" v-for="(card, index) in news" :key="index")
               j-new-preview
-                img(slot="image" src="../assets/images/events_1.png")
+                img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
                 h3(slot="date") {{ card.date }}
                 p(slot="text") {{ card.text }}
             .show_more_button
@@ -45,7 +45,7 @@
             .gallery_photo_content
               .gallery_photo_content_main
                 router-link.gallery_photo_content_main_item(to="/test")
-                  j-photo-preview.photo-card_home()
+                  j-photo-preview.photo-card_home
                     img(slot="image" src="../assets/images/events_2.png")
                     h3(slot="date") 13 апреля
                     p(slot="text") Мастер-класс от Колесникова Сергея Викторовича
@@ -137,9 +137,10 @@ export default {
   },
   created () {
     this.$store.dispatch('getStaff')
+    this.$store.dispatch('getNews')
   },
   computed: {
-    ...mapGetters(['staff'])
+    ...mapGetters(['staff', 'news'])
   },
 }
 </script>
