@@ -6,7 +6,7 @@
           j-breadcrumbs
           article.article
             h2 {{oneInformation.title}}
-            p {{oneInformation.text}}
+            div(v-html="oneInformation.text")
             a(:href="`${mediaUrl}/${oneInformation.file}`" download="" v-if="oneInformation.file")
               Attach(icon="writting", type="link") Прикрепленный файл
 </template>

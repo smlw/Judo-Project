@@ -17,10 +17,10 @@
                     router-link(:to="`/news/${card.id}`" )
                       j-new-preview
                         img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
-                        h3(slot="date") 12 апреля
+                        h3(slot="date") {{ getDate(card.created) }}
                         p(slot="text") {{ card.title }}
-                .swiper-button-prev(slot='button-prev')
-                .swiper-button-next(slot='button-next')  
+                .swiper-button-prev.swiper-prev-news(slot='button-prev')
+                .swiper-button-next.swiper-next-news(slot='button-next')  
               .news_button
                 router-link(to='/news')
                   j-button Больше событий
@@ -34,12 +34,12 @@
                         img(slot="image" :src='`${mediaUrl}/${event.mainimg}`')
                         h3(slot="title") {{ event.title }}
                         p(slot="description") {{ event.anons }}
-                .swiper-button-prev(slot='button-prev')
-                .swiper-button-next(slot='button-next')  
+                .swiper-button-prev.swiper-prev-events(slot='button-prev')
+                .swiper-button-next.swiper-next-events(slot='button-next')  
             .news_album(v-if="photoAlbums")
               h2 Фотогалерея
               .album_content
-                .album_content_item(v-for="(photoCard, index) in 3" :key="index")
+                .album_content_item(v-for="(photoCard, index) in photoAlbums.slice(0, 3)" :key="index")
                   router-link(:to="`/photo-gallery/${photoCard.id}`")
                     j-photo-preview.photo-card_news
                       img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
@@ -79,8 +79,8 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          nextEl: '.swiper-next-news',
+          prevEl: '.swiper-prev-news' 
         },
         breakpoints: {
           1140: {
@@ -105,8 +105,8 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          nextEl: '.swiper-next-events',
+          prevEl: '.swiper-next-events'
         },
         breakpoints: {
           1140: {
@@ -132,6 +132,15 @@ export default {
   },
   computed: {
     ...mapGetters(['news', 'events', 'allNews', 'photoAlbums', 'videoAlbums'])
+  },
+  methods: {
+    getDate (date) {
+      const months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", 
+            "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"]
+
+      const myDate = new Date(date)
+      return `${myDate.getDate()} ${months[myDate.getMonth()]}`
+    },
   }
 }
 </script>

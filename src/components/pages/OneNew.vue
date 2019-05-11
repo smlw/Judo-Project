@@ -11,9 +11,9 @@
             .article_content
               p 
                 img(:src='`${mediaUrl}/${oneNew.mainimg}`')
-                span {{ oneNew.text }}
+                div(v-html="oneNew.text")
             a(:href="`${mediaUrl}/${oneNew.file}`" download="")
-              Attach(icon="doc", type="link" v-if="oneNew.file") Протокол соревнований    
+              Attach(icon="doc", type="link" v-if="oneNew.file") Прикрепленный файл 
 
 </template>
 

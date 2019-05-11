@@ -19,11 +19,11 @@
         .events(v-if="news")
           h2 События
           .events_cards
-            router-link(:to="`/news/${index}`" v-for="(card, index) in news" :key="index")
+            router-link(:to="`/news/${card.id}`" v-for="(card, index) in news.slice(0, 3)" :key="index")
               j-new-preview
                 img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
-                h3(slot="date") {{ card.date }}
-                p(slot="text") {{ card.text }}
+                h3(slot="date") {{getDateYear(card.created)}}
+                p(slot="text") {{ card.anons }}
             .show_more_button
               router-link(to="/news")
                 j-button Больше событий
@@ -130,11 +130,6 @@ export default {
           },
         }
       },
-      eventCard: [
-        { linkTo: '/link/1', img: '~/../../assets/images/events_1.png', date: '12 апреля 2018', text: 'С 22 апреля по 18 мая 2019 года в Свердловской области пройдет эко-марафон переработка «Сдай макулатуру – спаси дерево!». Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'},
-        { linkTo: '/link/2', img: '123', date: '13 апреля 2018', text: 'Дзюдо: мастер класс от Колесникова Сергея Викторовича'},
-        { linkTo: '/link/3', img: '123', date: '14 апреля 2018', text: 'Основная задача акции – привлечь внимание людей к ресурсосбережению, заставить задуматься над...'}
-      ],
     }
   },
   created () {
@@ -154,7 +149,7 @@ export default {
   },
   methods: {
     getLastPhotoAlbumns () {
-      return this.photoAlbums.slice(0,3)
+      return this.photoAlbums.slice(0, 3)
     },
     getLastVideoAlbumns () {
       return this.videoAlbums.slice(0,1)
@@ -165,6 +160,13 @@ export default {
 
       const myDate = new Date(date)
       return `${myDate.getDate()} ${months[myDate.getMonth()]}`
+    },
+    getDateYear (date) {
+      const months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", 
+            "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"]
+
+      const myDate = new Date(date)
+      return `${myDate.getDate()} ${months[myDate.getMonth()]} ${myDate.getFullYear()}`
     }
   }
 }

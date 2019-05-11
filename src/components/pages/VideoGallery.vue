@@ -17,7 +17,7 @@
                         source(:src='`${mediaUrl}/${video.video.video}`', type='video/mp4', size='720')
                 .video-gallery_content_main_description
                   h3 {{ video.video.title }}
-                  p {{ video.video.descriptions }}
+                  div(v-html="video.video.descriptions")
               .video-gallery_content_second(v-if="relatedVideos")
                 .swiper-slider
                   swiper(:options='swiperOption')
