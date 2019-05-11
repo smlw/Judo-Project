@@ -40,34 +40,34 @@
         // Gallery block
         //
         .gallery
-          .gallery_photo
+          .gallery_photo(v-if="albumns")
             h2 Фото
             .gallery_photo_content
               .gallery_photo_content_main
-                router-link.gallery_photo_content_main_item(to="/test")
+                router-link.gallery_photo_content_main_item(:to="`photo-gallery/${albumns[0].id}`")
                   j-photo-preview.photo-card_home
-                    img(slot="image" src="../assets/images/events_2.png")
-                    h3(slot="date") 13 апреля
-                    p(slot="text") Мастер-класс от Колесникова Сергея Викторовича
-              .gallery_photo_content_second
-                router-link.gallery_photo_content_second_item(to="/test/2")
-                  j-photo-preview.photo-card_home_small()
-                    img(slot="image" src="../assets/images/events_1.png")
-                    h3(slot="date") 13 апреля
-                router-link.gallery_photo_content_second_item(to="/test/3")
-                  j-photo-preview.photo-card_home_small()
-                    img(slot="image" src="../assets/images/events_3.png")
-                    h3(slot="date") 13 апреля
+                    img(slot="image" :src="`${mediaUrl}/${albumns[0].prev}`")
+                    h3(slot="date") {{getDate(albumns[0].created)}}
+                    p(slot="text") {{albumns[0].title}}
+              .gallery_photo_content_second(v-if="albumns[1]")
+                router-link.gallery_photo_content_second_item(:to="`photo-gallery/${albumns[1].id}`" v-if="albumns[1]")
+                  j-photo-preview.photo-card_home_small
+                    img(slot="image" :src="`${mediaUrl}/${albumns[1].prev}`")
+                    h3(slot="date") {{getDate(albumns[1].created)}}
+                router-link.gallery_photo_content_second_item(:to="`photo-gallery/${albumns[1].id}`" v-if="albumns[2]")
+                  j-photo-preview.photo-card_home_small
+                    img(slot="image" :src="`${mediaUrl}/${albumns[2].prev}`")
+                    h3(slot="date") {{getDate(albumns[2].created)}}
             .show_more_button
               router-link(to="/photo-gallery") 
                 j-button Перейти к альбомам
-          .gallery_video
+          .gallery_video(v-if="videoAlbum")
             h2 Видео
             .gallery_video_content
-              router-link(to="/video-gallery/1")
+              router-link(:to="`/video-gallery/${videoAlbum[0].id}`")
                 j-video-preview.video-card_home
-                  img(slot="image" src="../assets/images/slider-1.png")
-                  h3(slot="title") 13 апреля
+                  img(slot="image" :src='`${mediaUrl}/${videoAlbum[0].cover}`')
+                  h3(slot="title") {{getDate(videoAlbum[0].created)}}
             .show_more_button
               router-link(to="/video-gallery") 
                 j-button Все видео
@@ -92,6 +92,8 @@ import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
+      albumns: null,
+      videoAlbum: null,
       swiperMain: {
         loop: true,
         pagination: {
@@ -138,10 +140,33 @@ export default {
   created () {
     this.$store.dispatch('getStaff')
     this.$store.dispatch('getNews')
+    this.$store.dispatch('getPhotoAlbums')
+      .then(() => {
+        this.albumns = this.getLastPhotoAlbumns()
+      })
+    this.$store.dispatch('getVideoAlbums')
+      .then(() => {
+        this.videoAlbum = this.getLastVideoAlbumns()
+      })
   },
   computed: {
-    ...mapGetters(['staff', 'news'])
+    ...mapGetters(['staff', 'news', 'photoAlbums', 'videoAlbums'])
   },
+  methods: {
+    getLastPhotoAlbumns () {
+      return this.photoAlbums.slice(0,3)
+    },
+    getLastVideoAlbumns () {
+      return this.videoAlbums.slice(0,1)
+    },
+    getDate (date) {
+      const months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", 
+            "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"]
+
+      const myDate = new Date(date)
+      return `${myDate.getDate()} ${months[myDate.getMonth()]}`
+    }
+  }
 }
 </script>
 
@@ -198,7 +223,7 @@ h2
   &_photo_content
     flexbox(column, nowrap, space-between, flex-start, stretch)
     @media screen and (min-width: md)
-      flexbox(row, nowrap, space-between, flex-start, stretch)
+      flexbox(row, nowrap, center, flex-start, stretch)
     &_main_item
       &_item
         display flex
@@ -212,7 +237,7 @@ h2
         width 100%
         display flex
         @media screen and (min-width: md)
-          &:last-child
+          &:nth-child(2)
             margin 10px 0 0 0
 .article
   margin 30px 0
