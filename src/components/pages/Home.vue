@@ -217,6 +217,8 @@ h2
   margin 10px 0
   &_video
     margin 30px 0
+    @media screen and (max-width: md)
+      width 100%  
     @media screen and (min-width sm)
       margin 0
   @media screen and (min-width: lg)
@@ -272,6 +274,9 @@ h2
   margin 25px 0 0 0
 .events_cards
   flexbox(column, wrap, space-between, center, stretch)
+  @media screen and (max-width sm)
+    a
+      width 100%
   @media screen and (min-width: md)
       flexbox(row, wrap, space-between, stretch, stretch)
 </style>

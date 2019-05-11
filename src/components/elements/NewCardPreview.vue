@@ -22,10 +22,8 @@ card-width = 355px
 card-height = 256px
 .new-card
   width 100%
+  height 153px
   margin 0 0 15px 0
-  @media screen and (min-width: md)
-    height 153px
-    width 220px
   @media screen and (min-width: lg)
     height 195px
     width 280px
@@ -58,19 +56,6 @@ card-height = 256px
     color #fff
     line-height normal
     font-family 'Noto Sans', sans-serif
-    @media screen and (min-width: md)
-      height 153px
-      margin-top -153px
-      .new-card_description_gradient
-        height 100%
-    @media screen and (min-width: lg)
-      height 195px
-      margin-top -195px
-      .new-card_description_gradient
-        height 60%
-    @media screen and (min-width: xl)
-      height 256px
-      margin-top -256px
     &_date
       font-size 24px
       font-weight bold
@@ -95,5 +80,19 @@ card-height = 256px
         .new-card_description_text
           transition all 0.25s ease
           height auto
+
+.new-card_description
+  height 153px
+  margin-top -153px
+  .new-card_description_gradient
+    height 100%
+  @media screen and (min-width: lg)
+    height 195px
+    margin-top -195px
+    .new-card_description_gradient
+      height 60%
+  @media screen and (min-width: xl)
+    height 256px
+    margin-top -256px
 </style>
 
