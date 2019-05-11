@@ -1,17 +1,15 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="videoAlbum")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .album
-            h2 Видеоальбом {{ videoAlbum.title }}
-            .album_content(v-if="relatedVideos")
-              .album_content_item(v-for="(relVideo, index) in relatedVideos.videos" :key="index")
-                router-link(:to="`/video-gallery/${relatedVideos.id}/${relVideo.id}`")
-                  j-video-preview.video-card_video
-                    img(slot="image" :src='`${mediaUrl}/${relVideo.cover}`')
-                    h3(slot="title") {{ relVideo.title }}
+  .container(v-if="videoAlbum")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .album
+        h2 Видеоальбом {{ videoAlbum.title }}
+        .album_content(v-if="relatedVideos")
+          .album_content_item(v-for="(relVideo, index) in relatedVideos.videos" :key="index")
+            router-link(:to="`/video-gallery/${relatedVideos.id}/${relVideo.id}`")
+              j-video-preview.video-card_video
+                img(slot="image" :src='`${mediaUrl}/${relVideo.cover}`')
+                h3(slot="title") {{ relVideo.title }}
 </template>
 
 <script>
@@ -34,7 +32,7 @@ export default {
   },
   methods: {
     addBread () {
-      this.$route.meta.breadcrumbs[3].name = `${this.$store.getters.videoAlbum.title}`
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.getters.videoAlbum.title}`
     }
   }
 }

@@ -4,10 +4,9 @@
       .container
         .header
           .logotypes
-            // Поменяю на svg позже.
             img(src="../../assets/images/urfuLogo.svg")
             img(src="../../assets/images/adminLogo.svg")
-          nav.header-navigation(v-if="isMenuShow")
+          nav.header-navigation
             ul
               router-link(
                 v-for="(item, index) in menuItems" :key="index"
@@ -29,7 +28,6 @@
                 span {{ item.name }}
           .footer-bottom
             .footer-bottom_partners
-              // Поменяю на svg позже
               img(src="../../assets/images/fd.svg")
               img(src="../../assets/images/adminLogo.svg")
               img(src="../../assets/images/bfr.svg")

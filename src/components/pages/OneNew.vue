@@ -1,20 +1,17 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneNew")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .article
-            .article_info
-              h2 {{oneNew.title}}
-              .article_info_date {{ dateFormat() }}
-            .article_content
-              p 
-                img(:src='`${mediaUrl}/${oneNew.mainimg}`')
-                div(v-html="oneNew.text")
-            a(:href="`${mediaUrl}/${oneNew.file}`" download="")
-              Attach(icon="doc", type="link" v-if="oneNew.file") Прикрепленный файл 
-
+  .container(v-if="oneNew")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .article
+        .article_info
+          h2 {{oneNew.title}}
+          .article_info_date {{ dateFormat() }}
+        .article_content
+          p 
+            img(:src='`${mediaUrl}/${oneNew.mainimg}`')
+            div(v-html="oneNew.text")
+        a(:href="`${mediaUrl}/${oneNew.file}`" download="")
+          Attach(icon="doc", type="link" v-if="oneNew.file") Прикрепленный файл 
 </template>
 
 <script>

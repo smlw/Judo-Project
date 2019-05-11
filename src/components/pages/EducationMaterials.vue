@@ -1,14 +1,12 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .education-materials
-            h2 Учебные материалы  
-            .education-materials_container
-              router-link(:to="`education-materials/${material.id}`" v-for="(material, index) in materials" :key="index")
-                Attach(icon="doc") {{ material.title}}
+  .container
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .education-materials
+        h2 Учебные материалы  
+        .education-materials_container
+          router-link(:to="`education-materials/${material.id}`" v-for="(material, index) in materials" :key="index")
+            Attach(icon="doc") {{ material.title}}
 </template>
 
 <script>

@@ -1,17 +1,15 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="photoAlbums")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .album
-            h2 Альбомы
-            .album_content
-              .album_content_item(v-for="(photoCard, index) in photoAlbums" :key="index")
-                router-link.photo-card_album(:to="`/photo-gallery/${photoCard.id}`")
-                  j-photo-preview
-                    img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
-                    h3(slot="date") {{ photoCard.title }}
+  .container(v-if="photoAlbums")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .album
+        h2 Альбомы
+        .album_content
+          .album_content_item(v-for="(photoCard, index) in photoAlbums" :key="index")
+            router-link.photo-card_album(:to="`/photo-gallery/${photoCard.id}`")
+              j-photo-preview
+                img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
+                h3(slot="date") {{ photoCard.title }}
                     
 </template>
 

@@ -1,25 +1,23 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneHuman")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .human
-            .human_photo
-              img(:src='`${mediaUrl}/${oneHuman.photo}`')
-            .human_content
-              .human_header
-                h2 {{ `${oneHuman.name} ${oneHuman.family}` }}
-                .human_old {{ currentAge() }}
-              .human_info
-                .human_info_text
-                  p(v-html="oneHuman.description")
-          .human-progress
-            h2 Достижения
-            .human-progress_content(v-if="oneHuman.medals")
-              .human-progress_item(v-for="(progress, index) in oneHuman.medals" :key="index")
-                .human-progress_item_icon(:class="progress.medal")
-                .human-progress_item_text {{ progress.title }}
+  .container(v-if="oneHuman")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .human
+        .human_photo
+          img(:src='`${mediaUrl}/${oneHuman.photo}`')
+        .human_content
+          .human_header
+            h2 {{ `${oneHuman.name} ${oneHuman.family}` }}
+            .human_old {{ currentAge() }}
+          .human_info
+            .human_info_text
+              p(v-html="oneHuman.description")
+      .human-progress
+        h2 Достижения
+        .human-progress_content(v-if="oneHuman.medals")
+          .human-progress_item(v-for="(progress, index) in oneHuman.medals" :key="index")
+            .human-progress_item_icon(:class="progress.medal")
+            .human-progress_item_text {{ progress.title }}
 </template>
 
 <script>

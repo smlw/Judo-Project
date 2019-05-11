@@ -1,14 +1,12 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneInformation")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          article.article
-            h2 {{oneInformation.title}}
-            div(v-html="oneInformation.text")
-            a(:href="`${mediaUrl}/${oneInformation.file}`" download="" v-if="oneInformation.file")
-              Attach(icon="writting", type="link") Прикрепленный файл
+  .container(v-if="oneInformation")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      article.article
+        h2 {{oneInformation.title}}
+        div(v-html="oneInformation.text")
+        a(:href="`${mediaUrl}/${oneInformation.file}`" download="" v-if="oneInformation.file")
+          Attach(icon="writting", type="link") Прикрепленный файл
 </template>
 
 <script>

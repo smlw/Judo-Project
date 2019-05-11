@@ -1,17 +1,15 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneStaff")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .human
-            .human_photo
-              img( :src='`${mediaUrl}/${oneStaff.photo}`' )
-            .human_content
-              h2 {{ `${oneStaff.name} ${oneStaff.patronymic} ${oneStaff.family}`}}
-              .human_info(v-for="(info, index) in oneStaff.info")
-                .human_info_title {{info.name}}
-                .human_info_descr {{info.content}}
+  .container(v-if="oneStaff")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .human
+        .human_photo
+          img( :src='`${mediaUrl}/${oneStaff.photo}`' )
+        .human_content
+          h2 {{ `${oneStaff.name} ${oneStaff.patronymic} ${oneStaff.family}`}}
+          .human_info(v-for="(info, index) in oneStaff.info")
+            .human_info_title {{info.name}}
+            .human_info_descr {{info.content}}
 </template>
 
 <script>

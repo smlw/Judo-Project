@@ -1,14 +1,9 @@
 <template lang="pug">
-  router-view
+  MainLayout
+    template(v-slot:content)
+      router-view
 </template>
 
-<script>
-// import axios from 'axios'
-export default {
-
-}
-</script>
-
 <style lang="stylus">
-@import 'assets/stylus/main.styl'
+@import './assets/stylus/main'
 </style>

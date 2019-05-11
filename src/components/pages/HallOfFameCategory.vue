@@ -1,19 +1,17 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneHuman")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .hall
-            .hall-container
-              .hall-container_header
-                h2 {{title}}
-              .hall-container_content
-                router-link(:to="`/human/${human.id}`" v-for="(human, index) in oneHuman" :key="index")
-                  j-human-card
-                    img(slot="image" :src='`${mediaUrl}/${human.photo}`')
-                    span(slot="humanName") {{human.initials}} {{ human.family }}
-                    span(slot="discharge") {{human.discharge}}
+  .container(v-if="oneHuman")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .hall
+        .hall-container
+          .hall-container_header
+            h2 {{title}}
+          .hall-container_content
+            router-link(:to="`/human/${human.id}`" v-for="(human, index) in oneHuman" :key="index")
+              j-human-card
+                img(slot="image" :src='`${mediaUrl}/${human.photo}`')
+                span(slot="humanName") {{human.initials}} {{ human.family }}
+                span(slot="discharge") {{human.discharge}}
 </template>
 
 <script>

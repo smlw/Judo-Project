@@ -1,25 +1,23 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="information")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .link-header
-            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
-              j-button.link-header_button {{ link.name }}
-          .information
-            .information_container
-              h2 Для родителей
-              router-link(:to="`information/${info.id}`" v-for="(info, index) in informationParents" :key="index")
-                Attach(icon="info") {{info.title}}
-            .information_container
-              h2 Для детей
-              router-link(:to="`information/${info.id}`" v-for="(info, index) in informationChildren" :key="index")
-                Attach(icon="info") {{info.title}}
-            .information_container
-              h2 Другое
-              router-link(:to="`information/${info.id}`" v-for="(info, index) in informationOther" :key="index")
-                Attach(icon="info") {{info.title}}
+  .container(v-if="information")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .link-header
+        router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+          j-button.link-header_button {{ link.name }}
+      .information
+        .information_container
+          h2 Для родителей
+          router-link(:to="`information/${info.id}`" v-for="(info, index) in informationParents" :key="index")
+            Attach(icon="info") {{info.title}}
+        .information_container
+          h2 Для детей
+          router-link(:to="`information/${info.id}`" v-for="(info, index) in informationChildren" :key="index")
+            Attach(icon="info") {{info.title}}
+        .information_container
+          h2 Другое
+          router-link(:to="`information/${info.id}`" v-for="(info, index) in informationOther" :key="index")
+            Attach(icon="info") {{info.title}}
 </template>
 
 <script>

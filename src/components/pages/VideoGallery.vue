@@ -1,34 +1,32 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="video")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .video-gallery(v-if="video")
-            .video-gallery_header
-              h2 {{ video.video.title }}
-              .video-gallery_date {{ video.created }}
-            .video-gallery_content
-              .video-gallery_content_main
-                .video-gallery_content_main_video
-                  .video_content_playvideo
-                    vue-plyr(:options="plyrSettings" controls ref="plyr")
-                      video(poster='poster.png', :src='`${mediaUrl}/${video.video.video}`')
-                        source(:src='`${mediaUrl}/${video.video.video}`', type='video/mp4', size='720')
-                .video-gallery_content_main_description
-                  h3 {{ video.video.title }}
-                  div(v-html="video.video.descriptions")
-              .video-gallery_content_second(v-if="relatedVideos")
-                .swiper-slider
-                  swiper(:options='swiperOption')
-                    swiper-slide(v-for="(oneVideo, index) in relatedVideos.videos" :key="index")
-                      router-link(:to="`/video-gallery/${relatedVideos.id}/${oneVideo.id}`")
-                        j-video-preview.video-card_video
-                          img(slot="image" :src='`${mediaUrl}/${oneVideo.cover}`')
-                          h3(slot="title") {{ oneVideo.title }}
+  .container(v-if="video")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .video-gallery(v-if="video")
+        .video-gallery_header
+          h2 {{ video.video.title }}
+          .video-gallery_date {{ video.created }}
+        .video-gallery_content
+          .video-gallery_content_main
+            .video-gallery_content_main_video
+              .video_content_playvideo
+                vue-plyr(:options="plyrSettings" controls ref="plyr")
+                  video(poster='poster.png', :src='`${mediaUrl}/${video.video.video}`')
+                    source(:src='`${mediaUrl}/${video.video.video}`', type='video/mp4', size='720')
+            .video-gallery_content_main_description
+              h3 {{ video.video.title }}
+              div(v-html="video.video.descriptions")
+          .video-gallery_content_second(v-if="relatedVideos")
+            .swiper-slider
+              swiper(:options='swiperOption')
+                swiper-slide(v-for="(oneVideo, index) in relatedVideos.videos" :key="index")
+                  router-link(:to="`/video-gallery/${relatedVideos.id}/${oneVideo.id}`")
+                    j-video-preview.video-card_video
+                      img(slot="image" :src='`${mediaUrl}/${oneVideo.cover}`')
+                      h3(slot="title") {{ oneVideo.title }}
 
-                  .swiper-button-prev(slot='button-prev')
-                  .swiper-button-next(slot='button-next')      
+              .swiper-button-prev(slot='button-prev')
+              .swiper-button-next(slot='button-next')      
 </template>
 
 <script>
@@ -80,9 +78,9 @@ export default {
   },
   methods: {
     addBread () {
-      this.$route.meta.breadcrumbs[3].name = `${this.$store.state.videoGallery.video.title}`
-      this.$route.meta.breadcrumbs[3].link = `/video-gallery/${this.$store.state.videoGallery.video.id}`
-      this.$route.meta.breadcrumbs[4].name = `${this.$store.state.videoGallery.video.video.title}`
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.videoGallery.video.title}`
+      this.$route.meta.breadcrumbs[2].link = `/video-gallery/${this.$store.state.videoGallery.video.id}`
+      this.$route.meta.breadcrumbs[3].name = `${this.$store.state.videoGallery.video.video.title}`
     }
   },
   created () {

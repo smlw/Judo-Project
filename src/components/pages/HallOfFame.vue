@@ -1,30 +1,28 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="fullHallOfFame")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .link-header
-            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
-              j-button.link-header_button {{ link.name }}
-          .hall(v-if="category")
-            .hall-container(v-for="(category, index) in fullHallOfFame" :key="index")
-              .hall-container_header
-                h2 {{category.name}}
-                router-link(:to="`hall/${category.link}`").link_full-list
-                  span.link_full-list_text Полный список
-                  span.link_full-list_icon
-              .swiper-slider
-                swiper(:options='swiperOption')
-                  swiper-slide(v-for="(human, index) in category.humans" :key="index")
-                    .hall-container_portrait
-                      router-link(:to="`human/${human.id}`")
-                        j-human-card
-                          img(slot="image" :src='`${mediaUrl}/${human.photo}`')
-                          span(slot="humanName") {{human.initials}} {{ human.family }}
-                          span(slot="discharge") {{human.discharge}}
-                .swiper-button-prev(slot='button-prev')
-                .swiper-button-next(slot='button-next') 
+  .container(v-if="fullHallOfFame")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .link-header
+        router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+          j-button.link-header_button {{ link.name }}
+      .hall(v-if="category")
+        .hall-container(v-for="(category, index) in fullHallOfFame" :key="index")
+          .hall-container_header
+            h2 {{category.name}}
+            router-link(:to="`hall/${category.link}`").link_full-list
+              span.link_full-list_text Полный список
+              span.link_full-list_icon
+          .swiper-slider
+            swiper(:options='swiperOption')
+              swiper-slide(v-for="(human, index) in category.humans" :key="index")
+                .hall-container_portrait
+                  router-link(:to="`human/${human.id}`")
+                    j-human-card
+                      img(slot="image" :src='`${mediaUrl}/${human.photo}`')
+                      span(slot="humanName") {{human.initials}} {{ human.family }}
+                      span(slot="discharge") {{human.discharge}}
+            .swiper-button-prev(slot='button-prev')
+            .swiper-button-next(slot='button-next') 
 </template>
 
 <script>

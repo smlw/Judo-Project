@@ -1,17 +1,15 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="videoAlbums")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .album
-            h2 Видеоальбомы
-            .album_content
-              .album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
-                router-link(:to="`/video-gallery/${videoCard.id}`")
-                  j-photo-preview.photo-card_album
-                    img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
-                    h3(slot="date") {{ videoCard.title }}
+  .container(v-if="videoAlbums")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .album
+        h2 Видеоальбомы
+        .album_content
+          .album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
+            router-link(:to="`/video-gallery/${videoCard.id}`")
+              j-photo-preview.photo-card_album
+                img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
+                h3(slot="date") {{ videoCard.title }}
 </template>
 
 <script>

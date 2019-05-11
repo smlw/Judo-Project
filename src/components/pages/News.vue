@@ -1,64 +1,62 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="allNews")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .link-header
-            router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
-              j-button.link-header_button {{ link.name }}
-          .news(v-if="news")
-            // Block of news
-            .news_news
-              h2 Новости
-              .swiper-slider
-                swiper(:options='swiperOption')
-                  swiper-slide(v-for="(card, index) in news" :key="index")
-                    router-link(:to="`/news/${card.id}`" )
-                      j-new-preview
-                        img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
-                        h3(slot="date") {{ getDate(card.created) }}
-                        p(slot="text") {{ card.title }}
-                .swiper-button-prev.swiper-prev-news(slot='button-prev')
-                .swiper-button-next.swiper-next-news(slot='button-next')  
-              .news_button
-                router-link(to='/news')
-                  j-button Больше событий
-            .news_events(v-if="events")
-              h2 Грядущие события
-              .swiper-slider
-                swiper(:options='swiperEvents')
-                  swiper-slide(v-for="(event, index) in events" :key="index")
-                    router-link(:to="`news/${event.id}`")
-                      j-upcoming-card
-                        img(slot="image" :src='`${mediaUrl}/${event.mainimg}`')
-                        h3(slot="title") {{ event.title }}
-                        p(slot="description") {{ event.anons }}
-                .swiper-button-prev.swiper-prev-events(slot='button-prev')
-                .swiper-button-next.swiper-next-events(slot='button-next')  
-            .news_album(v-if="photoAlbums")
-              h2 Фотогалерея
-              .album_content
-                .album_content_item(v-for="(photoCard, index) in photoAlbums.slice(0, 3)" :key="index")
-                  router-link(:to="`/photo-gallery/${photoCard.id}`")
-                    j-photo-preview.photo-card_news
-                      img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
-                      h3(slot="date") {{ photoCard.title}}
-              .news_button
-                router-link(to="/photo-gallery")
-                  j-button Перейти ко всем альбомам
+  .container(v-if="allNews")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .link-header
+        router-link(:to="`${link.to}`" v-for="(link, index) in headerLinks" :key="index")
+          j-button.link-header_button {{ link.name }}
+      .news(v-if="news")
+        // Block of news
+        .news_news
+          h2 Новости
+          .swiper-slider
+            swiper(:options='swiperOption')
+              swiper-slide(v-for="(card, index) in news" :key="index")
+                router-link(:to="`/news/${card.id}`" )
+                  j-new-preview
+                    img(slot="image" :src='`${mediaUrl}/${card.mainimg}`')
+                    h3(slot="date") {{ getDate(card.created) }}
+                    p(slot="text") {{ card.title }}
+            .swiper-button-prev.swiper-prev-news(slot='button-prev')
+            .swiper-button-next.swiper-next-news(slot='button-next')  
+          .news_button
+            router-link(to='/news')
+              j-button Больше событий
+        .news_events(v-if="events")
+          h2 Грядущие события
+          .swiper-slider
+            swiper(:options='swiperEvents')
+              swiper-slide(v-for="(event, index) in events" :key="index")
+                router-link(:to="`news/${event.id}`")
+                  j-upcoming-card
+                    img(slot="image" :src='`${mediaUrl}/${event.mainimg}`')
+                    h3(slot="title") {{ event.title }}
+                    p(slot="description") {{ event.anons }}
+            .swiper-button-prev.swiper-prev-events(slot='button-prev')
+            .swiper-button-next.swiper-next-events(slot='button-next')  
+        .news_album(v-if="photoAlbums")
+          h2 Фотогалерея
+          .album_content
+            .album_content_item(v-for="(photoCard, index) in photoAlbums.slice(0, 3)" :key="index")
+              router-link(:to="`/photo-gallery/${photoCard.id}`")
+                j-photo-preview.photo-card_news
+                  img(slot="image" :src='`${mediaUrl}/${photoCard.prev}`')
+                  h3(slot="date") {{ photoCard.title}}
+          .news_button
+            router-link(to="/photo-gallery")
+              j-button Перейти ко всем альбомам
 
-            .news_video_album(v-if="videoAlbums")
-              h2 Видео
-              .news_video_album_content
-                .news_video_album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
-                  router-link(:to="`/video-gallery/${videoCard.id}`" )
-                    j-video-preview.video-card_news
-                      img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
-                      h3(slot="title") {{videoCard.title}}
-              .news_button 
-                router-link(to="/video-gallery")
-                  j-button Больше видео
+        .news_video_album(v-if="videoAlbums")
+          h2 Видео
+          .news_video_album_content
+            .news_video_album_content_item(v-for="(videoCard, index) in videoAlbums" :key="index")
+              router-link(:to="`/video-gallery/${videoCard.id}`" )
+                j-video-preview.video-card_news
+                  img(slot="image" :src='`${mediaUrl}/${videoCard.cover}`')
+                  h3(slot="title") {{videoCard.title}}
+          .news_button 
+            router-link(to="/video-gallery")
+              j-button Больше видео
 </template>
 
 <script>

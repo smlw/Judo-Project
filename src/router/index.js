@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Home from '../components/Home.vue'
+import Home from '../components/pages/Home.vue'
 import PhotoAlbums from '../components/pages/PhotoAlbums.vue'
 import VideoAlbums from '../components/pages/VideoAlbums.vue'
 import VideoAlbum from '../components/pages/VideoAlbum.vue'
@@ -34,7 +34,6 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Новости', link: '/news'},
           { name: 'Фотогалерея', link: '' }
         ],
         title: 'Альбомы'
@@ -46,7 +45,6 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Новости', link: '/news'},
           { name: 'Видеогалерея', link: '/'},
         ],
         title: 'Видеоальбомы'
@@ -58,7 +56,6 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Новости', link: '/news'},
           { name: 'Видеогалерея', link: '/video-gallery'},
           { name: 'Название альбома', link: '/'},
         ],
@@ -130,7 +127,7 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Учебные материалы', link: '' }
+          { name: 'Учебные материалы', link: '/education-materials' }
         ],
         title: 'Информация'
       }
@@ -153,7 +150,6 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Новости', link: '/news'},
           { name: 'Фотогалерея', link: '/photo-gallery' },
           { name: '', link: '' }
         ],
@@ -166,7 +162,6 @@ const router = new Router({
       meta: {
         breadcrumbs: [
           { name: 'Главная', link: '/'},
-          { name: 'Новости', link: '/news'},
           { name: 'Видеогалерея', link: '/video-gallery' },
           { name: '', link: '/video-gallery/'},
           { name: '', link: '' }
@@ -208,7 +203,14 @@ const router = new Router({
         title: 'Новости'
       }
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {

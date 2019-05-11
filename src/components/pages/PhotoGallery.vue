@@ -1,16 +1,14 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .photo-gallery(v-if="albumPhotos")
-            .photo-gallery_header
-              h2 {{ albumPhotos.title }}
-              .photo-gallery_date {{ dateFormat() }}
-            .photo-gallery_content(v-viewer="options")
-              template(v-for='{photo, photo_s} in albumPhotos.photos')
-                img.photo-gallery_content_image(:src='`${mediaUrl}/${photo_s}`' :data-source="`${mediaUrl}/${photo}`" :key='photo')
+  .container
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .photo-gallery(v-if="albumPhotos")
+        .photo-gallery_header
+          h2 {{ albumPhotos.title }}
+          .photo-gallery_date {{ dateFormat() }}
+        .photo-gallery_content(v-viewer="options")
+          template(v-for='{photo, photo_s} in albumPhotos.photos')
+            img.photo-gallery_content_image(:src='`${mediaUrl}/${photo_s}`' :data-source="`${mediaUrl}/${photo}`" :key='photo')
 </template>
 
 <script>
@@ -38,7 +36,7 @@ export default {
       return formatDate
     },
     addBread () {
-      this.$route.meta.breadcrumbs[3].name = `${this.$store.state.photoGallery.albumPhotos.title}`
+      this.$route.meta.breadcrumbs[2].name = `${this.$store.state.photoGallery.albumPhotos.title}`
     },
   },
   created () {

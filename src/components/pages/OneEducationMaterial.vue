@@ -1,31 +1,27 @@
 <template lang="pug">
-  MainLayout
-    template(v-slot:content)
-      .container(v-if="oneMaterial")
-        .wrapper-fluid_content
-          j-breadcrumbs
-          .one-education-material
-            h2 {{ oneMaterial.title }}
-            .one-education-material_text
-              p {{ oneMaterial.text }}
-            router-link(:to="`${oneMaterial.file}`" v-if="oneMaterial.file")
-              Attach(icon="writting", type="link") Прикрепленный фай
-            .video(v-if="oneMaterial.video.trener != null || oneMaterial.video.cover != null")
-              h2 Видеоматериал
-              .video_content
-                .video_content_playvideo(v-if="oneMaterial.video.video")
-                  router-link(:to="`/video-gallery/${oneMaterial.video.video}`")
-                    j-video-preview.video-card_material
-                      img(slot="image" :src='`${mediaUrl}/${oneMaterial.video.cover}`')
-                .video_content_info(v-if="oneMaterial.video.trener")
-                  .video_content_info_header(v-if="oneStaff")
-                    .video_content_info_header_photo
-                      img(:src='`${mediaUrl}/${oneStaff.photo}`')
-                    .video_content_info_header_title {{oneStaff.initials}} {{oneStaff.family}} 
-                  .video_content_info_text
-                    p {{oneMaterial.video.comment}}
-                
-                
+  .container(v-if="oneMaterial")
+    .wrapper-fluid_content
+      j-breadcrumbs
+      .one-education-material
+        h2 {{ oneMaterial.title }}
+        .one-education-material_text
+          p {{ oneMaterial.text }}
+        router-link(:to="`${oneMaterial.file}`" v-if="oneMaterial.file")
+          Attach(icon="writting", type="link") Прикрепленный фай
+        .video(v-if="oneMaterial.video.trener != null || oneMaterial.video.cover != null")
+          h2 Видеоматериал
+          .video_content
+            .video_content_playvideo(v-if="oneMaterial.video.video")
+              router-link(:to="`/video-gallery/${oneMaterial.video.video}`")
+                j-video-preview.video-card_material
+                  img(slot="image" :src='`${mediaUrl}/${oneMaterial.video.cover}`')
+            .video_content_info(v-if="oneMaterial.video.trener")
+              .video_content_info_header(v-if="oneStaff")
+                .video_content_info_header_photo
+                  img(:src='`${mediaUrl}/${oneStaff.photo}`')
+                .video_content_info_header_title {{oneStaff.initials}} {{oneStaff.family}} 
+              .video_content_info_text
+                p {{oneMaterial.video.comment}}
 </template>
 
 <script>
